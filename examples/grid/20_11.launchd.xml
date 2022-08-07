@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+ <copy file="network.net.xml"/>
+ <copy file="20_11.rou.xml"/>
+ <copy file="20_11.sumo.cfg" type="config"/>
+ <copy file="obstacles.poly.xml"/>
+</launch>

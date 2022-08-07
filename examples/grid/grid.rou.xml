@@ -3,7 +3,6 @@
   options: -n .\grid_pedestrians.net.xml -b 0 -e 1 -p 0.01 -o grid.rou.xml
 -->
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-	<!---->
     <trip id="0" depart="0.00" from="G3G2" to="A3A4"/>  
     <trip id="1" depart="0.01" from="C8C9" to="C3D3"/>
     <trip id="2" depart="0.02" from="H2H3" to="G6G7"/>

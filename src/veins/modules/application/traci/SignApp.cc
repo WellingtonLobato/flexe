@@ -136,7 +136,7 @@ void SignApp::initialize(int stage){
 
     }
     else if (stage == 1) {
-        scheduleAt(simTime().dbl()+1.0, trainModelEvt);
+        scheduleAt(simTime().dbl()+1.0+uniform(0.0,0.1), trainModelEvt);
         scheduleAt(simTime().dbl()+0.1, sendBeaconEvt);
     }
 }
@@ -183,6 +183,7 @@ void SignApp::handleSelfMsg(cMessage* msg){
         break;
     }
     case TRAIN_MODEL_EVT:{
+        std::cout << self << " - TRAIN_MODEL_EVT: " << simTime().dbl()<< endl;
         MLP modelMLP(SignApp::dataset->getSamples().cols, SignApp::dataset->getResponses().cols, numberLayers, hiddenLayer, max_iter, eps);
         std::tie(numTrainData, weight2StrMLP) = modelMLP.trainMLP(SignApp::dataset, modelFile+std::to_string(self)+".txt", splitRatio);
         modelMLP.testMLP(SignApp::dataset, modelFile+std::to_string(self)+".txt", modelFile+std::to_string(self)+".txt", splitRatio);
@@ -212,9 +213,9 @@ void SignApp::handleSelfMsg(cMessage* msg){
         bsm->setKind(SEND_CLOUD_EVT);
         bsm->setNumTrainData(numTrainData);
         bsm->setSourceAddress(self);
-        DemoBaseApplLayer::sendDelayedDown(bsm, uniform(0.0,1));
+        DemoBaseApplLayer::sendDelayedDown(bsm, uniform(0.0,0.1));
         if(numRounds > 0){
-            scheduleAt(simTime().dbl() + uniform(0.0, trainInterval), trainModelEvt);
+            scheduleAt(simTime().dbl() + trainInterval, trainModelEvt);
             numRounds--;
         }
         break;
@@ -222,20 +223,6 @@ void SignApp::handleSelfMsg(cMessage* msg){
     case SEND_FED_MODEL_EVT:{
         MLP modelMLP(SignApp::dataset->getSamples().cols, SignApp::dataset->getResponses().cols, numberLayers, hiddenLayer, max_iter, eps);
         modelMLP.testMLP(SignApp::dataset, cloudModelFile, modelFile+std::to_string(self)+"_Fed.txt", splitRatio);
-
-        //RELEASE MEMORY
-        /*
-        cv::Ptr<cv::ml::TrainData>().swap(dataset);
-        cv::Ptr<cv::ml::TrainData>().swap(datasetTest);
-
-        inputData.release();
-        outputData.release();
-
-        std::vector<SignDataset>().swap(roadSignsTotal);
-        std::vector<SignDataset>().swap(roadSignsTest);
-        std::vector<SignDataset>().swap(roadSigns);
-        */
-        //RELEASE MEMORY
         break;
     }
     default: {
