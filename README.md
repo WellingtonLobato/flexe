@@ -1,1 +1,6 @@
-# FLEXE
+# FLEXE: Investigating Federated Learning in Connected Autonomous Vehicle Simulations
+Federated Learning (FL) applied in Connected and Autonomous Vehicle (CAVs) is subject to several challenges related to data, mobility, and communication resources that impacts the performance of FL. CAVs mobility and communication channel varies dynamically in the vehicular environment, resulting in frequent drop-outs and hand-overs. In this sense, the transmission delay caused by FL parameter drop-outs and hand-overs can be much longer than the time devices take to train their local ML models, which influences the convergence time of the global model. In addition, there is a lack of communication bandwidth and vulnerability to malicious CAVs, where it is necessary to design communication-efficient FL mechanisms that can significantly improve the global model's accuracy and convergence speed, allowing it to be used to train large-scale ML models.
+
+## FLEXE Structure
+
+We developed FLEXE to make it possible to implement and develop vehicular FL applications within the context of CAVs. It further simplifies the process of modeling specific \ac{ML} and \ac{FL} applications into environments suitable for CAVs. FLEXE integrates the Veins framework with OpenCV to implement feed-forward artificial neural networks. Specifically, we developed FLEXE on top of the veins network simulator to simulate the dynamics of communication between vehicles.
