@@ -3,4 +3,4 @@ Federated Learning (FL) applied in Connected and Autonomous Vehicle (CAVs) is su
 
 ## FLEXE Structure
 
-We developed FLEXE to make it possible to implement and develop vehicular FL applications within the context of CAVs. It further simplifies the process of modeling specific \ac{ML} and \ac{FL} applications into environments suitable for CAVs. FLEXE integrates the Veins framework with OpenCV to implement feed-forward artificial neural networks. Specifically, we developed FLEXE on top of the veins network simulator to simulate the dynamics of communication between vehicles.
+We developed FLEXE to make it possible to implement and develop vehicular FL applications within the context of CAVs. It further simplifies the process of modeling specific Machine Learning (ML) and FL applications into environments suitable for CAVs. FLEXE integrates the Veins framework with OpenCV to implement feed-forward artificial neural networks. Specifically, we developed FLEXE on top of the veins network simulator to simulate the dynamics of communication between vehicles.
