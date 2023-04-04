@@ -3,11 +3,11 @@
 </p>
 
 # Flexe
-Flexe is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. PyFlexe is free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics. The project was partitioned into two, one of which is responsible for vehicle-to-vehicle communication (Flexe) and the other for the construction and training of models (PyFlexe).
+Flexe is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. Flexe and PyFlexe are free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics. The project was partitioned into two, one of which is responsible for vehicle-to-vehicle communication (Flexe) and the other for the construction and training of models (PyFlexe).
 
 ## Getting Started
 
-We developed FLEXE to make it possible to implement and develop vehicular FL applications within the context of CAVs. It further simplifies the process of modeling specific Machine Learning (ML) and FL applications into environments suitable for CAVs. Specifically, we developed Flexe on top of the Veins network simulator to simulate the dynamics of communication between vehicles. In addition, Flexe relies on , which is a well-known open source computer vision and ML library to allow data to be formatted locally before being transmitted to others CAVs or Road Side Unit inside the communication range. 
+We developed FLEXE to make it possible to implement and develop vehicular FL applications within the context of CAVs. It further simplifies the process of modeling specific Machine Learning (ML) and FL applications into environments suitable for CAVs. Specifically, we developed Flexe on top of the Veins network simulator to simulate the dynamics of communication between vehicles. 
 
 ### Prerequisites
 PyFlexe requires the following software to be installed 
@@ -21,17 +21,11 @@ PyFlexe requires the following software to be installed
 ### OMNeT++ (6 >=) installation
 Please do follow the instructions from the official [OMNeT documentation](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf)
 
-### Conan installation
+### Conan installation (1.58.0 >=)
 Please do follow the instructions from the official [conan documentation](https://docs.conan.io/en/latest/installation.html)
 
-### GRPC installation
+### GRPC installation (== 1.38.1)
 Please do follow the instructions from the official [GRPC documentation](https://grpc.io/docs/languages/python/quickstart/)
-
-### TensorFlow installation (2.11.0 >=)
-Please do follow the instructions from the official [TensorFlow documentation](https://www.tensorflow.org/install)
-
-### PyTorch installation (1.13.1 >=)
-Please do follow the instructions from the official [PyTorch documentation](https://pytorch.org/tutorials/beginner/basics/intro.html)
 
 ### Installing
 
