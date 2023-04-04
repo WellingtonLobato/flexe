@@ -1,0 +1,124 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=10
+    os=Linux
+
+[requires]
+    grpc/1.Y.Z
+    protobuf/3.Y.Z
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    arch_build=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=10
+    os=Linux
+    os_build=Linux
+
+[full_requires]
+    abseil/20211102.0:b173bbda18164d49a449ffadc1c9e817f49e819d
+    c-ares/1.18.1:29b1a7b6d5a3c9f005e799c80fcc6320c89f9745
+    grpc/1.38.1:44ecaec4536223f790dd5e0a72b2d16b1dfaa76c
+    openssl/1.1.1n:19729b9559f3ae196cad45cb2b97468ccb75dcd1
+    protobuf/3.17.1:53f76f058631e1c3a500008c75af3f37d7786131
+    re2/20220201:b173bbda18164d49a449ffadc1c9e817f49e819d
+    zlib/1.2.12:19729b9559f3ae196cad45cb2b97468ccb75dcd1
+
+[full_options]
+    abseil:fPIC=True
+    abseil:shared=False
+    c-ares:fPIC=True
+    c-ares:shared=False
+    c-ares:tools=True
+    grpc:codegen=True
+    grpc:cpp_plugin=True
+    grpc:csharp_ext=False
+    grpc:csharp_plugin=True
+    grpc:fPIC=True
+    grpc:node_plugin=True
+    grpc:objective_c_plugin=True
+    grpc:php_plugin=True
+    grpc:python_plugin=True
+    grpc:ruby_plugin=True
+    grpc:secure=False
+    grpc:shared=False
+    openssl:386=False
+    openssl:enable_weak_ssl_ciphers=False
+    openssl:fPIC=True
+    openssl:no_aria=False
+    openssl:no_asm=False
+    openssl:no_async=False
+    openssl:no_bf=False
+    openssl:no_blake2=False
+    openssl:no_camellia=False
+    openssl:no_cast=False
+    openssl:no_chacha=False
+    openssl:no_cms=False
+    openssl:no_comp=False
+    openssl:no_ct=False
+    openssl:no_deprecated=False
+    openssl:no_des=False
+    openssl:no_dgram=False
+    openssl:no_dh=False
+    openssl:no_dsa=False
+    openssl:no_dso=False
+    openssl:no_ec=False
+    openssl:no_ecdh=False
+    openssl:no_ecdsa=False
+    openssl:no_engine=False
+    openssl:no_filenames=False
+    openssl:no_gost=False
+    openssl:no_hmac=False
+    openssl:no_idea=False
+    openssl:no_md4=False
+    openssl:no_md5=False
+    openssl:no_mdc2=False
+    openssl:no_ocsp=False
+    openssl:no_pinshared=False
+    openssl:no_rc2=False
+    openssl:no_rfc3779=False
+    openssl:no_rmd160=False
+    openssl:no_rsa=False
+    openssl:no_seed=False
+    openssl:no_sha=False
+    openssl:no_sm2=False
+    openssl:no_sm3=False
+    openssl:no_sm4=False
+    openssl:no_sock=False
+    openssl:no_srp=False
+    openssl:no_srtp=False
+    openssl:no_sse2=False
+    openssl:no_ssl=False
+    openssl:no_ssl3=False
+    openssl:no_stdio=False
+    openssl:no_tests=False
+    openssl:no_threads=False
+    openssl:no_tls1=False
+    openssl:no_ts=False
+    openssl:no_whirlpool=False
+    openssl:openssldir=None
+    openssl:shared=False
+    protobuf:debug_suffix=True
+    protobuf:fPIC=True
+    protobuf:lite=False
+    protobuf:shared=False
+    protobuf:with_rtti=True
+    protobuf:with_zlib=True
+    re2:fPIC=True
+    re2:shared=False
+    zlib:fPIC=True
+    zlib:shared=False
+
+[recipe_hash]
+
+
+[env]
+

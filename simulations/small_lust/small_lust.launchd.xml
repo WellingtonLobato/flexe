@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+ <copy file="small_lust.net.xml"/>
+ <copy file="small_buslines.rou.xml"/>
+ <copy file="small_local.0.rou.xml"/>
+ <copy file="small_local.1.rou.xml"/>
+ <copy file="small_local.2.rou.xml"/>
+ <copy file="small_transit.rou.xml"/>
+ <copy file="vtypes.add.xml"/>
+ <copy file="small_dua.actuated.sumocfg" type="config"/>
+</launch>

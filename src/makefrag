@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2017 Rudolf Hornig <rudi@omnetpp.org>
 # Copyright (C) 2018-2020 Christoph Sommer <sommer@cms-labs.org>
@@ -25,15 +24,14 @@
 
 #
 # on windows, special care is needed for linking
-# adapted from INET Framework (inet-4.2.2) makefrag
+# adapted from INET Framework (inet-4.2.1) makefrag
 #
 ifeq ($(PLATFORM),win32.x86_64)
   #
   # on windows we have to link with the ws2_32 (winsock2) library as it is no longer added
   # to the omnetpp system libraries by default (as of OMNeT++ 5.1)
   #
-  LDFLAGS += -lws2_32
-  DEFINES += -DVEINS_EXPORT
+  LIBS += -lws2_32
   ENABLE_AUTO_IMPORT=-Wl,--enable-auto-import
   LDFLAGS := $(filter-out $(ENABLE_AUTO_IMPORT), $(LDFLAGS))
 
@@ -56,12 +54,46 @@ $O/$(TARGET): $(DEFFILE)
 endif
 
 
-VEINS_NEED_MSG6 := $(shell echo ${OMNETPP_VERSION} | grep "^5" >/dev/null 2>&1; echo $$?)
-ifeq ($(VEINS_NEED_MSG6),0)
-  MSGCOPTS += --msg6
-endif
+#
+# Use the new message compiler introduced in OMNeT++ 5.3
+#
+MSGC:=$(MSGC) --msg6
+
+include ../conanbuildinfo.mak
+INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS))
 
 
-ifeq ($(WITH_OSG), yes)
-  OMNETPP_LIBS += $(OSG_LIBS)
-endif
+OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgrpc++.a
+OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgrpc.a
+OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgpr.a
+OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libupb.a
+OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libaddress_sorting.a
+# Idea: Nimm alles und wirf alles mit 'unsafe' raus (for GRPC)
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_OPENSSL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_OPENSSL)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_PROTOBUF)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_PROTOBUF)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_C-ARES)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_C-ARES)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ABSEIL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ABSEIL)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_RE2)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_RE2)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ZLIB)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ZLIB)))
+OMNETPP_LIBS += $(addprefix -l, $(CONAN_SYSTEM_LIBS))
+
+#TODO: CHeck CONAN_FRAMEWORKS contains entries
+OMNETPP_LIBS += $(addprefix -framework , $(CONAN_FRAMEWORKS)) # TODO: Check if this works with linux
+
+
+#
+# Protobuf
+#
+
+PROTO_IN_PATH=$(shell cd ../ && pwd)
+PROTO_FILE=$(PROTO_IN_PATH)/flexe.proto
+PROTO_OUT_PATH=$(PROTO_IN_PATH)/src/flexe/proto/
+PROTO_OUTPUT=flexe.grpc.pb.cc flexe.grpc.pb.h flexe.pb.cc flexe.pb.h
+
+all:
+	echo $(PROTO_IN_PATH)
+	$(CONAN_ROOT_PROTOBUF)/bin/protoc --proto_path $(PROTO_IN_PATH) $(PROTO_FILE) --cpp_out $(PROTO_OUT_PATH) 
+	$(CONAN_ROOT_PROTOBUF)/bin/protoc --proto_path $(PROTO_IN_PATH) --grpc_out=$(PROTO_OUT_PATH) --plugin=protoc-gen-grpc=$(CONAN_ROOT_GRPC)/bin/grpc_cpp_plugin $(PROTO_FILE)
+
+
+

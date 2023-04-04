@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <copy file="grid.net.xml" />
-    <copy file="grid.rou.xml" />
-    <copy file="grid.poly.xml" />
-    <copy file="grid.sumo.cfg" type="config" />
-</launch>
-

@@ -1,0 +1,6 @@
+[requires]
+grpc/1.38.1
+protobuf/3.17.1
+
+[generators]
+make

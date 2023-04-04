@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package flexe;
+
+// Defines the service
+service Flexe {
+    //Client Functions 
+    rpc fit (TTRequest) returns (ModelReply) {}
+    rpc evaluate (TTRequest) returns (EvaluateReply) {}
+    rpc update_model (TTRequest) returns (GenericResponse) {}
+    
+    //Server Functions
+    rpc aggregate_evaluate (TTRequest) returns (EvaluateReply) {}
+    rpc aggregate_fit (ModelRequest) returns (ModelReply) {}
+    rpc aggregate_sync_fit (GenericRequest) returns (ModelReply) {}
+    rpc server_evaluate (TTRequest) returns (EvaluateReply) {}   
+    rpc store_model (ModelRequest) returns (GenericResponse) {} 
+    rpc initialize_parameters (TTRequest) returns (ModelReply) {}
+    rpc end (GenericRequest) returns (GenericResponse) {}
+}
+
+message GenericRequest{
+    string msg = 1;
+}
+
+message GenericResponse{
+    int32 reply = 1;
+}
+
+message TTRequest {
+    int32 idVehicle = 1;
+    string datasetPath = 2;
+    string modelName = 3;
+    int32 epochs = 4;
+    int32 batch_size = 5;
+}
+
+message EvaluateReply {
+    double loss = 1;
+    double accuracy = 2;
+}
+
+message ModelReply{
+    int32 idVehicle = 1;
+    repeated bytes tensors = 2;  
+}
+
+message ModelRequest{
+    int32 idVehicle = 1;
+    repeated bytes tensors = 2;
+    int32 number_of_vehicles = 3;
+    int32 num_examples = 4;
+}
