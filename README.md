@@ -3,7 +3,7 @@
 </p>
 
 # Flexe
-Flexe is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. Flexe and PyFlexe are free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics. The project was partitioned into two, one of which is responsible for vehicle-to-vehicle communication [Flexe](https://github.com/WellingtonLobato/flexe) and the other for the construction and training of models [PyFlexe](https://github.com/WellingtonLobato/PyFlexe).
+Flexe is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. Flexe and PyFlexe are free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics. The project was partitioned into two, one of which is responsible for vehicle-to-vehicle communication ([Flexe](https://github.com/WellingtonLobato/flexe)) and the other for the construction and training of models ([PyFlexe](https://github.com/WellingtonLobato/PyFlexe)).
 
 ## Getting Started
 
