@@ -49,18 +49,19 @@ Flexe is an extension to the well known and widely used Veins simulation framewo
 ## Project structure - main components 
 
 
-├── simulations
-│   ├── grid
-│   ├── small_lust
-│   └── veins
-└── src
-    ├── flexe
-    │   ├── application
-    │   ├── cache
-    │   ├── messages
-    │   └── proto
-    ├── Makefile
-    └── makefrag
+    ├── simulations
+    │   ├── grid
+    │   ├── small_lust
+    │   └── veins
+    └── src
+        ├── flexe
+        │   ├── application
+        │   ├── cache
+        │   ├── messages
+        │   └── proto
+        ├── Makefile
+        └── makefrag
+
 
 ## Contributing
 
