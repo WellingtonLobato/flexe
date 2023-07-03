@@ -10,7 +10,7 @@ void MLRSU11p::initialize(int stage){
     if(stage == 0){
         self = getParentModule()->getIndex();
         cloudModuleName = par("cloudModuleName").stringValue();
-        dataset = par("dataset").stringValue();
+        trainFlag = par("trainFlag").boolValue();
         epochs = par("epochs").intValue();
         batchSize = par("batchSize").intValue();
         modelName = par("modelName").stringValue();
@@ -23,7 +23,7 @@ void MLRSU11p::initialize(int stage){
         chArgs.SetMaxReceiveMessageSize(-1);
         chArgs.SetMaxSendMessageSize(-1);
         client = new FlexeClient(grpc::CreateCustomChannel(address, grpc::InsecureChannelCredentials(), chArgs));
-        client->initialize_parameters(self, dataset, modelName, epochs, batchSize);
+        client->initialize_parameters(self, trainFlag, modelName, epochs, batchSize);
         //First Training
     }
 }
@@ -41,7 +41,7 @@ void MLRSU11p::onBSM(DemoSafetyMessage* bsm){
 void MLRSU11p::onWSM(BaseFrame1609_4* wsm){
     switch(wsm->getKind()){
     case SEND_CLOUD_EVT:{
-        std::cout << self << " RSU - SEND_CLOUD_EVT: " << simTime().dbl() << endl;
+        std::cout << self << " (RSU|onWSM) SEND_CLOUD_EVT " << simTime().dbl() << endl;
 
         FlexeMessage* flexe_msg = check_and_cast<FlexeMessage*>(wsm);
 
@@ -75,7 +75,7 @@ void MLRSU11p::onWSM(BaseFrame1609_4* wsm){
         break;
     }
     default:{
-        std::cout << "RUS onWSM - The message type was not detected." << wsm->getKind() << endl;
+        std::cout << self << " (RSU|onWSM) The message type was not detected. " << wsm->getKind() << endl;
         break;
     }
     }
@@ -87,7 +87,7 @@ void MLRSU11p::onWSA(DemoServiceAdvertisment* wsa){
 void MLRSU11p::handleSelfMsg(cMessage* msg){
     switch (msg->getKind()) {
     case SEND_CLOUD_EVT:{
-        std::cout << "RSU handleSelfMsg SEND_CLOUD_EVT" << endl;
+        std::cout << self << " (RSU|handleSelfMsg) SEND_CLOUD_EVT " << simTime().dbl() << endl;
         if(cloudModuleName.compare("NO_NAME") != 0){
             for(it = modelsMap.begin(); it != modelsMap.end(); ++it){
                 ModelRequest requestModel;
@@ -108,19 +108,19 @@ void MLRSU11p::handleSelfMsg(cMessage* msg){
                     }
                 }
                 client->aggregate_fit(requestModel);
-                client->aggregate_evaluate(self, dataset, modelName, batchSize);
+                client->aggregate_evaluate(self, trainFlag, modelName, batchSize);
                 emit(selectIDMetric, it->first);
                 scheduleAt(simTime().dbl()+uniform(0.0,0.01), sendModelEvt);
             }
             modelsMap.clear();
         }else{
-            std::cout << "RSU: Cloud not defined..." << endl;
+            std::cout << self << " (RSU|handleSelfMsg) Cloud not defined " << simTime().dbl() << endl;
         }
 
         break;
     }
     case SEND_FED_MODEL_EVT:{
-        std::cout << "RSU handleSelfMsg SEND_FED_MODEL_EVT" << endl;
+        std::cout << self << " (RSU|handleSelfMsg) SEND_FED_MODEL_EVT " << simTime().dbl() << endl;
         FlexeMessage* flexe_msg = new FlexeMessage();
         DemoBaseApplLayer::populateWSM(flexe_msg);
 
@@ -132,7 +132,7 @@ void MLRSU11p::handleSelfMsg(cMessage* msg){
         break;
     }
     case CLOUD_EVT:{
-        std::cout << "RSU: I received something from the cloud!" << endl;
+        std::cout << self << " (RSU|handleSelfMsg) CLOUD_EVT " << simTime().dbl() << endl;
         DemoSafetyMessage* bsm = new DemoSafetyMessage();
         DemoBaseApplLayer::populateWSM(bsm);
         bsm->setKind(SEND_FED_MODEL_EVT);
@@ -140,7 +140,7 @@ void MLRSU11p::handleSelfMsg(cMessage* msg){
         break;
     }
     default: {
-        std::cout << "handleSelfMsg - The message type was not detected." << endl;
+        std::cout << self << " (RSU|handleSelfMsg) The message type was not detected. " << msg->getKind() << endl;
         break;
     }
     }
