@@ -42,10 +42,10 @@ class FlexeClient {
         }
     }
 
-    double aggregate_evaluate(int idRSU, const std::string& datasetPath, const std::string& modelName, int batchSize){
+    double aggregate_evaluate(int idRSU, bool trainFlag, const std::string& modelName, int batchSize){
         TTRequest evaluateRequest;
         evaluateRequest.set_idvehicle(idRSU);
-        evaluateRequest.set_datasetpath(datasetPath);
+        evaluateRequest.set_trainflag(false);
         evaluateRequest.set_modelname(modelName);
         evaluateRequest.set_epochs(-1); //NOT USED
         evaluateRequest.set_batch_size(batchSize);
@@ -78,10 +78,10 @@ class FlexeClient {
     }
 
 
-    double server_evaluate(int idRSU, const std::string& datasetPath, const std::string& modelName, int batchSize){
+    double server_evaluate(int idRSU, bool trainFlag, const std::string& modelName, int batchSize){
         TTRequest ServerEvaluateRequest;
         ServerEvaluateRequest.set_idvehicle(idRSU);
-        ServerEvaluateRequest.set_datasetpath(datasetPath);
+        ServerEvaluateRequest.set_trainflag(true);
         ServerEvaluateRequest.set_modelname(modelName);
         ServerEvaluateRequest.set_epochs(-1); //NOT USED
         ServerEvaluateRequest.set_batch_size(batchSize);
@@ -99,10 +99,10 @@ class FlexeClient {
     }
 
 
-    ModelReply initialize_parameters(int idRSU, const std::string& datasetPath, const std::string& modelName, int epochs, int batchSize){
+    ModelReply initialize_parameters(int idRSU, bool trainFlag, const std::string& modelName, int epochs, int batchSize){
         TTRequest InitializeParametersRequest;
         InitializeParametersRequest.set_idvehicle(idRSU);
-        InitializeParametersRequest.set_datasetpath(datasetPath);
+        InitializeParametersRequest.set_trainflag(trainFlag);
         InitializeParametersRequest.set_modelname(modelName);
         InitializeParametersRequest.set_epochs(epochs);
         InitializeParametersRequest.set_batch_size(batchSize);
@@ -156,9 +156,10 @@ protected:
     int num_examples;
     int round=0;
 
+    bool trainFlag;
+
     std::string cloudModuleName;
     std::string modelStr;
-    std::string dataset;
     std::string modelName;
     std::string strWeights;
 
