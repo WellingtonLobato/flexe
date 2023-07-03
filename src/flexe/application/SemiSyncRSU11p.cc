@@ -17,13 +17,16 @@ void SemiSyncRSU11p::initialize(int stage){
     DemoBaseApplLayer::initialize(stage);
     if(stage == 0){
         self = getParentModule()->getIndex();
-        cloudModuleName = par("cloudModuleName").stringValue();
-        dataset = par("dataset").stringValue();
         epochs = par("epochs").intValue();
         batchSize = par("batchSize").intValue();
+
+        trainFlag = par("trainFlag").boolValue();
+
         modelName = par("modelName").stringValue();
-        roundDeadlineTime = par("roundDeadlineTime").doubleValue();
+        cloudModuleName = par("cloudModuleName").stringValue();
         address = par("address").stringValue();
+
+        roundDeadlineTime = par("roundDeadlineTime").doubleValue();
 
         selectIDMetric = registerSignal("selectID");
         roundMetric = registerSignal("round");
@@ -32,7 +35,7 @@ void SemiSyncRSU11p::initialize(int stage){
         chArgs.SetMaxReceiveMessageSize(-1);
         chArgs.SetMaxSendMessageSize(-1);
         client = new FlexeClient(grpc::CreateCustomChannel(address, grpc::InsecureChannelCredentials(), chArgs));
-        client->initialize_parameters(self, dataset, modelName, epochs, batchSize);
+        client->initialize_parameters(self, trainFlag, modelName, epochs, batchSize);
         //First Training
     }
 }
@@ -43,7 +46,7 @@ void SemiSyncRSU11p::onBSM(DemoSafetyMessage* bsm){
         break;
     }
     default:{
-        std::cout << "RUS onBSM - The message type was not detected." << bsm->getKind() << endl;
+        std::cout << self << " (RSU|onBSM) The message type was not detected. " << bsm->getKind() << endl;
         break;
     }
     }
@@ -52,13 +55,13 @@ void SemiSyncRSU11p::onBSM(DemoSafetyMessage* bsm){
 void SemiSyncRSU11p::onWSM(BaseFrame1609_4* wsm){
     switch(wsm->getKind()){
     case SEND_CLOUD_EVT:{
-        std::cout <<"0 RSU - BaseFrame(SEND_CLOUD_EVT): " << simTime().dbl() << endl;
+        std::cout << self << " (RSU|onWSM) SEND_CLOUD_EVT " << simTime().dbl() << endl;
         FlexeMessage* flexe_msg = check_and_cast<FlexeMessage*>(wsm);
 
-        // CACHE
         nextModelID = flexe_msg->getSenderID();
-        cache_fifo.Put(nextModelID, "MODEL");
-        // CACHE
+        if (!(std::find(receivedModels.begin(), receivedModels.end(), nextModelID) != receivedModels.end())) {
+            receivedModels.push_back(nextModelID);
+        }
 
         // MODEL
         for(int i=0; i < flexe_msg->getTensorsSizeArraySize(); i++){
@@ -74,7 +77,7 @@ void SemiSyncRSU11p::onWSM(BaseFrame1609_4* wsm){
 
         // STORE_MODEL
         for(it = modelsMap.begin(); it != modelsMap.end(); ++it){
-            std::cout <<"0 RSU - STORE_MODEL: " << it->first << endl;
+            std::cout << self << " (RSU|onWSM) STORE_MODEL: " << it->first << endl;
             ModelRequest requestModel;
             requestModel.set_idvehicle(it->first+1);
             requestModel.set_number_of_vehicles(modelsMap.size());
@@ -109,14 +112,14 @@ void SemiSyncRSU11p::onWSM(BaseFrame1609_4* wsm){
         modelsMap.clear();
         // CLEAR MEMORY
 
-        std::cout << flexe_msg->getSenderID() << " RSU - SEND_CLOUD_EVT: " << simTime().dbl() << "\n" << endl;
+        std::cout << self << " (RSU|onWSM) SEND_CLOUD_EVT " << flexe_msg->getSenderID() << " " << simTime().dbl() << "\n" << endl;
         if(!sendCloudEvt->isScheduled()){
             scheduleAt(simTime().dbl() + roundDeadlineTime, sendCloudEvt);
         }
         break;
     }
     default:{
-        std::cout << "RUS onWSM - The message type was not detected." << wsm->getKind() << endl;
+        std::cout << self << " (RSU|onWSM) The message type was not detected. " << wsm->getKind() << endl;
         break;
     }
     }
@@ -128,22 +131,25 @@ void SemiSyncRSU11p::onWSA(DemoServiceAdvertisment* wsa){
 void SemiSyncRSU11p::handleSelfMsg(cMessage* msg){
     switch (msg->getKind()) {
     case SEND_CLOUD_EVT:{
-        std::cout << "RSU handleSelfMsg SEND_CLOUD_EVT " << simTime().dbl() << endl;
-        cacheIDs = "";
+        std::cout << self << " (RSU|handleSelfMsg) SEND_CLOUD_EVT " << simTime().dbl() << endl;
+        vehicleIDs = "";
+        std::cout << "Number of Vehicles: " << receivedModels.size() << endl;
 
-        cacheKeys = cache_fifo.GetKeys();
-        for(kt  = cacheKeys.begin(); kt != cacheKeys.end(); kt++){
-            std::cout << "Vehicle in CACHE ID: " << *kt << endl;
-            cacheIDs = cacheIDs + ";" + std::to_string(*kt+1);
+
+        for(kt  = receivedModels.begin(); kt != receivedModels.end(); kt++){
+            std::cout << "Select Model from Vehicle-ID: " << *kt << endl;
+            vehicleIDs = vehicleIDs + ";" + std::to_string(*kt+1);
             emit(selectIDMetric, *kt);
-            cache_fifo.Remove(*kt);
         }
 
-        if(cacheKeys.size() != 0){
-            client->aggregate_sync_fit(cacheIDs);
-            client->aggregate_evaluate(self, dataset, modelName, batchSize);
+
+        if(receivedModels.size() != 0){
+            client->aggregate_sync_fit(vehicleIDs);
+            client->aggregate_evaluate(self, trainFlag, modelName, batchSize);
+            emit(roundMetric, (double)roundDeadlineTime);
         }
 
+        receivedModels.clear();
         std::cout << endl;
         std::cout << endl;
 
@@ -151,15 +157,15 @@ void SemiSyncRSU11p::handleSelfMsg(cMessage* msg){
         break;
     }
     case SEND_FED_MODEL_EVT:{
-        std::cout << "RSU - SEND_FED_MODEL_EVT" << endl;
+        std::cout << self << " (RSU|handleSelfMsg) SEND_FED_MODEL_EVT" << endl;
         FlexeMessage* flexe_msg = new FlexeMessage();
         DemoBaseApplLayer::populateWSM(flexe_msg);
 
         flexe_msg->setSenderID(self);
         flexe_msg->setKind(SEND_FED_MODEL_EVT);
+        flexe_msg->setModelVersion(-1);
 
         DemoBaseApplLayer::sendDelayedDown(flexe_msg, uniform(0.0,0.001));
-        emit(roundMetric, (double)roundDeadlineTime);
         if(!sendCloudEvt->isScheduled()){
             scheduleAt(simTime().dbl() + roundDeadlineTime, sendCloudEvt);
         }
@@ -169,7 +175,7 @@ void SemiSyncRSU11p::handleSelfMsg(cMessage* msg){
         break;
     }
     default: {
-        std::cout << "handleSelfMsg - The message type was not detected." << endl;
+        std::cout << self << " (RSU|handleSelfMsg) - The message type was not detected. "  << msg->getKind() << endl;
         break;
     }
     }
