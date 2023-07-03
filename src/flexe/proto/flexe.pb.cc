@@ -43,9 +43,9 @@ struct GenericResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GenericResponseDefaultTypeInternal _GenericResponse_default_instance_;
 constexpr TTRequest::TTRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : datasetpath_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , modelname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : modelname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , idvehicle_(0)
+  , trainflag_(false)
   , epochs_(0)
   , batch_size_(0){}
 struct TTRequestDefaultTypeInternal {
@@ -73,7 +73,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EvaluateReplyDefaultTypeInterna
 constexpr ModelReply::ModelReply(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : tensors_()
-  , idvehicle_(0){}
+  , idvehicle_(0)
+  , num_examples_(0){}
 struct ModelReplyDefaultTypeInternal {
   constexpr ModelReplyDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -122,7 +123,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_flexe_2eproto::offsets[] PROTO
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::flexe::TTRequest, idvehicle_),
-  PROTOBUF_FIELD_OFFSET(::flexe::TTRequest, datasetpath_),
+  PROTOBUF_FIELD_OFFSET(::flexe::TTRequest, trainflag_),
   PROTOBUF_FIELD_OFFSET(::flexe::TTRequest, modelname_),
   PROTOBUF_FIELD_OFFSET(::flexe::TTRequest, epochs_),
   PROTOBUF_FIELD_OFFSET(::flexe::TTRequest, batch_size_),
@@ -140,6 +141,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_flexe_2eproto::offsets[] PROTO
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::flexe::ModelReply, idvehicle_),
   PROTOBUF_FIELD_OFFSET(::flexe::ModelReply, tensors_),
+  PROTOBUF_FIELD_OFFSET(::flexe::ModelReply, num_examples_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::flexe::ModelRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -156,7 +158,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 12, -1, sizeof(::flexe::TTRequest)},
   { 22, -1, sizeof(::flexe::EvaluateReply)},
   { 29, -1, sizeof(::flexe::ModelReply)},
-  { 36, -1, sizeof(::flexe::ModelRequest)},
+  { 37, -1, sizeof(::flexe::ModelRequest)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -171,34 +173,34 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_flexe_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\013flexe.proto\022\005flexe\"\035\n\016GenericRequest\022\013"
   "\n\003msg\030\001 \001(\t\" \n\017GenericResponse\022\r\n\005reply\030"
-  "\001 \001(\005\"j\n\tTTRequest\022\021\n\tidVehicle\030\001 \001(\005\022\023\n"
-  "\013datasetPath\030\002 \001(\t\022\021\n\tmodelName\030\003 \001(\t\022\016\n"
-  "\006epochs\030\004 \001(\005\022\022\n\nbatch_size\030\005 \001(\005\"/\n\rEva"
-  "luateReply\022\014\n\004loss\030\001 \001(\001\022\020\n\010accuracy\030\002 \001"
-  "(\001\"0\n\nModelReply\022\021\n\tidVehicle\030\001 \001(\005\022\017\n\007t"
-  "ensors\030\002 \003(\014\"d\n\014ModelRequest\022\021\n\tidVehicl"
-  "e\030\001 \001(\005\022\017\n\007tensors\030\002 \003(\014\022\032\n\022number_of_ve"
-  "hicles\030\003 \001(\005\022\024\n\014num_examples\030\004 \001(\0052\327\004\n\005F"
-  "lexe\022,\n\003fit\022\020.flexe.TTRequest\032\021.flexe.Mo"
-  "delReply\"\000\0224\n\010evaluate\022\020.flexe.TTRequest"
-  "\032\024.flexe.EvaluateReply\"\000\022:\n\014update_model"
-  "\022\020.flexe.TTRequest\032\026.flexe.GenericRespon"
-  "se\"\000\022>\n\022aggregate_evaluate\022\020.flexe.TTReq"
-  "uest\032\024.flexe.EvaluateReply\"\000\0229\n\raggregat"
-  "e_fit\022\023.flexe.ModelRequest\032\021.flexe.Model"
-  "Reply\"\000\022@\n\022aggregate_sync_fit\022\025.flexe.Ge"
-  "nericRequest\032\021.flexe.ModelReply\"\000\022;\n\017ser"
-  "ver_evaluate\022\020.flexe.TTRequest\032\024.flexe.E"
-  "valuateReply\"\000\022<\n\013store_model\022\023.flexe.Mo"
-  "delRequest\032\026.flexe.GenericResponse\"\000\022>\n\025"
-  "initialize_parameters\022\020.flexe.TTRequest\032"
-  "\021.flexe.ModelReply\"\000\0226\n\003end\022\025.flexe.Gene"
-  "ricRequest\032\026.flexe.GenericResponse\"\000b\006pr"
-  "oto3"
+  "\001 \001(\005\"h\n\tTTRequest\022\021\n\tidVehicle\030\001 \001(\005\022\021\n"
+  "\ttrainFlag\030\002 \001(\010\022\021\n\tmodelName\030\003 \001(\t\022\016\n\006e"
+  "pochs\030\004 \001(\005\022\022\n\nbatch_size\030\005 \001(\005\"/\n\rEvalu"
+  "ateReply\022\014\n\004loss\030\001 \001(\001\022\020\n\010accuracy\030\002 \001(\001"
+  "\"F\n\nModelReply\022\021\n\tidVehicle\030\001 \001(\005\022\017\n\007ten"
+  "sors\030\002 \003(\014\022\024\n\014num_examples\030\003 \001(\005\"d\n\014Mode"
+  "lRequest\022\021\n\tidVehicle\030\001 \001(\005\022\017\n\007tensors\030\002"
+  " \003(\014\022\032\n\022number_of_vehicles\030\003 \001(\005\022\024\n\014num_"
+  "examples\030\004 \001(\0052\327\004\n\005Flexe\022,\n\003fit\022\020.flexe."
+  "TTRequest\032\021.flexe.ModelReply\"\000\0224\n\010evalua"
+  "te\022\020.flexe.TTRequest\032\024.flexe.EvaluateRep"
+  "ly\"\000\022:\n\014update_model\022\020.flexe.TTRequest\032\026"
+  ".flexe.GenericResponse\"\000\022>\n\022aggregate_ev"
+  "aluate\022\020.flexe.TTRequest\032\024.flexe.Evaluat"
+  "eReply\"\000\0229\n\raggregate_fit\022\023.flexe.ModelR"
+  "equest\032\021.flexe.ModelReply\"\000\022@\n\022aggregate"
+  "_sync_fit\022\025.flexe.GenericRequest\032\021.flexe"
+  ".ModelReply\"\000\022;\n\017server_evaluate\022\020.flexe"
+  ".TTRequest\032\024.flexe.EvaluateReply\"\000\022<\n\013st"
+  "ore_model\022\023.flexe.ModelRequest\032\026.flexe.G"
+  "enericResponse\"\000\022>\n\025initialize_parameter"
+  "s\022\020.flexe.TTRequest\032\021.flexe.ModelReply\"\000"
+  "\0226\n\003end\022\025.flexe.GenericRequest\032\026.flexe.G"
+  "enericResponse\"\000b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_flexe_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_flexe_2eproto = {
-  false, false, 1004, descriptor_table_protodef_flexe_2eproto, "flexe.proto", 
+  false, false, 1024, descriptor_table_protodef_flexe_2eproto, "flexe.proto", 
   &descriptor_table_flexe_2eproto_once, nullptr, 0, 6,
   schemas, file_default_instances, TableStruct_flexe_2eproto::offsets,
   file_level_metadata_flexe_2eproto, file_level_enum_descriptors_flexe_2eproto, file_level_service_descriptors_flexe_2eproto,
@@ -621,11 +623,6 @@ TTRequest::TTRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 TTRequest::TTRequest(const TTRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  datasetpath_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_datasetpath().empty()) {
-    datasetpath_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_datasetpath(), 
-      GetArenaForAllocation());
-  }
   modelname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_modelname().empty()) {
     modelname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_modelname(), 
@@ -638,7 +635,6 @@ TTRequest::TTRequest(const TTRequest& from)
 }
 
 void TTRequest::SharedCtor() {
-datasetpath_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 modelname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&idvehicle_) - reinterpret_cast<char*>(this)),
@@ -654,7 +650,6 @@ TTRequest::~TTRequest() {
 
 void TTRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  datasetpath_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   modelname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -674,7 +669,6 @@ void TTRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  datasetpath_.ClearToEmpty();
   modelname_.ClearToEmpty();
   ::memset(&idvehicle_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&batch_size_) -
@@ -695,12 +689,10 @@ const char* TTRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string datasetPath = 2;
+      // bool trainFlag = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_datasetpath();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "flexe.TTRequest.datasetPath"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          trainflag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -762,14 +754,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_idvehicle(), target);
   }
 
-  // string datasetPath = 2;
-  if (!this->datasetpath().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_datasetpath().data(), static_cast<int>(this->_internal_datasetpath().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "flexe.TTRequest.datasetPath");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_datasetpath(), target);
+  // bool trainFlag = 2;
+  if (this->trainflag() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_trainflag(), target);
   }
 
   // string modelName = 3;
@@ -810,13 +798,6 @@ size_t TTRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string datasetPath = 2;
-  if (!this->datasetpath().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_datasetpath());
-  }
-
   // string modelName = 3;
   if (!this->modelname().empty()) {
     total_size += 1 +
@@ -829,6 +810,11 @@ size_t TTRequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_idvehicle());
+  }
+
+  // bool trainFlag = 2;
+  if (this->trainflag() != 0) {
+    total_size += 1 + 1;
   }
 
   // int32 epochs = 4;
@@ -876,14 +862,14 @@ void TTRequest::MergeFrom(const TTRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.datasetpath().empty()) {
-    _internal_set_datasetpath(from._internal_datasetpath());
-  }
   if (!from.modelname().empty()) {
     _internal_set_modelname(from._internal_modelname());
   }
   if (from.idvehicle() != 0) {
     _internal_set_idvehicle(from._internal_idvehicle());
+  }
+  if (from.trainflag() != 0) {
+    _internal_set_trainflag(from._internal_trainflag());
   }
   if (from.epochs() != 0) {
     _internal_set_epochs(from._internal_epochs());
@@ -914,11 +900,6 @@ bool TTRequest::IsInitialized() const {
 void TTRequest::InternalSwap(TTRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &datasetpath_, GetArenaForAllocation(),
-      &other->datasetpath_, other->GetArenaForAllocation()
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &modelname_, GetArenaForAllocation(),
@@ -1176,12 +1157,17 @@ ModelReply::ModelReply(const ModelReply& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       tensors_(from.tensors_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  idvehicle_ = from.idvehicle_;
+  ::memcpy(&idvehicle_, &from.idvehicle_,
+    static_cast<size_t>(reinterpret_cast<char*>(&num_examples_) -
+    reinterpret_cast<char*>(&idvehicle_)) + sizeof(num_examples_));
   // @@protoc_insertion_point(copy_constructor:flexe.ModelReply)
 }
 
 void ModelReply::SharedCtor() {
-idvehicle_ = 0;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&idvehicle_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&num_examples_) -
+    reinterpret_cast<char*>(&idvehicle_)) + sizeof(num_examples_));
 }
 
 ModelReply::~ModelReply() {
@@ -1211,7 +1197,9 @@ void ModelReply::Clear() {
   (void) cached_has_bits;
 
   tensors_.Clear();
-  idvehicle_ = 0;
+  ::memset(&idvehicle_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&num_examples_) -
+      reinterpret_cast<char*>(&idvehicle_)) + sizeof(num_examples_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1239,6 +1227,13 @@ const char* ModelReply::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // int32 num_examples = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          num_examples_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1282,6 +1277,12 @@ failure:
     target = stream->WriteBytes(2, s, target);
   }
 
+  // int32 num_examples = 3;
+  if (this->num_examples() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_num_examples(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1311,6 +1312,13 @@ size_t ModelReply::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_idvehicle());
+  }
+
+  // int32 num_examples = 3;
+  if (this->num_examples() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_num_examples());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1348,6 +1356,9 @@ void ModelReply::MergeFrom(const ModelReply& from) {
   if (from.idvehicle() != 0) {
     _internal_set_idvehicle(from._internal_idvehicle());
   }
+  if (from.num_examples() != 0) {
+    _internal_set_num_examples(from._internal_num_examples());
+  }
 }
 
 void ModelReply::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -1372,7 +1383,12 @@ void ModelReply::InternalSwap(ModelReply* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   tensors_.InternalSwap(&other->tensors_);
-  swap(idvehicle_, other->idvehicle_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ModelReply, num_examples_)
+      + sizeof(ModelReply::num_examples_)
+      - PROTOBUF_FIELD_OFFSET(ModelReply, idvehicle_)>(
+          reinterpret_cast<char*>(&idvehicle_),
+          reinterpret_cast<char*>(&other->idvehicle_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ModelReply::GetMetadata() const {

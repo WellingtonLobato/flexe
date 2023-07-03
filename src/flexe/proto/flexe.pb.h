@@ -462,26 +462,12 @@ class TTRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDatasetPathFieldNumber = 2,
     kModelNameFieldNumber = 3,
     kIdVehicleFieldNumber = 1,
+    kTrainFlagFieldNumber = 2,
     kEpochsFieldNumber = 4,
     kBatchSizeFieldNumber = 5,
   };
-  // string datasetPath = 2;
-  void clear_datasetpath();
-  const std::string& datasetpath() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_datasetpath(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_datasetpath();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_datasetpath();
-  void set_allocated_datasetpath(std::string* datasetpath);
-  private:
-  const std::string& _internal_datasetpath() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_datasetpath(const std::string& value);
-  std::string* _internal_mutable_datasetpath();
-  public:
-
   // string modelName = 3;
   void clear_modelname();
   const std::string& modelname() const;
@@ -503,6 +489,15 @@ class TTRequest final :
   private:
   ::PROTOBUF_NAMESPACE_ID::int32 _internal_idvehicle() const;
   void _internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool trainFlag = 2;
+  void clear_trainflag();
+  bool trainflag() const;
+  void set_trainflag(bool value);
+  private:
+  bool _internal_trainflag() const;
+  void _internal_set_trainflag(bool value);
   public:
 
   // int32 epochs = 4;
@@ -530,9 +525,9 @@ class TTRequest final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr datasetpath_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr modelname_;
   ::PROTOBUF_NAMESPACE_ID::int32 idvehicle_;
+  bool trainflag_;
   ::PROTOBUF_NAMESPACE_ID::int32 epochs_;
   ::PROTOBUF_NAMESPACE_ID::int32 batch_size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -793,6 +788,7 @@ class ModelReply final :
   enum : int {
     kTensorsFieldNumber = 2,
     kIdVehicleFieldNumber = 1,
+    kNumExamplesFieldNumber = 3,
   };
   // repeated bytes tensors = 2;
   int tensors_size() const;
@@ -827,6 +823,15 @@ class ModelReply final :
   void _internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // int32 num_examples = 3;
+  void clear_num_examples();
+  ::PROTOBUF_NAMESPACE_ID::int32 num_examples() const;
+  void set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_num_examples() const;
+  void _internal_set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:flexe.ModelReply)
  private:
   class _Internal;
@@ -836,6 +841,7 @@ class ModelReply final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> tensors_;
   ::PROTOBUF_NAMESPACE_ID::int32 idvehicle_;
+  ::PROTOBUF_NAMESPACE_ID::int32 num_examples_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_flexe_2eproto;
 };
@@ -1123,49 +1129,24 @@ inline void TTRequest::set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:flexe.TTRequest.idVehicle)
 }
 
-// string datasetPath = 2;
-inline void TTRequest::clear_datasetpath() {
-  datasetpath_.ClearToEmpty();
+// bool trainFlag = 2;
+inline void TTRequest::clear_trainflag() {
+  trainflag_ = false;
 }
-inline const std::string& TTRequest::datasetpath() const {
-  // @@protoc_insertion_point(field_get:flexe.TTRequest.datasetPath)
-  return _internal_datasetpath();
+inline bool TTRequest::_internal_trainflag() const {
+  return trainflag_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void TTRequest::set_datasetpath(ArgT0&& arg0, ArgT... args) {
- 
- datasetpath_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:flexe.TTRequest.datasetPath)
+inline bool TTRequest::trainflag() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.trainFlag)
+  return _internal_trainflag();
 }
-inline std::string* TTRequest::mutable_datasetpath() {
-  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.datasetPath)
-  return _internal_mutable_datasetpath();
-}
-inline const std::string& TTRequest::_internal_datasetpath() const {
-  return datasetpath_.Get();
-}
-inline void TTRequest::_internal_set_datasetpath(const std::string& value) {
+inline void TTRequest::_internal_set_trainflag(bool value) {
   
-  datasetpath_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  trainflag_ = value;
 }
-inline std::string* TTRequest::_internal_mutable_datasetpath() {
-  
-  return datasetpath_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* TTRequest::release_datasetpath() {
-  // @@protoc_insertion_point(field_release:flexe.TTRequest.datasetPath)
-  return datasetpath_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void TTRequest::set_allocated_datasetpath(std::string* datasetpath) {
-  if (datasetpath != nullptr) {
-    
-  } else {
-    
-  }
-  datasetpath_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), datasetpath,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.datasetPath)
+inline void TTRequest::set_trainflag(bool value) {
+  _internal_set_trainflag(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.trainFlag)
 }
 
 // string modelName = 3;
@@ -1393,6 +1374,26 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 ModelReply::mutable_tensors() {
   // @@protoc_insertion_point(field_mutable_list:flexe.ModelReply.tensors)
   return &tensors_;
+}
+
+// int32 num_examples = 3;
+inline void ModelReply::clear_num_examples() {
+  num_examples_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_num_examples() const {
+  return num_examples_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::num_examples() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.num_examples)
+  return _internal_num_examples();
+}
+inline void ModelReply::_internal_set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  num_examples_ = value;
+}
+inline void ModelReply::set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_num_examples(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.num_examples)
 }
 
 // -------------------------------------------------------------------
