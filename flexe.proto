@@ -29,7 +29,7 @@ message GenericResponse{
 
 message TTRequest {
     int32 idVehicle = 1;
-    string datasetPath = 2;
+    bool trainFlag = 2;
     string modelName = 3;
     int32 epochs = 4;
     int32 batch_size = 5;
@@ -42,7 +42,8 @@ message EvaluateReply {
 
 message ModelReply{
     int32 idVehicle = 1;
-    repeated bytes tensors = 2;  
+    repeated bytes tensors = 2;
+    int32 num_examples = 3;  
 }
 
 message ModelRequest{
