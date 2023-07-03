@@ -42,10 +42,6 @@ network SimulationScenario{
         }
         rsu[1]: RSU {
             @display("p=150,140;i=veins/sign/yellowdiamond;is=vs");
-        }
-        cloud[1]: RSU {
-            @display("p=752.08,548.576;i=veins/sign/yellowdiamond;is=vs");
-        }
-        
+        }        
     connections allowunconnected:
 }
