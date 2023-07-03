@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<launch>
- <basedir path="/home/jordan/git/Flexe2.0.0/simulations/grid/seeds"/>
- <copy file="network.net.xml"/>
- <copy file="450_19.rou.xml"/>
- <copy file="450_19.sumo.cfg" type="config"/>
- <copy file="obstacles.poly.xml"/>
-</launch>
