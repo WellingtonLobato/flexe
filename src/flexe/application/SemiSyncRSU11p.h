@@ -1,5 +1,5 @@
 /**@title
- * Federated Learning cOntact timE (FLOE)
+ * 
  *
  * @brief
  *
@@ -11,11 +11,6 @@
 
 #include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
 #include "../messages/FlexeMessage_m.h"
-
-#include "../cache/cache.h"
-#include "../cache/lfu_cache_policy.h"
-#include "../cache/lru_cache_policy.h"
-#include "../cache/fifo_cache_policy.h"
 
 #include <grpcpp/grpcpp.h>
 #include <google/protobuf/empty.pb.h>
@@ -34,12 +29,6 @@ using flexe::ModelReply;
 using flexe::GenericRequest;
 using flexe::GenericResponse;
 
-template <typename Key, typename Value>
-using fifo_cache_t = typename caches::fixed_sized_cache<Key, Value, caches::FIFOCachePolicy>;
-
-constexpr std::size_t CACHE_SIZE = 5;
-fifo_cache_t<int, std::string> cache_fifo(CACHE_SIZE);
-
 class FlexeClient {
     public:
     FlexeClient(std::shared_ptr<Channel> channel)
@@ -54,18 +43,18 @@ class FlexeClient {
         Status status = stub_->end(&context, msg, &reply);
         context.TryCancel();
         if(status.ok()){
-            std::cout << "End the Simulation!" << endl;
+            //std::cout << "End the Simulation!" << endl;
             return 1;
         }else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-            return 0;
+            return -1;
         }
     }
 
-    double aggregate_evaluate(int idRSU, const std::string& datasetPath, const std::string& modelName, int batchSize){
+    double aggregate_evaluate(int idRSU, bool trainFlag, const std::string& modelName, int batchSize){
         TTRequest evaluateRequest;
         evaluateRequest.set_idvehicle(idRSU);
-        evaluateRequest.set_datasetpath(datasetPath);
+        evaluateRequest.set_trainflag(false);
         evaluateRequest.set_modelname(modelName);
         evaluateRequest.set_epochs(-1);
         evaluateRequest.set_batch_size(batchSize);
@@ -75,7 +64,7 @@ class FlexeClient {
 
         Status status = stub_->aggregate_evaluate(&context, evaluateRequest, &reply);
         if(status.ok()){
-            std::cout << "Aggregate Evaluate requested successfully!" << endl;
+            //std::cout << "Aggregate Evaluate requested successfully!" << endl;
             return reply.loss();
         } else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
@@ -90,7 +79,7 @@ class FlexeClient {
 
         Status status = stub_->aggregate_fit(&context, modelGRPC, &reply);
         if(status.ok()){
-            std::cout << "Aggregate Fit requested successfully!" << endl;
+            //std::cout << "Aggregate Fit requested successfully!" << endl;
         } else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
         }
@@ -106,17 +95,17 @@ class FlexeClient {
         Status status = stub_->aggregate_sync_fit(&context, msg, &reply);
 
         if(status.ok()){
-            std::cout << "Aggregate Semi-Async requested successfully!" << endl;
+            //std::cout << "Aggregate Semi-Async requested successfully!" << endl;
         } else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
         }
         return reply;
     }
 
-    double server_evaluate(int idRSU, const std::string& datasetPath, const std::string& modelName, int batchSize){
+    double server_evaluate(int idRSU, bool trainFlag, const std::string& modelName, int batchSize){
         TTRequest ServerEvaluateRequest;
         ServerEvaluateRequest.set_idvehicle(idRSU);
-        ServerEvaluateRequest.set_datasetpath(datasetPath);
+        ServerEvaluateRequest.set_trainflag(true);
         ServerEvaluateRequest.set_modelname(modelName);
         ServerEvaluateRequest.set_epochs(-1); //NOT USED
         ServerEvaluateRequest.set_batch_size(batchSize);
@@ -125,7 +114,7 @@ class FlexeClient {
 
         Status status = stub_->server_evaluate(&context, ServerEvaluateRequest, &reply);
         if(status.ok()){
-            std::cout << "Server Evaluate requested successfully!" << endl;
+            //std::cout << "Server Evaluate requested successfully!" << endl;
             return reply.loss();
         } else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
@@ -134,10 +123,10 @@ class FlexeClient {
     }
 
 
-    ModelReply initialize_parameters(int idRSU, const std::string& datasetPath, const std::string& modelName, int epochs, int batchSize){
+    ModelReply initialize_parameters(int idRSU, bool trainFlag, const std::string& modelName, int epochs, int batchSize){
         TTRequest InitializeParametersRequest;
         InitializeParametersRequest.set_idvehicle(idRSU);
-        InitializeParametersRequest.set_datasetpath(datasetPath);
+        InitializeParametersRequest.set_trainflag(trainFlag);
         InitializeParametersRequest.set_modelname(modelName);
         InitializeParametersRequest.set_epochs(epochs);
         InitializeParametersRequest.set_batch_size(batchSize);
@@ -147,7 +136,7 @@ class FlexeClient {
 
         Status status = stub_->initialize_parameters(&context, InitializeParametersRequest, &reply);
         if(status.ok()){
-            std::cout << "Initialize Parameters requested successfully!" << endl;
+            //std::cout << "Initialize Parameters requested successfully!" << endl;
         } else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
         }
@@ -160,11 +149,11 @@ class FlexeClient {
 
         Status status = stub_->store_model(&context, modelGRPC, &reply);
         if(status.ok()){
-            std::cout << " Stored Model!" << endl;
+            //std::cout << "Stored Model requested successfully!" << endl;
             return 1;
         }else {
             std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-            return 0;
+            return -1;
         }
     }
 
@@ -205,20 +194,21 @@ protected:
     int sourceID;
     int nextModelID;
 
+    bool trainFlag;
+
     double roundDeadlineTime;
     double coverage;
     double diff;
 
     std::string cloudModuleName;
     std::string modelStr;
-    std::string dataset;
     std::string modelName;
     std::string strWeights;
-    std::string cacheIDs;
+    std::string vehicleIDs;
 
     std::vector<char> tensorsBytes;
     std::vector<int> tensorSizeVector;
-    std::vector<int> cacheKeys;
+    std::vector<int> receivedModels;
     std::vector<int>::iterator kt;
 
     std::map<int, std::tuple<std::string, std::vector<int>>> modelsMap;
