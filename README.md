@@ -23,6 +23,9 @@ Please do follow the instructions from the official [OMNeT documentation](https:
 
 ### Conan installation (1.58.0 >=)
 Please do follow the instructions from the official [conan documentation](https://docs.conan.io/en/latest/installation.html)
+```
+pip install conan==1.58.0
+```
 
 ### GRPC installation (== 1.38.1)
 Please do follow the instructions from the official [GRPC documentation](https://grpc.io/docs/languages/python/quickstart/)
