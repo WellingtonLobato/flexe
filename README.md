@@ -59,11 +59,6 @@ Flexe is an extension to the well known and widely used Veins simulation framewo
         ├── Makefile
         └── makefrag
 
-## Instant Flexe Virtual Machine
-[Instant Flexe](https://drive.google.com/file/d/1AKOdnB7UYMtabeHEz1AlBlQEUpy-Vvdz/view?usp=sharing) is a virtual machine you can use to quickly try out Flexe or to run Flexe on systems you do not have administrative access to.
-
-**Make sure to check the option 'Enable Nested VT-x/AMD-V' in VirtualBox to properly run the VM.**
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
@@ -95,6 +90,8 @@ PyFlexe and Flexe can reproduce results in the following papers:
   doi={10.1109/VTC2022-Fall57202.2022.10012905}
 }
 ```
+# Updates
+Flexe Version 3.0.0 in the development phase.
 
 ## License
 
