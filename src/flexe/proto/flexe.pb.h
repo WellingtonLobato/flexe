@@ -46,7 +46,7 @@ struct TableStruct_flexe_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -54,305 +54,32 @@ struct TableStruct_flexe_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_flexe_2eproto;
 namespace flexe {
-class EvaluateReply;
-struct EvaluateReplyDefaultTypeInternal;
-extern EvaluateReplyDefaultTypeInternal _EvaluateReply_default_instance_;
+class AggregationRequest;
+struct AggregationRequestDefaultTypeInternal;
+extern AggregationRequestDefaultTypeInternal _AggregationRequest_default_instance_;
+class GenericReply;
+struct GenericReplyDefaultTypeInternal;
+extern GenericReplyDefaultTypeInternal _GenericReply_default_instance_;
 class GenericRequest;
 struct GenericRequestDefaultTypeInternal;
 extern GenericRequestDefaultTypeInternal _GenericRequest_default_instance_;
-class GenericResponse;
-struct GenericResponseDefaultTypeInternal;
-extern GenericResponseDefaultTypeInternal _GenericResponse_default_instance_;
 class ModelReply;
 struct ModelReplyDefaultTypeInternal;
 extern ModelReplyDefaultTypeInternal _ModelReply_default_instance_;
-class ModelRequest;
-struct ModelRequestDefaultTypeInternal;
-extern ModelRequestDefaultTypeInternal _ModelRequest_default_instance_;
 class TTRequest;
 struct TTRequestDefaultTypeInternal;
 extern TTRequestDefaultTypeInternal _TTRequest_default_instance_;
 }  // namespace flexe
 PROTOBUF_NAMESPACE_OPEN
-template<> ::flexe::EvaluateReply* Arena::CreateMaybeMessage<::flexe::EvaluateReply>(Arena*);
+template<> ::flexe::AggregationRequest* Arena::CreateMaybeMessage<::flexe::AggregationRequest>(Arena*);
+template<> ::flexe::GenericReply* Arena::CreateMaybeMessage<::flexe::GenericReply>(Arena*);
 template<> ::flexe::GenericRequest* Arena::CreateMaybeMessage<::flexe::GenericRequest>(Arena*);
-template<> ::flexe::GenericResponse* Arena::CreateMaybeMessage<::flexe::GenericResponse>(Arena*);
 template<> ::flexe::ModelReply* Arena::CreateMaybeMessage<::flexe::ModelReply>(Arena*);
-template<> ::flexe::ModelRequest* Arena::CreateMaybeMessage<::flexe::ModelRequest>(Arena*);
 template<> ::flexe::TTRequest* Arena::CreateMaybeMessage<::flexe::TTRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace flexe {
 
 // ===================================================================
-
-class GenericRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.GenericRequest) */ {
- public:
-  inline GenericRequest() : GenericRequest(nullptr) {}
-  ~GenericRequest() override;
-  explicit constexpr GenericRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  GenericRequest(const GenericRequest& from);
-  GenericRequest(GenericRequest&& from) noexcept
-    : GenericRequest() {
-    *this = ::std::move(from);
-  }
-
-  inline GenericRequest& operator=(const GenericRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline GenericRequest& operator=(GenericRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const GenericRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const GenericRequest* internal_default_instance() {
-    return reinterpret_cast<const GenericRequest*>(
-               &_GenericRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(GenericRequest& a, GenericRequest& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(GenericRequest* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(GenericRequest* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline GenericRequest* New() const final {
-    return new GenericRequest();
-  }
-
-  GenericRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<GenericRequest>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const GenericRequest& from);
-  void MergeFrom(const GenericRequest& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(GenericRequest* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "flexe.GenericRequest";
-  }
-  protected:
-  explicit GenericRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kMsgFieldNumber = 1,
-  };
-  // string msg = 1;
-  void clear_msg();
-  const std::string& msg() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_msg(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_msg();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_msg();
-  void set_allocated_msg(std::string* msg);
-  private:
-  const std::string& _internal_msg() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
-  std::string* _internal_mutable_msg();
-  public:
-
-  // @@protoc_insertion_point(class_scope:flexe.GenericRequest)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_flexe_2eproto;
-};
-// -------------------------------------------------------------------
-
-class GenericResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.GenericResponse) */ {
- public:
-  inline GenericResponse() : GenericResponse(nullptr) {}
-  ~GenericResponse() override;
-  explicit constexpr GenericResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  GenericResponse(const GenericResponse& from);
-  GenericResponse(GenericResponse&& from) noexcept
-    : GenericResponse() {
-    *this = ::std::move(from);
-  }
-
-  inline GenericResponse& operator=(const GenericResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline GenericResponse& operator=(GenericResponse&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const GenericResponse& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const GenericResponse* internal_default_instance() {
-    return reinterpret_cast<const GenericResponse*>(
-               &_GenericResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    1;
-
-  friend void swap(GenericResponse& a, GenericResponse& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(GenericResponse* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(GenericResponse* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline GenericResponse* New() const final {
-    return new GenericResponse();
-  }
-
-  GenericResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<GenericResponse>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const GenericResponse& from);
-  void MergeFrom(const GenericResponse& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(GenericResponse* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "flexe.GenericResponse";
-  }
-  protected:
-  explicit GenericResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kReplyFieldNumber = 1,
-  };
-  // int32 reply = 1;
-  void clear_reply();
-  ::PROTOBUF_NAMESPACE_ID::int32 reply() const;
-  void set_reply(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_reply() const;
-  void _internal_set_reply(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:flexe.GenericResponse)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 reply_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_flexe_2eproto;
-};
-// -------------------------------------------------------------------
 
 class TTRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.TTRequest) */ {
@@ -398,7 +125,7 @@ class TTRequest final :
                &_TTRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    0;
 
   friend void swap(TTRequest& a, TTRequest& b) {
     a.Swap(&b);
@@ -462,36 +189,128 @@ class TTRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kModelNameFieldNumber = 3,
-    kIdVehicleFieldNumber = 1,
-    kTrainFlagFieldNumber = 2,
-    kEpochsFieldNumber = 4,
-    kBatchSizeFieldNumber = 5,
+    kModelFieldNumber = 2,
+    kDatasetFieldNumber = 3,
+    kScenarioFieldNumber = 4,
+    kModelsFieldNumber = 13,
+    kMsgFieldNumber = 14,
+    kIdEntityFieldNumber = 1,
+    kSeedFieldNumber = 5,
+    kIdModelFieldNumber = 7,
+    kNonIIDFieldNumber = 6,
+    kTrainFlagFieldNumber = 8,
+    kEpochsFieldNumber = 9,
+    kBatchFieldNumber = 10,
+    kPercentDatasetFieldNumber = 12,
+    kNumClientsFieldNumber = 11,
   };
-  // string modelName = 3;
-  void clear_modelname();
-  const std::string& modelname() const;
+  // string model = 2;
+  void clear_model();
+  const std::string& model() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_modelname(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_modelname();
-  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_modelname();
-  void set_allocated_modelname(std::string* modelname);
+  void set_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_model();
+  void set_allocated_model(std::string* model);
   private:
-  const std::string& _internal_modelname() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_modelname(const std::string& value);
-  std::string* _internal_mutable_modelname();
+  const std::string& _internal_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model(const std::string& value);
+  std::string* _internal_mutable_model();
   public:
 
-  // int32 idVehicle = 1;
-  void clear_idvehicle();
-  ::PROTOBUF_NAMESPACE_ID::int32 idvehicle() const;
-  void set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // string dataset = 3;
+  void clear_dataset();
+  const std::string& dataset() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dataset(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dataset();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_dataset();
+  void set_allocated_dataset(std::string* dataset);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idvehicle() const;
-  void _internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const std::string& _internal_dataset() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dataset(const std::string& value);
+  std::string* _internal_mutable_dataset();
   public:
 
-  // bool trainFlag = 2;
+  // string scenario = 4;
+  void clear_scenario();
+  const std::string& scenario() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_scenario(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_scenario();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scenario();
+  void set_allocated_scenario(std::string* scenario);
+  private:
+  const std::string& _internal_scenario() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scenario(const std::string& value);
+  std::string* _internal_mutable_scenario();
+  public:
+
+  // string models = 13;
+  void clear_models();
+  const std::string& models() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_models(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_models();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_models();
+  void set_allocated_models(std::string* models);
+  private:
+  const std::string& _internal_models() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_models(const std::string& value);
+  std::string* _internal_mutable_models();
+  public:
+
+  // string msg = 14;
+  void clear_msg();
+  const std::string& msg() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msg(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msg();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // int32 idEntity = 1;
+  void clear_identity();
+  ::PROTOBUF_NAMESPACE_ID::int32 identity() const;
+  void set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_identity() const;
+  void _internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 seed = 5;
+  void clear_seed();
+  ::PROTOBUF_NAMESPACE_ID::int32 seed() const;
+  void set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_seed() const;
+  void _internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 idModel = 7;
+  void clear_idmodel();
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel() const;
+  void set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idmodel() const;
+  void _internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool nonIID = 6;
+  void clear_noniid();
+  bool noniid() const;
+  void set_noniid(bool value);
+  private:
+  bool _internal_noniid() const;
+  void _internal_set_noniid(bool value);
+  public:
+
+  // bool trainFlag = 8;
   void clear_trainflag();
   bool trainflag() const;
   void set_trainflag(bool value);
@@ -500,7 +319,7 @@ class TTRequest final :
   void _internal_set_trainflag(bool value);
   public:
 
-  // int32 epochs = 4;
+  // int32 epochs = 9;
   void clear_epochs();
   ::PROTOBUF_NAMESPACE_ID::int32 epochs() const;
   void set_epochs(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -509,13 +328,31 @@ class TTRequest final :
   void _internal_set_epochs(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 batch_size = 5;
-  void clear_batch_size();
-  ::PROTOBUF_NAMESPACE_ID::int32 batch_size() const;
-  void set_batch_size(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 batch = 10;
+  void clear_batch();
+  ::PROTOBUF_NAMESPACE_ID::int32 batch() const;
+  void set_batch(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_batch_size() const;
-  void _internal_set_batch_size(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_batch() const;
+  void _internal_set_batch(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // double percentDataset = 12;
+  void clear_percentdataset();
+  double percentdataset() const;
+  void set_percentdataset(double value);
+  private:
+  double _internal_percentdataset() const;
+  void _internal_set_percentdataset(double value);
+  public:
+
+  // int32 numClients = 11;
+  void clear_numclients();
+  ::PROTOBUF_NAMESPACE_ID::int32 numclients() const;
+  void set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_numclients() const;
+  void _internal_set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:flexe.TTRequest)
@@ -525,34 +362,43 @@ class TTRequest final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr modelname_;
-  ::PROTOBUF_NAMESPACE_ID::int32 idvehicle_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dataset_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr models_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 identity_;
+  ::PROTOBUF_NAMESPACE_ID::int32 seed_;
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel_;
+  bool noniid_;
   bool trainflag_;
   ::PROTOBUF_NAMESPACE_ID::int32 epochs_;
-  ::PROTOBUF_NAMESPACE_ID::int32 batch_size_;
+  ::PROTOBUF_NAMESPACE_ID::int32 batch_;
+  double percentdataset_;
+  ::PROTOBUF_NAMESPACE_ID::int32 numclients_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_flexe_2eproto;
 };
 // -------------------------------------------------------------------
 
-class EvaluateReply final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.EvaluateReply) */ {
+class AggregationRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.AggregationRequest) */ {
  public:
-  inline EvaluateReply() : EvaluateReply(nullptr) {}
-  ~EvaluateReply() override;
-  explicit constexpr EvaluateReply(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline AggregationRequest() : AggregationRequest(nullptr) {}
+  ~AggregationRequest() override;
+  explicit constexpr AggregationRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  EvaluateReply(const EvaluateReply& from);
-  EvaluateReply(EvaluateReply&& from) noexcept
-    : EvaluateReply() {
+  AggregationRequest(const AggregationRequest& from);
+  AggregationRequest(AggregationRequest&& from) noexcept
+    : AggregationRequest() {
     *this = ::std::move(from);
   }
 
-  inline EvaluateReply& operator=(const EvaluateReply& from) {
+  inline AggregationRequest& operator=(const AggregationRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline EvaluateReply& operator=(EvaluateReply&& from) noexcept {
+  inline AggregationRequest& operator=(AggregationRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()) {
       InternalSwap(&from);
@@ -571,20 +417,20 @@ class EvaluateReply final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const EvaluateReply& default_instance() {
+  static const AggregationRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const EvaluateReply* internal_default_instance() {
-    return reinterpret_cast<const EvaluateReply*>(
-               &_EvaluateReply_default_instance_);
+  static inline const AggregationRequest* internal_default_instance() {
+    return reinterpret_cast<const AggregationRequest*>(
+               &_AggregationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    1;
 
-  friend void swap(EvaluateReply& a, EvaluateReply& b) {
+  friend void swap(AggregationRequest& a, AggregationRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(EvaluateReply* other) {
+  inline void Swap(AggregationRequest* other) {
     if (other == this) return;
     if (GetOwningArena() == other->GetOwningArena()) {
       InternalSwap(other);
@@ -592,7 +438,7 @@ class EvaluateReply final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(EvaluateReply* other) {
+  void UnsafeArenaSwap(AggregationRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -600,17 +446,17 @@ class EvaluateReply final :
 
   // implements Message ----------------------------------------------
 
-  inline EvaluateReply* New() const final {
-    return new EvaluateReply();
+  inline AggregationRequest* New() const final {
+    return new AggregationRequest();
   }
 
-  EvaluateReply* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<EvaluateReply>(arena);
+  AggregationRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<AggregationRequest>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const EvaluateReply& from);
-  void MergeFrom(const EvaluateReply& from);
+  void CopyFrom(const AggregationRequest& from);
+  void MergeFrom(const AggregationRequest& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -624,13 +470,13 @@ class EvaluateReply final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(EvaluateReply* other);
+  void InternalSwap(AggregationRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "flexe.EvaluateReply";
+    return "flexe.AggregationRequest";
   }
   protected:
-  explicit EvaluateReply(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit AggregationRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -643,36 +489,650 @@ class EvaluateReply final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLossFieldNumber = 1,
-    kAccuracyFieldNumber = 2,
+    kModelFieldNumber = 2,
+    kDatasetFieldNumber = 3,
+    kScenarioFieldNumber = 4,
+    kNumExamplesFieldNumber = 9,
+    kModelsFieldNumber = 10,
+    kStrategyFieldNumber = 11,
+    kMsgFieldNumber = 12,
+    kIdEntityFieldNumber = 1,
+    kSeedFieldNumber = 5,
+    kNonIIDFieldNumber = 6,
+    kIdModelFieldNumber = 7,
+    kNumClientsFieldNumber = 8,
   };
-  // double loss = 1;
-  void clear_loss();
-  double loss() const;
-  void set_loss(double value);
+  // string model = 2;
+  void clear_model();
+  const std::string& model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_model();
+  void set_allocated_model(std::string* model);
   private:
-  double _internal_loss() const;
-  void _internal_set_loss(double value);
+  const std::string& _internal_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model(const std::string& value);
+  std::string* _internal_mutable_model();
   public:
 
-  // double accuracy = 2;
-  void clear_accuracy();
-  double accuracy() const;
-  void set_accuracy(double value);
+  // string dataset = 3;
+  void clear_dataset();
+  const std::string& dataset() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dataset(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dataset();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_dataset();
+  void set_allocated_dataset(std::string* dataset);
   private:
-  double _internal_accuracy() const;
-  void _internal_set_accuracy(double value);
+  const std::string& _internal_dataset() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dataset(const std::string& value);
+  std::string* _internal_mutable_dataset();
   public:
 
-  // @@protoc_insertion_point(class_scope:flexe.EvaluateReply)
+  // string scenario = 4;
+  void clear_scenario();
+  const std::string& scenario() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_scenario(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_scenario();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scenario();
+  void set_allocated_scenario(std::string* scenario);
+  private:
+  const std::string& _internal_scenario() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scenario(const std::string& value);
+  std::string* _internal_mutable_scenario();
+  public:
+
+  // string numExamples = 9;
+  void clear_numexamples();
+  const std::string& numexamples() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_numexamples(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_numexamples();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_numexamples();
+  void set_allocated_numexamples(std::string* numexamples);
+  private:
+  const std::string& _internal_numexamples() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_numexamples(const std::string& value);
+  std::string* _internal_mutable_numexamples();
+  public:
+
+  // string models = 10;
+  void clear_models();
+  const std::string& models() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_models(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_models();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_models();
+  void set_allocated_models(std::string* models);
+  private:
+  const std::string& _internal_models() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_models(const std::string& value);
+  std::string* _internal_mutable_models();
+  public:
+
+  // string strategy = 11;
+  void clear_strategy();
+  const std::string& strategy() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_strategy(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_strategy();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_strategy();
+  void set_allocated_strategy(std::string* strategy);
+  private:
+  const std::string& _internal_strategy() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_strategy(const std::string& value);
+  std::string* _internal_mutable_strategy();
+  public:
+
+  // string msg = 12;
+  void clear_msg();
+  const std::string& msg() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msg(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msg();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // int32 idEntity = 1;
+  void clear_identity();
+  ::PROTOBUF_NAMESPACE_ID::int32 identity() const;
+  void set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_identity() const;
+  void _internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 seed = 5;
+  void clear_seed();
+  ::PROTOBUF_NAMESPACE_ID::int32 seed() const;
+  void set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_seed() const;
+  void _internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool nonIID = 6;
+  void clear_noniid();
+  bool noniid() const;
+  void set_noniid(bool value);
+  private:
+  bool _internal_noniid() const;
+  void _internal_set_noniid(bool value);
+  public:
+
+  // int32 idModel = 7;
+  void clear_idmodel();
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel() const;
+  void set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idmodel() const;
+  void _internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 numClients = 8;
+  void clear_numclients();
+  ::PROTOBUF_NAMESPACE_ID::int32 numclients() const;
+  void set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_numclients() const;
+  void _internal_set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:flexe.AggregationRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  double loss_;
-  double accuracy_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dataset_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr numexamples_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr models_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr strategy_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 identity_;
+  ::PROTOBUF_NAMESPACE_ID::int32 seed_;
+  bool noniid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel_;
+  ::PROTOBUF_NAMESPACE_ID::int32 numclients_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_flexe_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GenericRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.GenericRequest) */ {
+ public:
+  inline GenericRequest() : GenericRequest(nullptr) {}
+  ~GenericRequest() override;
+  explicit constexpr GenericRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GenericRequest(const GenericRequest& from);
+  GenericRequest(GenericRequest&& from) noexcept
+    : GenericRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GenericRequest& operator=(const GenericRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GenericRequest& operator=(GenericRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GenericRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GenericRequest* internal_default_instance() {
+    return reinterpret_cast<const GenericRequest*>(
+               &_GenericRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(GenericRequest& a, GenericRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GenericRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GenericRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GenericRequest* New() const final {
+    return new GenericRequest();
+  }
+
+  GenericRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<GenericRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const GenericRequest& from);
+  void MergeFrom(const GenericRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GenericRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "flexe.GenericRequest";
+  }
+  protected:
+  explicit GenericRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kModelFieldNumber = 2,
+    kDatasetFieldNumber = 3,
+    kScenarioFieldNumber = 4,
+    kMsgFieldNumber = 8,
+    kIdEntityFieldNumber = 1,
+    kSeedFieldNumber = 5,
+    kNonIIDFieldNumber = 6,
+    kIdModelFieldNumber = 7,
+  };
+  // string model = 2;
+  void clear_model();
+  const std::string& model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_model();
+  void set_allocated_model(std::string* model);
+  private:
+  const std::string& _internal_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model(const std::string& value);
+  std::string* _internal_mutable_model();
+  public:
+
+  // string dataset = 3;
+  void clear_dataset();
+  const std::string& dataset() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dataset(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dataset();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_dataset();
+  void set_allocated_dataset(std::string* dataset);
+  private:
+  const std::string& _internal_dataset() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dataset(const std::string& value);
+  std::string* _internal_mutable_dataset();
+  public:
+
+  // string scenario = 4;
+  void clear_scenario();
+  const std::string& scenario() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_scenario(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_scenario();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scenario();
+  void set_allocated_scenario(std::string* scenario);
+  private:
+  const std::string& _internal_scenario() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scenario(const std::string& value);
+  std::string* _internal_mutable_scenario();
+  public:
+
+  // string msg = 8;
+  void clear_msg();
+  const std::string& msg() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msg(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msg();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // int32 idEntity = 1;
+  void clear_identity();
+  ::PROTOBUF_NAMESPACE_ID::int32 identity() const;
+  void set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_identity() const;
+  void _internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 seed = 5;
+  void clear_seed();
+  ::PROTOBUF_NAMESPACE_ID::int32 seed() const;
+  void set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_seed() const;
+  void _internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool nonIID = 6;
+  void clear_noniid();
+  bool noniid() const;
+  void set_noniid(bool value);
+  private:
+  bool _internal_noniid() const;
+  void _internal_set_noniid(bool value);
+  public:
+
+  // int32 idModel = 7;
+  void clear_idmodel();
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel() const;
+  void set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idmodel() const;
+  void _internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:flexe.GenericRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dataset_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 identity_;
+  ::PROTOBUF_NAMESPACE_ID::int32 seed_;
+  bool noniid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_flexe_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GenericReply final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.GenericReply) */ {
+ public:
+  inline GenericReply() : GenericReply(nullptr) {}
+  ~GenericReply() override;
+  explicit constexpr GenericReply(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GenericReply(const GenericReply& from);
+  GenericReply(GenericReply&& from) noexcept
+    : GenericReply() {
+    *this = ::std::move(from);
+  }
+
+  inline GenericReply& operator=(const GenericReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GenericReply& operator=(GenericReply&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GenericReply& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GenericReply* internal_default_instance() {
+    return reinterpret_cast<const GenericReply*>(
+               &_GenericReply_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(GenericReply& a, GenericReply& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GenericReply* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GenericReply* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GenericReply* New() const final {
+    return new GenericReply();
+  }
+
+  GenericReply* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<GenericReply>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const GenericReply& from);
+  void MergeFrom(const GenericReply& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GenericReply* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "flexe.GenericReply";
+  }
+  protected:
+  explicit GenericReply(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kModelFieldNumber = 2,
+    kDatasetFieldNumber = 3,
+    kScenarioFieldNumber = 4,
+    kMsgFieldNumber = 9,
+    kIdEntityFieldNumber = 1,
+    kSeedFieldNumber = 5,
+    kNonIIDFieldNumber = 6,
+    kIdModelFieldNumber = 7,
+    kReplyFieldNumber = 8,
+  };
+  // string model = 2;
+  void clear_model();
+  const std::string& model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_model();
+  void set_allocated_model(std::string* model);
+  private:
+  const std::string& _internal_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model(const std::string& value);
+  std::string* _internal_mutable_model();
+  public:
+
+  // string dataset = 3;
+  void clear_dataset();
+  const std::string& dataset() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dataset(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dataset();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_dataset();
+  void set_allocated_dataset(std::string* dataset);
+  private:
+  const std::string& _internal_dataset() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dataset(const std::string& value);
+  std::string* _internal_mutable_dataset();
+  public:
+
+  // string scenario = 4;
+  void clear_scenario();
+  const std::string& scenario() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_scenario(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_scenario();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scenario();
+  void set_allocated_scenario(std::string* scenario);
+  private:
+  const std::string& _internal_scenario() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scenario(const std::string& value);
+  std::string* _internal_mutable_scenario();
+  public:
+
+  // string msg = 9;
+  void clear_msg();
+  const std::string& msg() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msg(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msg();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // int32 idEntity = 1;
+  void clear_identity();
+  ::PROTOBUF_NAMESPACE_ID::int32 identity() const;
+  void set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_identity() const;
+  void _internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 seed = 5;
+  void clear_seed();
+  ::PROTOBUF_NAMESPACE_ID::int32 seed() const;
+  void set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_seed() const;
+  void _internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool nonIID = 6;
+  void clear_noniid();
+  bool noniid() const;
+  void set_noniid(bool value);
+  private:
+  bool _internal_noniid() const;
+  void _internal_set_noniid(bool value);
+  public:
+
+  // int32 idModel = 7;
+  void clear_idmodel();
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel() const;
+  void set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idmodel() const;
+  void _internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 reply = 8;
+  void clear_reply();
+  ::PROTOBUF_NAMESPACE_ID::int32 reply() const;
+  void set_reply(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_reply() const;
+  void _internal_set_reply(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:flexe.GenericReply)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dataset_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 identity_;
+  ::PROTOBUF_NAMESPACE_ID::int32 seed_;
+  bool noniid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel_;
+  ::PROTOBUF_NAMESPACE_ID::int32 reply_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_flexe_2eproto;
 };
@@ -786,50 +1246,145 @@ class ModelReply final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTensorsFieldNumber = 2,
-    kIdVehicleFieldNumber = 1,
-    kNumExamplesFieldNumber = 3,
+    kModelFieldNumber = 2,
+    kDatasetFieldNumber = 3,
+    kScenarioFieldNumber = 4,
+    kMsgFieldNumber = 12,
+    kIdEntityFieldNumber = 1,
+    kSeedFieldNumber = 5,
+    kNonIIDFieldNumber = 6,
+    kIdModelFieldNumber = 7,
+    kEntropyFieldNumber = 9,
+    kLossFieldNumber = 10,
+    kAccuracyFieldNumber = 11,
+    kNumExamplesFieldNumber = 8,
   };
-  // repeated bytes tensors = 2;
-  int tensors_size() const;
+  // string model = 2;
+  void clear_model();
+  const std::string& model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_model();
+  void set_allocated_model(std::string* model);
   private:
-  int _internal_tensors_size() const;
-  public:
-  void clear_tensors();
-  const std::string& tensors(int index) const;
-  std::string* mutable_tensors(int index);
-  void set_tensors(int index, const std::string& value);
-  void set_tensors(int index, std::string&& value);
-  void set_tensors(int index, const char* value);
-  void set_tensors(int index, const void* value, size_t size);
-  std::string* add_tensors();
-  void add_tensors(const std::string& value);
-  void add_tensors(std::string&& value);
-  void add_tensors(const char* value);
-  void add_tensors(const void* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& tensors() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_tensors();
-  private:
-  const std::string& _internal_tensors(int index) const;
-  std::string* _internal_add_tensors();
+  const std::string& _internal_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model(const std::string& value);
+  std::string* _internal_mutable_model();
   public:
 
-  // int32 idVehicle = 1;
-  void clear_idvehicle();
-  ::PROTOBUF_NAMESPACE_ID::int32 idvehicle() const;
-  void set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // string dataset = 3;
+  void clear_dataset();
+  const std::string& dataset() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dataset(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dataset();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_dataset();
+  void set_allocated_dataset(std::string* dataset);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idvehicle() const;
-  void _internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const std::string& _internal_dataset() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dataset(const std::string& value);
+  std::string* _internal_mutable_dataset();
   public:
 
-  // int32 num_examples = 3;
-  void clear_num_examples();
-  ::PROTOBUF_NAMESPACE_ID::int32 num_examples() const;
-  void set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // string scenario = 4;
+  void clear_scenario();
+  const std::string& scenario() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_scenario(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_scenario();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_scenario();
+  void set_allocated_scenario(std::string* scenario);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_num_examples() const;
-  void _internal_set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const std::string& _internal_scenario() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_scenario(const std::string& value);
+  std::string* _internal_mutable_scenario();
+  public:
+
+  // string msg = 12;
+  void clear_msg();
+  const std::string& msg() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msg(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msg();
+  PROTOBUF_FUTURE_MUST_USE_RESULT std::string* release_msg();
+  void set_allocated_msg(std::string* msg);
+  private:
+  const std::string& _internal_msg() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(const std::string& value);
+  std::string* _internal_mutable_msg();
+  public:
+
+  // int32 idEntity = 1;
+  void clear_identity();
+  ::PROTOBUF_NAMESPACE_ID::int32 identity() const;
+  void set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_identity() const;
+  void _internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 seed = 5;
+  void clear_seed();
+  ::PROTOBUF_NAMESPACE_ID::int32 seed() const;
+  void set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_seed() const;
+  void _internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool nonIID = 6;
+  void clear_noniid();
+  bool noniid() const;
+  void set_noniid(bool value);
+  private:
+  bool _internal_noniid() const;
+  void _internal_set_noniid(bool value);
+  public:
+
+  // int32 idModel = 7;
+  void clear_idmodel();
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel() const;
+  void set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idmodel() const;
+  void _internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // double entropy = 9;
+  void clear_entropy();
+  double entropy() const;
+  void set_entropy(double value);
+  private:
+  double _internal_entropy() const;
+  void _internal_set_entropy(double value);
+  public:
+
+  // double loss = 10;
+  void clear_loss();
+  double loss() const;
+  void set_loss(double value);
+  private:
+  double _internal_loss() const;
+  void _internal_set_loss(double value);
+  public:
+
+  // double accuracy = 11;
+  void clear_accuracy();
+  double accuracy() const;
+  void set_accuracy(double value);
+  private:
+  double _internal_accuracy() const;
+  void _internal_set_accuracy(double value);
+  public:
+
+  // int32 numExamples = 8;
+  void clear_numexamples();
+  ::PROTOBUF_NAMESPACE_ID::int32 numexamples() const;
+  void set_numexamples(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_numexamples() const;
+  void _internal_set_numexamples(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:flexe.ModelReply)
@@ -839,189 +1394,18 @@ class ModelReply final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> tensors_;
-  ::PROTOBUF_NAMESPACE_ID::int32 idvehicle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 num_examples_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_flexe_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ModelRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:flexe.ModelRequest) */ {
- public:
-  inline ModelRequest() : ModelRequest(nullptr) {}
-  ~ModelRequest() override;
-  explicit constexpr ModelRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  ModelRequest(const ModelRequest& from);
-  ModelRequest(ModelRequest&& from) noexcept
-    : ModelRequest() {
-    *this = ::std::move(from);
-  }
-
-  inline ModelRequest& operator=(const ModelRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ModelRequest& operator=(ModelRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ModelRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ModelRequest* internal_default_instance() {
-    return reinterpret_cast<const ModelRequest*>(
-               &_ModelRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    5;
-
-  friend void swap(ModelRequest& a, ModelRequest& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ModelRequest* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ModelRequest* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline ModelRequest* New() const final {
-    return new ModelRequest();
-  }
-
-  ModelRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ModelRequest>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ModelRequest& from);
-  void MergeFrom(const ModelRequest& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ModelRequest* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "flexe.ModelRequest";
-  }
-  protected:
-  explicit ModelRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kTensorsFieldNumber = 2,
-    kIdVehicleFieldNumber = 1,
-    kNumberOfVehiclesFieldNumber = 3,
-    kNumExamplesFieldNumber = 4,
-  };
-  // repeated bytes tensors = 2;
-  int tensors_size() const;
-  private:
-  int _internal_tensors_size() const;
-  public:
-  void clear_tensors();
-  const std::string& tensors(int index) const;
-  std::string* mutable_tensors(int index);
-  void set_tensors(int index, const std::string& value);
-  void set_tensors(int index, std::string&& value);
-  void set_tensors(int index, const char* value);
-  void set_tensors(int index, const void* value, size_t size);
-  std::string* add_tensors();
-  void add_tensors(const std::string& value);
-  void add_tensors(std::string&& value);
-  void add_tensors(const char* value);
-  void add_tensors(const void* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& tensors() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_tensors();
-  private:
-  const std::string& _internal_tensors(int index) const;
-  std::string* _internal_add_tensors();
-  public:
-
-  // int32 idVehicle = 1;
-  void clear_idvehicle();
-  ::PROTOBUF_NAMESPACE_ID::int32 idvehicle() const;
-  void set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_idvehicle() const;
-  void _internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
-
-  // int32 number_of_vehicles = 3;
-  void clear_number_of_vehicles();
-  ::PROTOBUF_NAMESPACE_ID::int32 number_of_vehicles() const;
-  void set_number_of_vehicles(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_number_of_vehicles() const;
-  void _internal_set_number_of_vehicles(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
-
-  // int32 num_examples = 4;
-  void clear_num_examples();
-  ::PROTOBUF_NAMESPACE_ID::int32 num_examples() const;
-  void set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_num_examples() const;
-  void _internal_set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:flexe.ModelRequest)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> tensors_;
-  ::PROTOBUF_NAMESPACE_ID::int32 idvehicle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 number_of_vehicles_;
-  ::PROTOBUF_NAMESPACE_ID::int32 num_examples_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dataset_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 identity_;
+  ::PROTOBUF_NAMESPACE_ID::int32 seed_;
+  bool noniid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 idmodel_;
+  double entropy_;
+  double loss_;
+  double accuracy_;
+  ::PROTOBUF_NAMESPACE_ID::int32 numexamples_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_flexe_2eproto;
 };
@@ -1034,9 +1418,1052 @@ class ModelRequest final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TTRequest
+
+// int32 idEntity = 1;
+inline void TTRequest::clear_identity() {
+  identity_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_identity() const {
+  return identity_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::identity() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.idEntity)
+  return _internal_identity();
+}
+inline void TTRequest::_internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  identity_ = value;
+}
+inline void TTRequest::set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_identity(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.idEntity)
+}
+
+// string model = 2;
+inline void TTRequest::clear_model() {
+  model_.ClearToEmpty();
+}
+inline const std::string& TTRequest::model() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.model)
+  return _internal_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TTRequest::set_model(ArgT0&& arg0, ArgT... args) {
+ 
+ model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.model)
+}
+inline std::string* TTRequest::mutable_model() {
+  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.model)
+  return _internal_mutable_model();
+}
+inline const std::string& TTRequest::_internal_model() const {
+  return model_.Get();
+}
+inline void TTRequest::_internal_set_model(const std::string& value) {
+  
+  model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TTRequest::_internal_mutable_model() {
+  
+  return model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TTRequest::release_model() {
+  // @@protoc_insertion_point(field_release:flexe.TTRequest.model)
+  return model_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TTRequest::set_allocated_model(std::string* model) {
+  if (model != nullptr) {
+    
+  } else {
+    
+  }
+  model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.model)
+}
+
+// string dataset = 3;
+inline void TTRequest::clear_dataset() {
+  dataset_.ClearToEmpty();
+}
+inline const std::string& TTRequest::dataset() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.dataset)
+  return _internal_dataset();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TTRequest::set_dataset(ArgT0&& arg0, ArgT... args) {
+ 
+ dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.dataset)
+}
+inline std::string* TTRequest::mutable_dataset() {
+  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.dataset)
+  return _internal_mutable_dataset();
+}
+inline const std::string& TTRequest::_internal_dataset() const {
+  return dataset_.Get();
+}
+inline void TTRequest::_internal_set_dataset(const std::string& value) {
+  
+  dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TTRequest::_internal_mutable_dataset() {
+  
+  return dataset_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TTRequest::release_dataset() {
+  // @@protoc_insertion_point(field_release:flexe.TTRequest.dataset)
+  return dataset_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TTRequest::set_allocated_dataset(std::string* dataset) {
+  if (dataset != nullptr) {
+    
+  } else {
+    
+  }
+  dataset_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dataset,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.dataset)
+}
+
+// string scenario = 4;
+inline void TTRequest::clear_scenario() {
+  scenario_.ClearToEmpty();
+}
+inline const std::string& TTRequest::scenario() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.scenario)
+  return _internal_scenario();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TTRequest::set_scenario(ArgT0&& arg0, ArgT... args) {
+ 
+ scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.scenario)
+}
+inline std::string* TTRequest::mutable_scenario() {
+  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.scenario)
+  return _internal_mutable_scenario();
+}
+inline const std::string& TTRequest::_internal_scenario() const {
+  return scenario_.Get();
+}
+inline void TTRequest::_internal_set_scenario(const std::string& value) {
+  
+  scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TTRequest::_internal_mutable_scenario() {
+  
+  return scenario_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TTRequest::release_scenario() {
+  // @@protoc_insertion_point(field_release:flexe.TTRequest.scenario)
+  return scenario_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TTRequest::set_allocated_scenario(std::string* scenario) {
+  if (scenario != nullptr) {
+    
+  } else {
+    
+  }
+  scenario_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.scenario)
+}
+
+// int32 seed = 5;
+inline void TTRequest::clear_seed() {
+  seed_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_seed() const {
+  return seed_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::seed() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.seed)
+  return _internal_seed();
+}
+inline void TTRequest::_internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  seed_ = value;
+}
+inline void TTRequest::set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_seed(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.seed)
+}
+
+// bool nonIID = 6;
+inline void TTRequest::clear_noniid() {
+  noniid_ = false;
+}
+inline bool TTRequest::_internal_noniid() const {
+  return noniid_;
+}
+inline bool TTRequest::noniid() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.nonIID)
+  return _internal_noniid();
+}
+inline void TTRequest::_internal_set_noniid(bool value) {
+  
+  noniid_ = value;
+}
+inline void TTRequest::set_noniid(bool value) {
+  _internal_set_noniid(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.nonIID)
+}
+
+// int32 idModel = 7;
+inline void TTRequest::clear_idmodel() {
+  idmodel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_idmodel() const {
+  return idmodel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::idmodel() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.idModel)
+  return _internal_idmodel();
+}
+inline void TTRequest::_internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  idmodel_ = value;
+}
+inline void TTRequest::set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_idmodel(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.idModel)
+}
+
+// bool trainFlag = 8;
+inline void TTRequest::clear_trainflag() {
+  trainflag_ = false;
+}
+inline bool TTRequest::_internal_trainflag() const {
+  return trainflag_;
+}
+inline bool TTRequest::trainflag() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.trainFlag)
+  return _internal_trainflag();
+}
+inline void TTRequest::_internal_set_trainflag(bool value) {
+  
+  trainflag_ = value;
+}
+inline void TTRequest::set_trainflag(bool value) {
+  _internal_set_trainflag(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.trainFlag)
+}
+
+// int32 epochs = 9;
+inline void TTRequest::clear_epochs() {
+  epochs_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_epochs() const {
+  return epochs_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::epochs() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.epochs)
+  return _internal_epochs();
+}
+inline void TTRequest::_internal_set_epochs(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  epochs_ = value;
+}
+inline void TTRequest::set_epochs(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_epochs(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.epochs)
+}
+
+// int32 batch = 10;
+inline void TTRequest::clear_batch() {
+  batch_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_batch() const {
+  return batch_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::batch() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.batch)
+  return _internal_batch();
+}
+inline void TTRequest::_internal_set_batch(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  batch_ = value;
+}
+inline void TTRequest::set_batch(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_batch(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.batch)
+}
+
+// int32 numClients = 11;
+inline void TTRequest::clear_numclients() {
+  numclients_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_numclients() const {
+  return numclients_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::numclients() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.numClients)
+  return _internal_numclients();
+}
+inline void TTRequest::_internal_set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  numclients_ = value;
+}
+inline void TTRequest::set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_numclients(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.numClients)
+}
+
+// double percentDataset = 12;
+inline void TTRequest::clear_percentdataset() {
+  percentdataset_ = 0;
+}
+inline double TTRequest::_internal_percentdataset() const {
+  return percentdataset_;
+}
+inline double TTRequest::percentdataset() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.percentDataset)
+  return _internal_percentdataset();
+}
+inline void TTRequest::_internal_set_percentdataset(double value) {
+  
+  percentdataset_ = value;
+}
+inline void TTRequest::set_percentdataset(double value) {
+  _internal_set_percentdataset(value);
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.percentDataset)
+}
+
+// string models = 13;
+inline void TTRequest::clear_models() {
+  models_.ClearToEmpty();
+}
+inline const std::string& TTRequest::models() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.models)
+  return _internal_models();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TTRequest::set_models(ArgT0&& arg0, ArgT... args) {
+ 
+ models_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.models)
+}
+inline std::string* TTRequest::mutable_models() {
+  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.models)
+  return _internal_mutable_models();
+}
+inline const std::string& TTRequest::_internal_models() const {
+  return models_.Get();
+}
+inline void TTRequest::_internal_set_models(const std::string& value) {
+  
+  models_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TTRequest::_internal_mutable_models() {
+  
+  return models_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TTRequest::release_models() {
+  // @@protoc_insertion_point(field_release:flexe.TTRequest.models)
+  return models_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TTRequest::set_allocated_models(std::string* models) {
+  if (models != nullptr) {
+    
+  } else {
+    
+  }
+  models_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), models,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.models)
+}
+
+// string msg = 14;
+inline void TTRequest::clear_msg() {
+  msg_.ClearToEmpty();
+}
+inline const std::string& TTRequest::msg() const {
+  // @@protoc_insertion_point(field_get:flexe.TTRequest.msg)
+  return _internal_msg();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TTRequest::set_msg(ArgT0&& arg0, ArgT... args) {
+ 
+ msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.TTRequest.msg)
+}
+inline std::string* TTRequest::mutable_msg() {
+  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.msg)
+  return _internal_mutable_msg();
+}
+inline const std::string& TTRequest::_internal_msg() const {
+  return msg_.Get();
+}
+inline void TTRequest::_internal_set_msg(const std::string& value) {
+  
+  msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TTRequest::_internal_mutable_msg() {
+  
+  return msg_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TTRequest::release_msg() {
+  // @@protoc_insertion_point(field_release:flexe.TTRequest.msg)
+  return msg_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TTRequest::set_allocated_msg(std::string* msg) {
+  if (msg != nullptr) {
+    
+  } else {
+    
+  }
+  msg_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msg,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.msg)
+}
+
+// -------------------------------------------------------------------
+
+// AggregationRequest
+
+// int32 idEntity = 1;
+inline void AggregationRequest::clear_identity() {
+  identity_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::_internal_identity() const {
+  return identity_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::identity() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.idEntity)
+  return _internal_identity();
+}
+inline void AggregationRequest::_internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  identity_ = value;
+}
+inline void AggregationRequest::set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_identity(value);
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.idEntity)
+}
+
+// string model = 2;
+inline void AggregationRequest::clear_model() {
+  model_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::model() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.model)
+  return _internal_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_model(ArgT0&& arg0, ArgT... args) {
+ 
+ model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.model)
+}
+inline std::string* AggregationRequest::mutable_model() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.model)
+  return _internal_mutable_model();
+}
+inline const std::string& AggregationRequest::_internal_model() const {
+  return model_.Get();
+}
+inline void AggregationRequest::_internal_set_model(const std::string& value) {
+  
+  model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_model() {
+  
+  return model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_model() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.model)
+  return model_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_model(std::string* model) {
+  if (model != nullptr) {
+    
+  } else {
+    
+  }
+  model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.model)
+}
+
+// string dataset = 3;
+inline void AggregationRequest::clear_dataset() {
+  dataset_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::dataset() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.dataset)
+  return _internal_dataset();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_dataset(ArgT0&& arg0, ArgT... args) {
+ 
+ dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.dataset)
+}
+inline std::string* AggregationRequest::mutable_dataset() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.dataset)
+  return _internal_mutable_dataset();
+}
+inline const std::string& AggregationRequest::_internal_dataset() const {
+  return dataset_.Get();
+}
+inline void AggregationRequest::_internal_set_dataset(const std::string& value) {
+  
+  dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_dataset() {
+  
+  return dataset_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_dataset() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.dataset)
+  return dataset_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_dataset(std::string* dataset) {
+  if (dataset != nullptr) {
+    
+  } else {
+    
+  }
+  dataset_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dataset,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.dataset)
+}
+
+// string scenario = 4;
+inline void AggregationRequest::clear_scenario() {
+  scenario_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::scenario() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.scenario)
+  return _internal_scenario();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_scenario(ArgT0&& arg0, ArgT... args) {
+ 
+ scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.scenario)
+}
+inline std::string* AggregationRequest::mutable_scenario() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.scenario)
+  return _internal_mutable_scenario();
+}
+inline const std::string& AggregationRequest::_internal_scenario() const {
+  return scenario_.Get();
+}
+inline void AggregationRequest::_internal_set_scenario(const std::string& value) {
+  
+  scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_scenario() {
+  
+  return scenario_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_scenario() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.scenario)
+  return scenario_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_scenario(std::string* scenario) {
+  if (scenario != nullptr) {
+    
+  } else {
+    
+  }
+  scenario_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.scenario)
+}
+
+// int32 seed = 5;
+inline void AggregationRequest::clear_seed() {
+  seed_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::_internal_seed() const {
+  return seed_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::seed() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.seed)
+  return _internal_seed();
+}
+inline void AggregationRequest::_internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  seed_ = value;
+}
+inline void AggregationRequest::set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_seed(value);
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.seed)
+}
+
+// bool nonIID = 6;
+inline void AggregationRequest::clear_noniid() {
+  noniid_ = false;
+}
+inline bool AggregationRequest::_internal_noniid() const {
+  return noniid_;
+}
+inline bool AggregationRequest::noniid() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.nonIID)
+  return _internal_noniid();
+}
+inline void AggregationRequest::_internal_set_noniid(bool value) {
+  
+  noniid_ = value;
+}
+inline void AggregationRequest::set_noniid(bool value) {
+  _internal_set_noniid(value);
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.nonIID)
+}
+
+// int32 idModel = 7;
+inline void AggregationRequest::clear_idmodel() {
+  idmodel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::_internal_idmodel() const {
+  return idmodel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::idmodel() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.idModel)
+  return _internal_idmodel();
+}
+inline void AggregationRequest::_internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  idmodel_ = value;
+}
+inline void AggregationRequest::set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_idmodel(value);
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.idModel)
+}
+
+// int32 numClients = 8;
+inline void AggregationRequest::clear_numclients() {
+  numclients_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::_internal_numclients() const {
+  return numclients_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AggregationRequest::numclients() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.numClients)
+  return _internal_numclients();
+}
+inline void AggregationRequest::_internal_set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  numclients_ = value;
+}
+inline void AggregationRequest::set_numclients(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_numclients(value);
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.numClients)
+}
+
+// string numExamples = 9;
+inline void AggregationRequest::clear_numexamples() {
+  numexamples_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::numexamples() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.numExamples)
+  return _internal_numexamples();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_numexamples(ArgT0&& arg0, ArgT... args) {
+ 
+ numexamples_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.numExamples)
+}
+inline std::string* AggregationRequest::mutable_numexamples() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.numExamples)
+  return _internal_mutable_numexamples();
+}
+inline const std::string& AggregationRequest::_internal_numexamples() const {
+  return numexamples_.Get();
+}
+inline void AggregationRequest::_internal_set_numexamples(const std::string& value) {
+  
+  numexamples_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_numexamples() {
+  
+  return numexamples_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_numexamples() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.numExamples)
+  return numexamples_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_numexamples(std::string* numexamples) {
+  if (numexamples != nullptr) {
+    
+  } else {
+    
+  }
+  numexamples_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), numexamples,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.numExamples)
+}
+
+// string models = 10;
+inline void AggregationRequest::clear_models() {
+  models_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::models() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.models)
+  return _internal_models();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_models(ArgT0&& arg0, ArgT... args) {
+ 
+ models_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.models)
+}
+inline std::string* AggregationRequest::mutable_models() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.models)
+  return _internal_mutable_models();
+}
+inline const std::string& AggregationRequest::_internal_models() const {
+  return models_.Get();
+}
+inline void AggregationRequest::_internal_set_models(const std::string& value) {
+  
+  models_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_models() {
+  
+  return models_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_models() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.models)
+  return models_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_models(std::string* models) {
+  if (models != nullptr) {
+    
+  } else {
+    
+  }
+  models_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), models,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.models)
+}
+
+// string strategy = 11;
+inline void AggregationRequest::clear_strategy() {
+  strategy_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::strategy() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.strategy)
+  return _internal_strategy();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_strategy(ArgT0&& arg0, ArgT... args) {
+ 
+ strategy_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.strategy)
+}
+inline std::string* AggregationRequest::mutable_strategy() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.strategy)
+  return _internal_mutable_strategy();
+}
+inline const std::string& AggregationRequest::_internal_strategy() const {
+  return strategy_.Get();
+}
+inline void AggregationRequest::_internal_set_strategy(const std::string& value) {
+  
+  strategy_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_strategy() {
+  
+  return strategy_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_strategy() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.strategy)
+  return strategy_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_strategy(std::string* strategy) {
+  if (strategy != nullptr) {
+    
+  } else {
+    
+  }
+  strategy_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), strategy,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.strategy)
+}
+
+// string msg = 12;
+inline void AggregationRequest::clear_msg() {
+  msg_.ClearToEmpty();
+}
+inline const std::string& AggregationRequest::msg() const {
+  // @@protoc_insertion_point(field_get:flexe.AggregationRequest.msg)
+  return _internal_msg();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AggregationRequest::set_msg(ArgT0&& arg0, ArgT... args) {
+ 
+ msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.AggregationRequest.msg)
+}
+inline std::string* AggregationRequest::mutable_msg() {
+  // @@protoc_insertion_point(field_mutable:flexe.AggregationRequest.msg)
+  return _internal_mutable_msg();
+}
+inline const std::string& AggregationRequest::_internal_msg() const {
+  return msg_.Get();
+}
+inline void AggregationRequest::_internal_set_msg(const std::string& value) {
+  
+  msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::_internal_mutable_msg() {
+  
+  return msg_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AggregationRequest::release_msg() {
+  // @@protoc_insertion_point(field_release:flexe.AggregationRequest.msg)
+  return msg_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AggregationRequest::set_allocated_msg(std::string* msg) {
+  if (msg != nullptr) {
+    
+  } else {
+    
+  }
+  msg_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msg,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.AggregationRequest.msg)
+}
+
+// -------------------------------------------------------------------
+
 // GenericRequest
 
-// string msg = 1;
+// int32 idEntity = 1;
+inline void GenericRequest::clear_identity() {
+  identity_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericRequest::_internal_identity() const {
+  return identity_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericRequest::identity() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.idEntity)
+  return _internal_identity();
+}
+inline void GenericRequest::_internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  identity_ = value;
+}
+inline void GenericRequest::set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_identity(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.idEntity)
+}
+
+// string model = 2;
+inline void GenericRequest::clear_model() {
+  model_.ClearToEmpty();
+}
+inline const std::string& GenericRequest::model() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.model)
+  return _internal_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenericRequest::set_model(ArgT0&& arg0, ArgT... args) {
+ 
+ model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.model)
+}
+inline std::string* GenericRequest::mutable_model() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericRequest.model)
+  return _internal_mutable_model();
+}
+inline const std::string& GenericRequest::_internal_model() const {
+  return model_.Get();
+}
+inline void GenericRequest::_internal_set_model(const std::string& value) {
+  
+  model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenericRequest::_internal_mutable_model() {
+  
+  return model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenericRequest::release_model() {
+  // @@protoc_insertion_point(field_release:flexe.GenericRequest.model)
+  return model_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenericRequest::set_allocated_model(std::string* model) {
+  if (model != nullptr) {
+    
+  } else {
+    
+  }
+  model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericRequest.model)
+}
+
+// string dataset = 3;
+inline void GenericRequest::clear_dataset() {
+  dataset_.ClearToEmpty();
+}
+inline const std::string& GenericRequest::dataset() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.dataset)
+  return _internal_dataset();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenericRequest::set_dataset(ArgT0&& arg0, ArgT... args) {
+ 
+ dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.dataset)
+}
+inline std::string* GenericRequest::mutable_dataset() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericRequest.dataset)
+  return _internal_mutable_dataset();
+}
+inline const std::string& GenericRequest::_internal_dataset() const {
+  return dataset_.Get();
+}
+inline void GenericRequest::_internal_set_dataset(const std::string& value) {
+  
+  dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenericRequest::_internal_mutable_dataset() {
+  
+  return dataset_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenericRequest::release_dataset() {
+  // @@protoc_insertion_point(field_release:flexe.GenericRequest.dataset)
+  return dataset_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenericRequest::set_allocated_dataset(std::string* dataset) {
+  if (dataset != nullptr) {
+    
+  } else {
+    
+  }
+  dataset_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dataset,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericRequest.dataset)
+}
+
+// string scenario = 4;
+inline void GenericRequest::clear_scenario() {
+  scenario_.ClearToEmpty();
+}
+inline const std::string& GenericRequest::scenario() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.scenario)
+  return _internal_scenario();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenericRequest::set_scenario(ArgT0&& arg0, ArgT... args) {
+ 
+ scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.scenario)
+}
+inline std::string* GenericRequest::mutable_scenario() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericRequest.scenario)
+  return _internal_mutable_scenario();
+}
+inline const std::string& GenericRequest::_internal_scenario() const {
+  return scenario_.Get();
+}
+inline void GenericRequest::_internal_set_scenario(const std::string& value) {
+  
+  scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenericRequest::_internal_mutable_scenario() {
+  
+  return scenario_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenericRequest::release_scenario() {
+  // @@protoc_insertion_point(field_release:flexe.GenericRequest.scenario)
+  return scenario_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenericRequest::set_allocated_scenario(std::string* scenario) {
+  if (scenario != nullptr) {
+    
+  } else {
+    
+  }
+  scenario_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericRequest.scenario)
+}
+
+// int32 seed = 5;
+inline void GenericRequest::clear_seed() {
+  seed_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericRequest::_internal_seed() const {
+  return seed_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericRequest::seed() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.seed)
+  return _internal_seed();
+}
+inline void GenericRequest::_internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  seed_ = value;
+}
+inline void GenericRequest::set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_seed(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.seed)
+}
+
+// bool nonIID = 6;
+inline void GenericRequest::clear_noniid() {
+  noniid_ = false;
+}
+inline bool GenericRequest::_internal_noniid() const {
+  return noniid_;
+}
+inline bool GenericRequest::noniid() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.nonIID)
+  return _internal_noniid();
+}
+inline void GenericRequest::_internal_set_noniid(bool value) {
+  
+  noniid_ = value;
+}
+inline void GenericRequest::set_noniid(bool value) {
+  _internal_set_noniid(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.nonIID)
+}
+
+// int32 idModel = 7;
+inline void GenericRequest::clear_idmodel() {
+  idmodel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericRequest::_internal_idmodel() const {
+  return idmodel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericRequest::idmodel() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericRequest.idModel)
+  return _internal_idmodel();
+}
+inline void GenericRequest::_internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  idmodel_ = value;
+}
+inline void GenericRequest::set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_idmodel(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericRequest.idModel)
+}
+
+// string msg = 8;
 inline void GenericRequest::clear_msg() {
   msg_.ClearToEmpty();
 }
@@ -1083,462 +2510,635 @@ inline void GenericRequest::set_allocated_msg(std::string* msg) {
 
 // -------------------------------------------------------------------
 
-// GenericResponse
+// GenericReply
 
-// int32 reply = 1;
-inline void GenericResponse::clear_reply() {
-  reply_ = 0;
+// int32 idEntity = 1;
+inline void GenericReply::clear_identity() {
+  identity_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 GenericResponse::_internal_reply() const {
-  return reply_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::_internal_identity() const {
+  return identity_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 GenericResponse::reply() const {
-  // @@protoc_insertion_point(field_get:flexe.GenericResponse.reply)
-  return _internal_reply();
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::identity() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.idEntity)
+  return _internal_identity();
 }
-inline void GenericResponse::_internal_set_reply(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void GenericReply::_internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  reply_ = value;
+  identity_ = value;
 }
-inline void GenericResponse::set_reply(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_reply(value);
-  // @@protoc_insertion_point(field_set:flexe.GenericResponse.reply)
-}
-
-// -------------------------------------------------------------------
-
-// TTRequest
-
-// int32 idVehicle = 1;
-inline void TTRequest::clear_idvehicle() {
-  idvehicle_ = 0;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_idvehicle() const {
-  return idvehicle_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::idvehicle() const {
-  // @@protoc_insertion_point(field_get:flexe.TTRequest.idVehicle)
-  return _internal_idvehicle();
-}
-inline void TTRequest::_internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  idvehicle_ = value;
-}
-inline void TTRequest::set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_idvehicle(value);
-  // @@protoc_insertion_point(field_set:flexe.TTRequest.idVehicle)
+inline void GenericReply::set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_identity(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.idEntity)
 }
 
-// bool trainFlag = 2;
-inline void TTRequest::clear_trainflag() {
-  trainflag_ = false;
+// string model = 2;
+inline void GenericReply::clear_model() {
+  model_.ClearToEmpty();
 }
-inline bool TTRequest::_internal_trainflag() const {
-  return trainflag_;
-}
-inline bool TTRequest::trainflag() const {
-  // @@protoc_insertion_point(field_get:flexe.TTRequest.trainFlag)
-  return _internal_trainflag();
-}
-inline void TTRequest::_internal_set_trainflag(bool value) {
-  
-  trainflag_ = value;
-}
-inline void TTRequest::set_trainflag(bool value) {
-  _internal_set_trainflag(value);
-  // @@protoc_insertion_point(field_set:flexe.TTRequest.trainFlag)
-}
-
-// string modelName = 3;
-inline void TTRequest::clear_modelname() {
-  modelname_.ClearToEmpty();
-}
-inline const std::string& TTRequest::modelname() const {
-  // @@protoc_insertion_point(field_get:flexe.TTRequest.modelName)
-  return _internal_modelname();
+inline const std::string& GenericReply::model() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.model)
+  return _internal_model();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void TTRequest::set_modelname(ArgT0&& arg0, ArgT... args) {
+void GenericReply::set_model(ArgT0&& arg0, ArgT... args) {
  
- modelname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:flexe.TTRequest.modelName)
+ model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.model)
 }
-inline std::string* TTRequest::mutable_modelname() {
-  // @@protoc_insertion_point(field_mutable:flexe.TTRequest.modelName)
-  return _internal_mutable_modelname();
+inline std::string* GenericReply::mutable_model() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericReply.model)
+  return _internal_mutable_model();
 }
-inline const std::string& TTRequest::_internal_modelname() const {
-  return modelname_.Get();
+inline const std::string& GenericReply::_internal_model() const {
+  return model_.Get();
 }
-inline void TTRequest::_internal_set_modelname(const std::string& value) {
+inline void GenericReply::_internal_set_model(const std::string& value) {
   
-  modelname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* TTRequest::_internal_mutable_modelname() {
+inline std::string* GenericReply::_internal_mutable_model() {
   
-  return modelname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* TTRequest::release_modelname() {
-  // @@protoc_insertion_point(field_release:flexe.TTRequest.modelName)
-  return modelname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GenericReply::release_model() {
+  // @@protoc_insertion_point(field_release:flexe.GenericReply.model)
+  return model_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void TTRequest::set_allocated_modelname(std::string* modelname) {
-  if (modelname != nullptr) {
+inline void GenericReply::set_allocated_model(std::string* model) {
+  if (model != nullptr) {
     
   } else {
     
   }
-  modelname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), modelname,
+  model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model,
       GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:flexe.TTRequest.modelName)
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericReply.model)
 }
 
-// int32 epochs = 4;
-inline void TTRequest::clear_epochs() {
-  epochs_ = 0;
+// string dataset = 3;
+inline void GenericReply::clear_dataset() {
+  dataset_.ClearToEmpty();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_epochs() const {
-  return epochs_;
+inline const std::string& GenericReply::dataset() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.dataset)
+  return _internal_dataset();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::epochs() const {
-  // @@protoc_insertion_point(field_get:flexe.TTRequest.epochs)
-  return _internal_epochs();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenericReply::set_dataset(ArgT0&& arg0, ArgT... args) {
+ 
+ dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.dataset)
 }
-inline void TTRequest::_internal_set_epochs(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* GenericReply::mutable_dataset() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericReply.dataset)
+  return _internal_mutable_dataset();
+}
+inline const std::string& GenericReply::_internal_dataset() const {
+  return dataset_.Get();
+}
+inline void GenericReply::_internal_set_dataset(const std::string& value) {
   
-  epochs_ = value;
+  dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void TTRequest::set_epochs(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_epochs(value);
-  // @@protoc_insertion_point(field_set:flexe.TTRequest.epochs)
-}
-
-// int32 batch_size = 5;
-inline void TTRequest::clear_batch_size() {
-  batch_size_ = 0;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::_internal_batch_size() const {
-  return batch_size_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 TTRequest::batch_size() const {
-  // @@protoc_insertion_point(field_get:flexe.TTRequest.batch_size)
-  return _internal_batch_size();
-}
-inline void TTRequest::_internal_set_batch_size(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* GenericReply::_internal_mutable_dataset() {
   
-  batch_size_ = value;
+  return dataset_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline void TTRequest::set_batch_size(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_batch_size(value);
-  // @@protoc_insertion_point(field_set:flexe.TTRequest.batch_size)
+inline std::string* GenericReply::release_dataset() {
+  // @@protoc_insertion_point(field_release:flexe.GenericReply.dataset)
+  return dataset_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenericReply::set_allocated_dataset(std::string* dataset) {
+  if (dataset != nullptr) {
+    
+  } else {
+    
+  }
+  dataset_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dataset,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericReply.dataset)
 }
 
-// -------------------------------------------------------------------
-
-// EvaluateReply
-
-// double loss = 1;
-inline void EvaluateReply::clear_loss() {
-  loss_ = 0;
+// string scenario = 4;
+inline void GenericReply::clear_scenario() {
+  scenario_.ClearToEmpty();
 }
-inline double EvaluateReply::_internal_loss() const {
-  return loss_;
+inline const std::string& GenericReply::scenario() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.scenario)
+  return _internal_scenario();
 }
-inline double EvaluateReply::loss() const {
-  // @@protoc_insertion_point(field_get:flexe.EvaluateReply.loss)
-  return _internal_loss();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenericReply::set_scenario(ArgT0&& arg0, ArgT... args) {
+ 
+ scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.scenario)
 }
-inline void EvaluateReply::_internal_set_loss(double value) {
+inline std::string* GenericReply::mutable_scenario() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericReply.scenario)
+  return _internal_mutable_scenario();
+}
+inline const std::string& GenericReply::_internal_scenario() const {
+  return scenario_.Get();
+}
+inline void GenericReply::_internal_set_scenario(const std::string& value) {
   
-  loss_ = value;
+  scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void EvaluateReply::set_loss(double value) {
-  _internal_set_loss(value);
-  // @@protoc_insertion_point(field_set:flexe.EvaluateReply.loss)
+inline std::string* GenericReply::_internal_mutable_scenario() {
+  
+  return scenario_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenericReply::release_scenario() {
+  // @@protoc_insertion_point(field_release:flexe.GenericReply.scenario)
+  return scenario_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenericReply::set_allocated_scenario(std::string* scenario) {
+  if (scenario != nullptr) {
+    
+  } else {
+    
+  }
+  scenario_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericReply.scenario)
 }
 
-// double accuracy = 2;
-inline void EvaluateReply::clear_accuracy() {
-  accuracy_ = 0;
+// int32 seed = 5;
+inline void GenericReply::clear_seed() {
+  seed_ = 0;
 }
-inline double EvaluateReply::_internal_accuracy() const {
-  return accuracy_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::_internal_seed() const {
+  return seed_;
 }
-inline double EvaluateReply::accuracy() const {
-  // @@protoc_insertion_point(field_get:flexe.EvaluateReply.accuracy)
-  return _internal_accuracy();
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::seed() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.seed)
+  return _internal_seed();
 }
-inline void EvaluateReply::_internal_set_accuracy(double value) {
+inline void GenericReply::_internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  accuracy_ = value;
+  seed_ = value;
 }
-inline void EvaluateReply::set_accuracy(double value) {
-  _internal_set_accuracy(value);
-  // @@protoc_insertion_point(field_set:flexe.EvaluateReply.accuracy)
+inline void GenericReply::set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_seed(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.seed)
+}
+
+// bool nonIID = 6;
+inline void GenericReply::clear_noniid() {
+  noniid_ = false;
+}
+inline bool GenericReply::_internal_noniid() const {
+  return noniid_;
+}
+inline bool GenericReply::noniid() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.nonIID)
+  return _internal_noniid();
+}
+inline void GenericReply::_internal_set_noniid(bool value) {
+  
+  noniid_ = value;
+}
+inline void GenericReply::set_noniid(bool value) {
+  _internal_set_noniid(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.nonIID)
+}
+
+// int32 idModel = 7;
+inline void GenericReply::clear_idmodel() {
+  idmodel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::_internal_idmodel() const {
+  return idmodel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::idmodel() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.idModel)
+  return _internal_idmodel();
+}
+inline void GenericReply::_internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  idmodel_ = value;
+}
+inline void GenericReply::set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_idmodel(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.idModel)
+}
+
+// int32 reply = 8;
+inline void GenericReply::clear_reply() {
+  reply_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::_internal_reply() const {
+  return reply_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 GenericReply::reply() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.reply)
+  return _internal_reply();
+}
+inline void GenericReply::_internal_set_reply(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  reply_ = value;
+}
+inline void GenericReply::set_reply(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_reply(value);
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.reply)
+}
+
+// string msg = 9;
+inline void GenericReply::clear_msg() {
+  msg_.ClearToEmpty();
+}
+inline const std::string& GenericReply::msg() const {
+  // @@protoc_insertion_point(field_get:flexe.GenericReply.msg)
+  return _internal_msg();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenericReply::set_msg(ArgT0&& arg0, ArgT... args) {
+ 
+ msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.GenericReply.msg)
+}
+inline std::string* GenericReply::mutable_msg() {
+  // @@protoc_insertion_point(field_mutable:flexe.GenericReply.msg)
+  return _internal_mutable_msg();
+}
+inline const std::string& GenericReply::_internal_msg() const {
+  return msg_.Get();
+}
+inline void GenericReply::_internal_set_msg(const std::string& value) {
+  
+  msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenericReply::_internal_mutable_msg() {
+  
+  return msg_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenericReply::release_msg() {
+  // @@protoc_insertion_point(field_release:flexe.GenericReply.msg)
+  return msg_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenericReply::set_allocated_msg(std::string* msg) {
+  if (msg != nullptr) {
+    
+  } else {
+    
+  }
+  msg_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msg,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.GenericReply.msg)
 }
 
 // -------------------------------------------------------------------
 
 // ModelReply
 
-// int32 idVehicle = 1;
-inline void ModelReply::clear_idvehicle() {
-  idvehicle_ = 0;
+// int32 idEntity = 1;
+inline void ModelReply::clear_identity() {
+  identity_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_idvehicle() const {
-  return idvehicle_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_identity() const {
+  return identity_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::idvehicle() const {
-  // @@protoc_insertion_point(field_get:flexe.ModelReply.idVehicle)
-  return _internal_idvehicle();
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::identity() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.idEntity)
+  return _internal_identity();
 }
-inline void ModelReply::_internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ModelReply::_internal_set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  idvehicle_ = value;
+  identity_ = value;
 }
-inline void ModelReply::set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_idvehicle(value);
-  // @@protoc_insertion_point(field_set:flexe.ModelReply.idVehicle)
-}
-
-// repeated bytes tensors = 2;
-inline int ModelReply::_internal_tensors_size() const {
-  return tensors_.size();
-}
-inline int ModelReply::tensors_size() const {
-  return _internal_tensors_size();
-}
-inline void ModelReply::clear_tensors() {
-  tensors_.Clear();
-}
-inline std::string* ModelReply::add_tensors() {
-  // @@protoc_insertion_point(field_add_mutable:flexe.ModelReply.tensors)
-  return _internal_add_tensors();
-}
-inline const std::string& ModelReply::_internal_tensors(int index) const {
-  return tensors_.Get(index);
-}
-inline const std::string& ModelReply::tensors(int index) const {
-  // @@protoc_insertion_point(field_get:flexe.ModelReply.tensors)
-  return _internal_tensors(index);
-}
-inline std::string* ModelReply::mutable_tensors(int index) {
-  // @@protoc_insertion_point(field_mutable:flexe.ModelReply.tensors)
-  return tensors_.Mutable(index);
-}
-inline void ModelReply::set_tensors(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:flexe.ModelReply.tensors)
-  tensors_.Mutable(index)->assign(value);
-}
-inline void ModelReply::set_tensors(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:flexe.ModelReply.tensors)
-  tensors_.Mutable(index)->assign(std::move(value));
-}
-inline void ModelReply::set_tensors(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  tensors_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:flexe.ModelReply.tensors)
-}
-inline void ModelReply::set_tensors(int index, const void* value, size_t size) {
-  tensors_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:flexe.ModelReply.tensors)
-}
-inline std::string* ModelReply::_internal_add_tensors() {
-  return tensors_.Add();
-}
-inline void ModelReply::add_tensors(const std::string& value) {
-  tensors_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:flexe.ModelReply.tensors)
-}
-inline void ModelReply::add_tensors(std::string&& value) {
-  tensors_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:flexe.ModelReply.tensors)
-}
-inline void ModelReply::add_tensors(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  tensors_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:flexe.ModelReply.tensors)
-}
-inline void ModelReply::add_tensors(const void* value, size_t size) {
-  tensors_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:flexe.ModelReply.tensors)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-ModelReply::tensors() const {
-  // @@protoc_insertion_point(field_list:flexe.ModelReply.tensors)
-  return tensors_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-ModelReply::mutable_tensors() {
-  // @@protoc_insertion_point(field_mutable_list:flexe.ModelReply.tensors)
-  return &tensors_;
+inline void ModelReply::set_identity(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_identity(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.idEntity)
 }
 
-// int32 num_examples = 3;
-inline void ModelReply::clear_num_examples() {
-  num_examples_ = 0;
+// string model = 2;
+inline void ModelReply::clear_model() {
+  model_.ClearToEmpty();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_num_examples() const {
-  return num_examples_;
+inline const std::string& ModelReply::model() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.model)
+  return _internal_model();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::num_examples() const {
-  // @@protoc_insertion_point(field_get:flexe.ModelReply.num_examples)
-  return _internal_num_examples();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ModelReply::set_model(ArgT0&& arg0, ArgT... args) {
+ 
+ model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.model)
 }
-inline void ModelReply::_internal_set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* ModelReply::mutable_model() {
+  // @@protoc_insertion_point(field_mutable:flexe.ModelReply.model)
+  return _internal_mutable_model();
+}
+inline const std::string& ModelReply::_internal_model() const {
+  return model_.Get();
+}
+inline void ModelReply::_internal_set_model(const std::string& value) {
   
-  num_examples_ = value;
+  model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void ModelReply::set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_num_examples(value);
-  // @@protoc_insertion_point(field_set:flexe.ModelReply.num_examples)
-}
-
-// -------------------------------------------------------------------
-
-// ModelRequest
-
-// int32 idVehicle = 1;
-inline void ModelRequest::clear_idvehicle() {
-  idvehicle_ = 0;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelRequest::_internal_idvehicle() const {
-  return idvehicle_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelRequest::idvehicle() const {
-  // @@protoc_insertion_point(field_get:flexe.ModelRequest.idVehicle)
-  return _internal_idvehicle();
-}
-inline void ModelRequest::_internal_set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* ModelReply::_internal_mutable_model() {
   
-  idvehicle_ = value;
+  return model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline void ModelRequest::set_idvehicle(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_idvehicle(value);
-  // @@protoc_insertion_point(field_set:flexe.ModelRequest.idVehicle)
+inline std::string* ModelReply::release_model() {
+  // @@protoc_insertion_point(field_release:flexe.ModelReply.model)
+  return model_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-
-// repeated bytes tensors = 2;
-inline int ModelRequest::_internal_tensors_size() const {
-  return tensors_.size();
-}
-inline int ModelRequest::tensors_size() const {
-  return _internal_tensors_size();
-}
-inline void ModelRequest::clear_tensors() {
-  tensors_.Clear();
-}
-inline std::string* ModelRequest::add_tensors() {
-  // @@protoc_insertion_point(field_add_mutable:flexe.ModelRequest.tensors)
-  return _internal_add_tensors();
-}
-inline const std::string& ModelRequest::_internal_tensors(int index) const {
-  return tensors_.Get(index);
-}
-inline const std::string& ModelRequest::tensors(int index) const {
-  // @@protoc_insertion_point(field_get:flexe.ModelRequest.tensors)
-  return _internal_tensors(index);
-}
-inline std::string* ModelRequest::mutable_tensors(int index) {
-  // @@protoc_insertion_point(field_mutable:flexe.ModelRequest.tensors)
-  return tensors_.Mutable(index);
-}
-inline void ModelRequest::set_tensors(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:flexe.ModelRequest.tensors)
-  tensors_.Mutable(index)->assign(value);
-}
-inline void ModelRequest::set_tensors(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:flexe.ModelRequest.tensors)
-  tensors_.Mutable(index)->assign(std::move(value));
-}
-inline void ModelRequest::set_tensors(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  tensors_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:flexe.ModelRequest.tensors)
-}
-inline void ModelRequest::set_tensors(int index, const void* value, size_t size) {
-  tensors_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:flexe.ModelRequest.tensors)
-}
-inline std::string* ModelRequest::_internal_add_tensors() {
-  return tensors_.Add();
-}
-inline void ModelRequest::add_tensors(const std::string& value) {
-  tensors_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:flexe.ModelRequest.tensors)
-}
-inline void ModelRequest::add_tensors(std::string&& value) {
-  tensors_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:flexe.ModelRequest.tensors)
-}
-inline void ModelRequest::add_tensors(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  tensors_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:flexe.ModelRequest.tensors)
-}
-inline void ModelRequest::add_tensors(const void* value, size_t size) {
-  tensors_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:flexe.ModelRequest.tensors)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-ModelRequest::tensors() const {
-  // @@protoc_insertion_point(field_list:flexe.ModelRequest.tensors)
-  return tensors_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-ModelRequest::mutable_tensors() {
-  // @@protoc_insertion_point(field_mutable_list:flexe.ModelRequest.tensors)
-  return &tensors_;
+inline void ModelReply::set_allocated_model(std::string* model) {
+  if (model != nullptr) {
+    
+  } else {
+    
+  }
+  model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.ModelReply.model)
 }
 
-// int32 number_of_vehicles = 3;
-inline void ModelRequest::clear_number_of_vehicles() {
-  number_of_vehicles_ = 0;
+// string dataset = 3;
+inline void ModelReply::clear_dataset() {
+  dataset_.ClearToEmpty();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelRequest::_internal_number_of_vehicles() const {
-  return number_of_vehicles_;
+inline const std::string& ModelReply::dataset() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.dataset)
+  return _internal_dataset();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelRequest::number_of_vehicles() const {
-  // @@protoc_insertion_point(field_get:flexe.ModelRequest.number_of_vehicles)
-  return _internal_number_of_vehicles();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ModelReply::set_dataset(ArgT0&& arg0, ArgT... args) {
+ 
+ dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.dataset)
 }
-inline void ModelRequest::_internal_set_number_of_vehicles(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* ModelReply::mutable_dataset() {
+  // @@protoc_insertion_point(field_mutable:flexe.ModelReply.dataset)
+  return _internal_mutable_dataset();
+}
+inline const std::string& ModelReply::_internal_dataset() const {
+  return dataset_.Get();
+}
+inline void ModelReply::_internal_set_dataset(const std::string& value) {
   
-  number_of_vehicles_ = value;
+  dataset_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void ModelRequest::set_number_of_vehicles(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_number_of_vehicles(value);
-  // @@protoc_insertion_point(field_set:flexe.ModelRequest.number_of_vehicles)
+inline std::string* ModelReply::_internal_mutable_dataset() {
+  
+  return dataset_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ModelReply::release_dataset() {
+  // @@protoc_insertion_point(field_release:flexe.ModelReply.dataset)
+  return dataset_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ModelReply::set_allocated_dataset(std::string* dataset) {
+  if (dataset != nullptr) {
+    
+  } else {
+    
+  }
+  dataset_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dataset,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.ModelReply.dataset)
 }
 
-// int32 num_examples = 4;
-inline void ModelRequest::clear_num_examples() {
-  num_examples_ = 0;
+// string scenario = 4;
+inline void ModelReply::clear_scenario() {
+  scenario_.ClearToEmpty();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelRequest::_internal_num_examples() const {
-  return num_examples_;
+inline const std::string& ModelReply::scenario() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.scenario)
+  return _internal_scenario();
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ModelRequest::num_examples() const {
-  // @@protoc_insertion_point(field_get:flexe.ModelRequest.num_examples)
-  return _internal_num_examples();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ModelReply::set_scenario(ArgT0&& arg0, ArgT... args) {
+ 
+ scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.scenario)
 }
-inline void ModelRequest::_internal_set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline std::string* ModelReply::mutable_scenario() {
+  // @@protoc_insertion_point(field_mutable:flexe.ModelReply.scenario)
+  return _internal_mutable_scenario();
+}
+inline const std::string& ModelReply::_internal_scenario() const {
+  return scenario_.Get();
+}
+inline void ModelReply::_internal_set_scenario(const std::string& value) {
   
-  num_examples_ = value;
+  scenario_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void ModelRequest::set_num_examples(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_num_examples(value);
-  // @@protoc_insertion_point(field_set:flexe.ModelRequest.num_examples)
+inline std::string* ModelReply::_internal_mutable_scenario() {
+  
+  return scenario_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ModelReply::release_scenario() {
+  // @@protoc_insertion_point(field_release:flexe.ModelReply.scenario)
+  return scenario_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ModelReply::set_allocated_scenario(std::string* scenario) {
+  if (scenario != nullptr) {
+    
+  } else {
+    
+  }
+  scenario_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.ModelReply.scenario)
+}
+
+// int32 seed = 5;
+inline void ModelReply::clear_seed() {
+  seed_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_seed() const {
+  return seed_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::seed() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.seed)
+  return _internal_seed();
+}
+inline void ModelReply::_internal_set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  seed_ = value;
+}
+inline void ModelReply::set_seed(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_seed(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.seed)
+}
+
+// bool nonIID = 6;
+inline void ModelReply::clear_noniid() {
+  noniid_ = false;
+}
+inline bool ModelReply::_internal_noniid() const {
+  return noniid_;
+}
+inline bool ModelReply::noniid() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.nonIID)
+  return _internal_noniid();
+}
+inline void ModelReply::_internal_set_noniid(bool value) {
+  
+  noniid_ = value;
+}
+inline void ModelReply::set_noniid(bool value) {
+  _internal_set_noniid(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.nonIID)
+}
+
+// int32 idModel = 7;
+inline void ModelReply::clear_idmodel() {
+  idmodel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_idmodel() const {
+  return idmodel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::idmodel() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.idModel)
+  return _internal_idmodel();
+}
+inline void ModelReply::_internal_set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  idmodel_ = value;
+}
+inline void ModelReply::set_idmodel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_idmodel(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.idModel)
+}
+
+// int32 numExamples = 8;
+inline void ModelReply::clear_numexamples() {
+  numexamples_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::_internal_numexamples() const {
+  return numexamples_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ModelReply::numexamples() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.numExamples)
+  return _internal_numexamples();
+}
+inline void ModelReply::_internal_set_numexamples(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  numexamples_ = value;
+}
+inline void ModelReply::set_numexamples(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_numexamples(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.numExamples)
+}
+
+// double entropy = 9;
+inline void ModelReply::clear_entropy() {
+  entropy_ = 0;
+}
+inline double ModelReply::_internal_entropy() const {
+  return entropy_;
+}
+inline double ModelReply::entropy() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.entropy)
+  return _internal_entropy();
+}
+inline void ModelReply::_internal_set_entropy(double value) {
+  
+  entropy_ = value;
+}
+inline void ModelReply::set_entropy(double value) {
+  _internal_set_entropy(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.entropy)
+}
+
+// double loss = 10;
+inline void ModelReply::clear_loss() {
+  loss_ = 0;
+}
+inline double ModelReply::_internal_loss() const {
+  return loss_;
+}
+inline double ModelReply::loss() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.loss)
+  return _internal_loss();
+}
+inline void ModelReply::_internal_set_loss(double value) {
+  
+  loss_ = value;
+}
+inline void ModelReply::set_loss(double value) {
+  _internal_set_loss(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.loss)
+}
+
+// double accuracy = 11;
+inline void ModelReply::clear_accuracy() {
+  accuracy_ = 0;
+}
+inline double ModelReply::_internal_accuracy() const {
+  return accuracy_;
+}
+inline double ModelReply::accuracy() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.accuracy)
+  return _internal_accuracy();
+}
+inline void ModelReply::_internal_set_accuracy(double value) {
+  
+  accuracy_ = value;
+}
+inline void ModelReply::set_accuracy(double value) {
+  _internal_set_accuracy(value);
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.accuracy)
+}
+
+// string msg = 12;
+inline void ModelReply::clear_msg() {
+  msg_.ClearToEmpty();
+}
+inline const std::string& ModelReply::msg() const {
+  // @@protoc_insertion_point(field_get:flexe.ModelReply.msg)
+  return _internal_msg();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ModelReply::set_msg(ArgT0&& arg0, ArgT... args) {
+ 
+ msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:flexe.ModelReply.msg)
+}
+inline std::string* ModelReply::mutable_msg() {
+  // @@protoc_insertion_point(field_mutable:flexe.ModelReply.msg)
+  return _internal_mutable_msg();
+}
+inline const std::string& ModelReply::_internal_msg() const {
+  return msg_.Get();
+}
+inline void ModelReply::_internal_set_msg(const std::string& value) {
+  
+  msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ModelReply::_internal_mutable_msg() {
+  
+  return msg_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ModelReply::release_msg() {
+  // @@protoc_insertion_point(field_release:flexe.ModelReply.msg)
+  return msg_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ModelReply::set_allocated_msg(std::string* msg) {
+  if (msg != nullptr) {
+    
+  } else {
+    
+  }
+  msg_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msg,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:flexe.ModelReply.msg)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

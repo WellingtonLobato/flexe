@@ -1,98 +1,106 @@
-<p align="center">
-  <img src=img/Flexe_logo.png>
-</p>
+# FLEXE: Federated Learning Extension for Veins
 
-# Flexe
-Flexe is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. Flexe and PyFlexe are free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics. The project was partitioned into two, one of which is responsible for vehicle-to-vehicle communication ([Flexe](https://github.com/WellingtonLobato/flexe)) and the other for the construction and training of models ([PyFlexe](https://github.com/WellingtonLobato/PyFlexe)).
+FLEXE is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. FLEXE is free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics.
 
 ## Getting Started
 
-We developed FLEXE to make it possible to implement and develop vehicular FL applications within the context of CAVs. It further simplifies the process of modeling specific Machine Learning (ML) and FL applications into environments suitable for CAVs. Specifically, we developed Flexe on top of the Veins network simulator to simulate the dynamics of communication between vehicles. 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-PyFlexe requires the following software to be installed 
 
-- OMNeT++
-- conan
-- grpc
-- TensorFlow
-- PyTorch
+OMNeT++:
+-6.0
+SUMO:
+-
+Veins:
+-5.2
 
-### OMNeT++ (6 >=) installation
-Please do follow the instructions from the official [OMNeT documentation](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf)
-
-### Conan installation (1.58.0 >=)
-Please do follow the instructions from the official [conan documentation](https://docs.conan.io/en/latest/installation.html)
 ```
-pip install conan==1.58.0
+Give examples
 ```
-
-### GRPC installation (== 1.38.1)
-Please do follow the instructions from the official [GRPC documentation](https://grpc.io/docs/languages/python/quickstart/)
 
 ### Installing
 
-In order to install the necessary packages to run Flexe, just run the following command in the root directory.
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
 
 ```
-conan install . --build missing -s compiler.version=10 -s compiler.libcxx=libstdc++11
+Give the example
 ```
 
-Import the project into your OMNeT++ IDE workspace by clicking File > Import > General: Existing Projects into Workspace and selecting the directory you unpacked the Flexe module  to.
+And repeat
 
-Flexe is an extension to the well known and widely used Veins simulation framework. See the Veins website <http://veins.car2x.org/> for a tutorial, documentation, and publications.
+```
+until finished
+```
 
+End with an example of getting some data out of the system or using it for a little demo
 
-## Project structure - main components 
+## Running the tests
 
+Explain how to run the automated tests for this system
 
-    ├── simulations
-    │   ├── grid
-    │   ├── small_lust
-    │   └── veins
-    └── src
-        ├── flexe
-        │   ├── application
-        │   ├── cache
-        │   ├── messages
-        │   └── proto
-        ├── Makefile
-        └── makefrag
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Wellington Lobato** - [WellingtonLobato](https://github.com/WellingtonLobato)
-* **Joahannes B. D. da Costa** - [joahannes](https://github.com/joahannes)
-* **Allan M. de Souza** - [AllanMSouza](https://github.com/AllanMSouza)
-* **Denis Rosario**
-* **Christoph Sommer** - [sommer](https://github.com/sommer)
-* **Leandro A. Villas**
+* **Wellington Lobato** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Joahannes B. D. da Costa** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Allan M. de Souza** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Denis Rosario** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Christoph Sommer** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Leandro A. Villas** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
-# Citation
 
-PyFlexe and Flexe can reproduce results in the following papers:
-
-```tex
-@INPROCEEDINGS{Lobato2022,
-  author={Lobato, Wellington and Costa, Joahannes B. D. Da and Souza, Allan M. de and Rosário, Denis and Sommer, Christoph and Villas, Leandro A.},
-  booktitle={2022 IEEE 96th Vehicular Technology Conference (VTC2022-Fall)}, 
-  title={FLEXE: Investigating Federated Learning in Connected Autonomous Vehicle Simulations}, 
-  year={2022},
-  pages={1-5},
-  doi={10.1109/VTC2022-Fall57202.2022.10012905}
-}
-```
-# Updates
-Flexe Version 3.0.0 in the development phase.
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the GPL-2.0 license - see the [COPYING.md](COPYING.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
+
+
+conan install . --build missing -s compiler.version=10 -s compiler.libcxx=libstdc++11
+
+PROTO_IN_PATH=/home/jordan/git/Flexe2.0.0/
+PROTO_FILE=/home/jordan/git/Flexe2.0.0/flexe.proto
+PROTO_OUT_PATH=/home/jordan/git/Flexe2.0.0/src/flexe/proto/
+

@@ -25,12 +25,20 @@ static const char* Flexe_method_names[] = {
   "/flexe.Flexe/fit",
   "/flexe.Flexe/evaluate",
   "/flexe.Flexe/update_model",
-  "/flexe.Flexe/aggregate_evaluate",
-  "/flexe.Flexe/aggregate_fit",
-  "/flexe.Flexe/aggregate_sync_fit",
-  "/flexe.Flexe/server_evaluate",
-  "/flexe.Flexe/store_model",
+  "/flexe.Flexe/get_information",
+  "/flexe.Flexe/set_information",
+  "/flexe.Flexe/aggregate_client",
+  "/flexe.Flexe/fit_all",
+  "/flexe.Flexe/evaluate_all",
+  "/flexe.Flexe/update_all",
   "/flexe.Flexe/initialize_parameters",
+  "/flexe.Flexe/aggregate_async_fit",
+  "/flexe.Flexe/aggregate_sync_fit",
+  "/flexe.Flexe/aggregate_evaluate",
+  "/flexe.Flexe/set_strategy",
+  "/flexe.Flexe/get_strategy",
+  "/flexe.Flexe/center_fit",
+  "/flexe.Flexe/center_evaluate",
   "/flexe.Flexe/end",
 };
 
@@ -44,13 +52,21 @@ Flexe::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, con
   : channel_(channel), rpcmethod_fit_(Flexe_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_evaluate_(Flexe_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_update_model_(Flexe_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_aggregate_evaluate_(Flexe_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_aggregate_fit_(Flexe_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_aggregate_sync_fit_(Flexe_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_server_evaluate_(Flexe_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_store_model_(Flexe_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_initialize_parameters_(Flexe_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_end_(Flexe_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_get_information_(Flexe_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_set_information_(Flexe_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_aggregate_client_(Flexe_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_fit_all_(Flexe_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_evaluate_all_(Flexe_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_update_all_(Flexe_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_initialize_parameters_(Flexe_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_aggregate_async_fit_(Flexe_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_aggregate_sync_fit_(Flexe_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_aggregate_evaluate_(Flexe_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_set_strategy_(Flexe_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_get_strategy_(Flexe_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_center_fit_(Flexe_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_center_evaluate_(Flexe_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_end_(Flexe_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Flexe::Stub::fit(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
@@ -76,163 +92,186 @@ void Flexe::Stub::experimental_async::fit(::grpc::ClientContext* context, const 
   return result;
 }
 
-::grpc::Status Flexe::Stub::evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_evaluate_, context, request, response);
+::grpc::Status Flexe::Stub::evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_evaluate_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_evaluate_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_evaluate_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void Flexe::Stub::experimental_async::evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_evaluate_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Flexe::Stub::PrepareAsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::EvaluateReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_evaluate_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_evaluate_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Flexe::Stub::AsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::AsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncevaluateRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Flexe::Stub::update_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::GenericResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_update_model_, context, request, response);
+::grpc::Status Flexe::Stub::update_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_update_model_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_update_model_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_update_model_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void Flexe::Stub::experimental_async::update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_update_model_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Flexe::Stub::PrepareAsyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::GenericResponse, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_update_model_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_update_model_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Flexe::Stub::Asyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncupdate_modelRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Flexe::Stub::aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_evaluate_, context, request, response);
+::grpc::Status Flexe::Stub::get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_get_information_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_evaluate_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_get_information_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_evaluate_, context, request, response, reactor);
+void Flexe::Stub::experimental_async::get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_get_information_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Flexe::Stub::PrepareAsyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::EvaluateReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_evaluate_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncget_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_get_information_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Flexe::Stub::Asyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncget_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncaggregate_evaluateRaw(context, request, cq);
+    this->PrepareAsyncget_informationRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Flexe::Stub::aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::flexe::ModelReply* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::ModelRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_fit_, context, request, response);
+::grpc::Status Flexe::Stub::set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_set_information_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::ModelRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_fit_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_set_information_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_fit_, context, request, response, reactor);
+void Flexe::Stub::experimental_async::set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_set_information_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncaggregate_fitRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::ModelRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_fit_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncset_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_set_information_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncaggregate_fitRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncset_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncaggregate_fitRaw(context, request, cq);
+    this->PrepareAsyncset_informationRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Flexe::Stub::aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_sync_fit_, context, request, response);
+::grpc::Status Flexe::Stub::aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_client_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_sync_fit_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_client_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_sync_fit_, context, request, response, reactor);
+void Flexe::Stub::experimental_async::aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_client_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_sync_fit_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncaggregate_clientRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_client_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncaggregate_clientRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncaggregate_sync_fitRaw(context, request, cq);
+    this->PrepareAsyncaggregate_clientRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Flexe::Stub::server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_server_evaluate_, context, request, response);
+::grpc::Status Flexe::Stub::fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_fit_all_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_server_evaluate_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_fit_all_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_server_evaluate_, context, request, response, reactor);
+void Flexe::Stub::experimental_async::fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_fit_all_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Flexe::Stub::PrepareAsyncserver_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::EvaluateReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_server_evaluate_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncfit_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_fit_all_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Flexe::Stub::Asyncserver_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncfit_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncserver_evaluateRaw(context, request, cq);
+    this->PrepareAsyncfit_allRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status Flexe::Stub::store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::flexe::GenericResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::ModelRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_store_model_, context, request, response);
+::grpc::Status Flexe::Stub::evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_evaluate_all_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::ModelRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_store_model_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_evaluate_all_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_store_model_, context, request, response, reactor);
+void Flexe::Stub::experimental_async::evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_evaluate_all_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Flexe::Stub::PrepareAsyncstore_modelRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::GenericResponse, ::flexe::ModelRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_store_model_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncevaluate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_evaluate_all_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Flexe::Stub::Asyncstore_modelRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncevaluate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncstore_modelRaw(context, request, cq);
+    this->PrepareAsyncevaluate_allRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::update_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_update_all_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_update_all_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_update_all_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncupdate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::TTRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_update_all_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncupdate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncupdate_allRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -260,23 +299,184 @@ void Flexe::Stub::experimental_async::initialize_parameters(::grpc::ClientContex
   return result;
 }
 
-::grpc::Status Flexe::Stub::end(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_end_, context, request, response);
+::grpc::Status Flexe::Stub::aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_async_fit_, context, request, response);
 }
 
-void Flexe::Stub::experimental_async::end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_end_, context, request, response, std::move(f));
+void Flexe::Stub::experimental_async::aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_async_fit_, context, request, response, std::move(f));
 }
 
-void Flexe::Stub::experimental_async::end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void Flexe::Stub::experimental_async::aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_async_fit_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncaggregate_async_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::AggregationRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_async_fit_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncaggregate_async_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncaggregate_async_fitRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_sync_fit_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_sync_fit_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_sync_fit_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::AggregationRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_sync_fit_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncaggregate_sync_fitRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_aggregate_evaluate_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_evaluate_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_aggregate_evaluate_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::AggregationRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_aggregate_evaluate_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncaggregate_evaluateRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_set_strategy_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_set_strategy_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_set_strategy_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Flexe::Stub::PrepareAsyncset_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::GenericReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_set_strategy_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Flexe::Stub::Asyncset_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncset_strategyRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_get_strategy_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_get_strategy_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_get_strategy_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Flexe::Stub::PrepareAsyncget_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::GenericReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_get_strategy_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Flexe::Stub::Asyncget_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncget_strategyRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_center_fit_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_center_fit_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_center_fit_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsynccenter_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_center_fit_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asynccenter_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsynccenter_fitRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_center_evaluate_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_center_evaluate_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_center_evaluate_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::PrepareAsynccenter_evaluateRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::ModelReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_center_evaluate_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Flexe::Stub::Asynccenter_evaluateRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsynccenter_evaluateRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status Flexe::Stub::end(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_end_, context, request, response);
+}
+
+void Flexe::Stub::experimental_async::end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_end_, context, request, response, std::move(f));
+}
+
+void Flexe::Stub::experimental_async::end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_end_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Flexe::Stub::PrepareAsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::GenericResponse, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_end_, context, request);
+::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Flexe::Stub::PrepareAsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::flexe::GenericReply, ::flexe::GenericRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_end_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Flexe::Stub::AsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Flexe::Stub::AsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncendRaw(context, request, cq);
   result->StartCall();
@@ -297,72 +497,72 @@ Flexe::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Flexe::Service* service,
              ::grpc::ServerContext* ctx,
              const ::flexe::TTRequest* req,
-             ::flexe::EvaluateReply* resp) {
+             ::flexe::ModelReply* resp) {
                return service->evaluate(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Flexe::Service* service,
              ::grpc::ServerContext* ctx,
              const ::flexe::TTRequest* req,
-             ::flexe::GenericResponse* resp) {
+             ::flexe::ModelReply* resp) {
                return service->update_model(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[3],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Flexe::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::flexe::TTRequest* req,
-             ::flexe::EvaluateReply* resp) {
-               return service->aggregate_evaluate(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Flexe_method_names[4],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::ModelRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](Flexe::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::flexe::ModelRequest* req,
-             ::flexe::ModelReply* resp) {
-               return service->aggregate_fit(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Flexe_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Flexe::Service* service,
              ::grpc::ServerContext* ctx,
              const ::flexe::GenericRequest* req,
              ::flexe::ModelReply* resp) {
-               return service->aggregate_sync_fit(ctx, req, resp);
+               return service->get_information(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::GenericRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->set_information(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::TTRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->aggregate_client(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::EvaluateReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Flexe::Service* service,
              ::grpc::ServerContext* ctx,
              const ::flexe::TTRequest* req,
-             ::flexe::EvaluateReply* resp) {
-               return service->server_evaluate(ctx, req, resp);
+             ::flexe::ModelReply* resp) {
+               return service->fit_all(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::ModelRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Flexe::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::flexe::ModelRequest* req,
-             ::flexe::GenericResponse* resp) {
-               return service->store_model(ctx, req, resp);
+             const ::flexe::TTRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->evaluate_all(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[8],
@@ -372,16 +572,96 @@ Flexe::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::flexe::TTRequest* req,
              ::flexe::ModelReply* resp) {
-               return service->initialize_parameters(ctx, req, resp);
+               return service->update_all(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Flexe_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::GenericResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::TTRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::TTRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->initialize_parameters(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[10],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::AggregationRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->aggregate_async_fit(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[11],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::AggregationRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->aggregate_sync_fit(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[12],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::AggregationRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::AggregationRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->aggregate_evaluate(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[13],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Flexe::Service* service,
              ::grpc::ServerContext* ctx,
              const ::flexe::GenericRequest* req,
-             ::flexe::GenericResponse* resp) {
+             ::flexe::GenericReply* resp) {
+               return service->set_strategy(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[14],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::GenericRequest* req,
+             ::flexe::GenericReply* resp) {
+               return service->get_strategy(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[15],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::GenericRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->center_fit(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[16],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::ModelReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::GenericRequest* req,
+             ::flexe::ModelReply* resp) {
+               return service->center_evaluate(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Flexe_method_names[17],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Flexe::Service, ::flexe::GenericRequest, ::flexe::GenericReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Flexe::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::flexe::GenericRequest* req,
+             ::flexe::GenericReply* resp) {
                return service->end(ctx, req, resp);
              }, this)));
 }
@@ -396,49 +676,56 @@ Flexe::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response) {
+::grpc::Status Flexe::Service::evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::update_model(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response) {
+::grpc::Status Flexe::Service::update_model(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::aggregate_evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response) {
+::grpc::Status Flexe::Service::get_information(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::aggregate_fit(::grpc::ServerContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response) {
+::grpc::Status Flexe::Service::set_information(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::aggregate_sync_fit(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) {
+::grpc::Status Flexe::Service::aggregate_client(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::server_evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response) {
+::grpc::Status Flexe::Service::fit_all(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::store_model(::grpc::ServerContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response) {
+::grpc::Status Flexe::Service::evaluate_all(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::update_all(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -452,7 +739,56 @@ Flexe::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Flexe::Service::end(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response) {
+::grpc::Status Flexe::Service::aggregate_async_fit(::grpc::ServerContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::aggregate_sync_fit(::grpc::ServerContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::aggregate_evaluate(::grpc::ServerContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::set_strategy(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::get_strategy(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::center_fit(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::center_evaluate(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Flexe::Service::end(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -461,3 +797,4 @@ Flexe::Service::~Service() {
 
 
 }  // namespace flexe
+

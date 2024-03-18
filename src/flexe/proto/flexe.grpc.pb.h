@@ -28,7 +28,6 @@
 
 namespace flexe {
 
-// Defines the service
 class Flexe final {
  public:
   static constexpr char const* service_full_name() {
@@ -45,56 +44,63 @@ class Flexe final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncfit(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncfitRaw(context, request, cq));
     }
-    virtual ::grpc::Status evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>> Asyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>>(AsyncevaluateRaw(context, request, cq));
+    virtual ::grpc::Status evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(AsyncevaluateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>> PrepareAsyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>>(PrepareAsyncevaluateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncevaluateRaw(context, request, cq));
     }
-    virtual ::grpc::Status update_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::GenericResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>> Asyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>>(Asyncupdate_modelRaw(context, request, cq));
+    virtual ::grpc::Status update_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncupdate_modelRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>> PrepareAsyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>>(PrepareAsyncupdate_modelRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncupdate_modelRaw(context, request, cq));
+    }
+    virtual ::grpc::Status get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncget_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncget_informationRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncget_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncget_informationRaw(context, request, cq));
+    }
+    virtual ::grpc::Status set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncset_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncset_informationRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncset_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncset_informationRaw(context, request, cq));
+    }
+    virtual ::grpc::Status aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncaggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncaggregate_clientRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncaggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncaggregate_clientRaw(context, request, cq));
+    }
+    virtual ::grpc::Status fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncfit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncfit_allRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncfit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncfit_allRaw(context, request, cq));
+    }
+    virtual ::grpc::Status evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncevaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncevaluate_allRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncevaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncevaluate_allRaw(context, request, cq));
+    }
+    virtual ::grpc::Status update_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncupdate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncupdate_allRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncupdate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncupdate_allRaw(context, request, cq));
     }
     // Server Functions
-    virtual ::grpc::Status aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>> Asyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>>(Asyncaggregate_evaluateRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>> PrepareAsyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>>(PrepareAsyncaggregate_evaluateRaw(context, request, cq));
-    }
-    virtual ::grpc::Status aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::flexe::ModelReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncaggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncaggregate_fitRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncaggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncaggregate_fitRaw(context, request, cq));
-    }
-    virtual ::grpc::Status aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncaggregate_sync_fitRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncaggregate_sync_fitRaw(context, request, cq));
-    }
-    virtual ::grpc::Status server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>> Asyncserver_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>>(Asyncserver_evaluateRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>> PrepareAsyncserver_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>>(PrepareAsyncserver_evaluateRaw(context, request, cq));
-    }
-    virtual ::grpc::Status store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::flexe::GenericResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>> Asyncstore_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>>(Asyncstore_modelRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>> PrepareAsyncstore_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>>(PrepareAsyncstore_modelRaw(context, request, cq));
-    }
     virtual ::grpc::Status initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncinitialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncinitialize_parametersRaw(context, request, cq));
@@ -102,12 +108,61 @@ class Flexe final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncinitialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncinitialize_parametersRaw(context, request, cq));
     }
-    virtual ::grpc::Status end(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>> Asyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>>(AsyncendRaw(context, request, cq));
+    virtual ::grpc::Status aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncaggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncaggregate_async_fitRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>> PrepareAsyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>>(PrepareAsyncendRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncaggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncaggregate_async_fitRaw(context, request, cq));
+    }
+    virtual ::grpc::Status aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncaggregate_sync_fitRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncaggregate_sync_fitRaw(context, request, cq));
+    }
+    virtual ::grpc::Status aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asyncaggregate_evaluateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsyncaggregate_evaluateRaw(context, request, cq));
+    }
+    virtual ::grpc::Status set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>> Asyncset_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>>(Asyncset_strategyRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>> PrepareAsyncset_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>>(PrepareAsyncset_strategyRaw(context, request, cq));
+    }
+    virtual ::grpc::Status get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>> Asyncget_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>>(Asyncget_strategyRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>> PrepareAsyncget_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>>(PrepareAsyncget_strategyRaw(context, request, cq));
+    }
+    virtual ::grpc::Status center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asynccenter_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asynccenter_fitRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsynccenter_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsynccenter_fitRaw(context, request, cq));
+    }
+    virtual ::grpc::Status center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> Asynccenter_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(Asynccenter_evaluateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>> PrepareAsynccenter_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>>(PrepareAsynccenter_evaluateRaw(context, request, cq));
+    }
+    virtual ::grpc::Status end(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>> Asyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>>(AsyncendRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>> PrepareAsyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>>(PrepareAsyncendRaw(context, request, cq));
     }
     class experimental_async_interface {
      public:
@@ -119,60 +174,108 @@ class Flexe final {
       #else
       virtual void fit(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       // Server Functions
-      virtual void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
       virtual void initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -185,24 +288,40 @@ class Flexe final {
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* AsyncfitRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncfitRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>* AsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>* PrepareAsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>* Asyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>* PrepareAsyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>* Asyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>* PrepareAsyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncaggregate_fitRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncaggregate_fitRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>* Asyncserver_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::EvaluateReply>* PrepareAsyncserver_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>* Asyncstore_modelRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>* PrepareAsyncstore_modelRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* AsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncget_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncget_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncset_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncset_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncaggregate_clientRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncaggregate_clientRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncfit_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncfit_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncevaluate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncevaluate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncupdate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncupdate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncinitialize_parametersRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncinitialize_parametersRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>* AsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericResponse>* PrepareAsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncaggregate_async_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncaggregate_async_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>* Asyncset_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>* PrepareAsyncset_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>* Asyncget_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>* PrepareAsyncget_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asynccenter_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsynccenter_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* Asynccenter_evaluateRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::ModelReply>* PrepareAsynccenter_evaluateRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>* AsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::flexe::GenericReply>* PrepareAsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -214,54 +333,61 @@ class Flexe final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncfit(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncfitRaw(context, request, cq));
     }
-    ::grpc::Status evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>> Asyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>>(AsyncevaluateRaw(context, request, cq));
+    ::grpc::Status evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(AsyncevaluateRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>> PrepareAsyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>>(PrepareAsyncevaluateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncevaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncevaluateRaw(context, request, cq));
     }
-    ::grpc::Status update_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::GenericResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>> Asyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>>(Asyncupdate_modelRaw(context, request, cq));
+    ::grpc::Status update_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncupdate_modelRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>> PrepareAsyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>>(PrepareAsyncupdate_modelRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncupdate_model(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncupdate_modelRaw(context, request, cq));
     }
-    ::grpc::Status aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>> Asyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>>(Asyncaggregate_evaluateRaw(context, request, cq));
+    ::grpc::Status get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncget_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncget_informationRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>> PrepareAsyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>>(PrepareAsyncaggregate_evaluateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncget_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncget_informationRaw(context, request, cq));
     }
-    ::grpc::Status aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::flexe::ModelReply* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncaggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncaggregate_fitRaw(context, request, cq));
+    ::grpc::Status set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncset_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncset_informationRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncaggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncaggregate_fitRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncset_information(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncset_informationRaw(context, request, cq));
     }
-    ::grpc::Status aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncaggregate_sync_fitRaw(context, request, cq));
+    ::grpc::Status aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncaggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncaggregate_clientRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncaggregate_sync_fitRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncaggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncaggregate_clientRaw(context, request, cq));
     }
-    ::grpc::Status server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::EvaluateReply* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>> Asyncserver_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>>(Asyncserver_evaluateRaw(context, request, cq));
+    ::grpc::Status fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncfit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncfit_allRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>> PrepareAsyncserver_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>>(PrepareAsyncserver_evaluateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncfit_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncfit_allRaw(context, request, cq));
     }
-    ::grpc::Status store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::flexe::GenericResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>> Asyncstore_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>>(Asyncstore_modelRaw(context, request, cq));
+    ::grpc::Status evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncevaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncevaluate_allRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>> PrepareAsyncstore_model(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>>(PrepareAsyncstore_modelRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncevaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncevaluate_allRaw(context, request, cq));
+    }
+    ::grpc::Status update_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncupdate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncupdate_allRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncupdate_all(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncupdate_allRaw(context, request, cq));
     }
     ::grpc::Status initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::flexe::ModelReply* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncinitialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
@@ -270,12 +396,61 @@ class Flexe final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncinitialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncinitialize_parametersRaw(context, request, cq));
     }
-    ::grpc::Status end(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>> Asyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>>(AsyncendRaw(context, request, cq));
+    ::grpc::Status aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncaggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncaggregate_async_fitRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>> PrepareAsyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>>(PrepareAsyncendRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncaggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncaggregate_async_fitRaw(context, request, cq));
+    }
+    ::grpc::Status aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncaggregate_sync_fitRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncaggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncaggregate_sync_fitRaw(context, request, cq));
+    }
+    ::grpc::Status aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asyncaggregate_evaluateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsyncaggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsyncaggregate_evaluateRaw(context, request, cq));
+    }
+    ::grpc::Status set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>> Asyncset_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>>(Asyncset_strategyRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>> PrepareAsyncset_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>>(PrepareAsyncset_strategyRaw(context, request, cq));
+    }
+    ::grpc::Status get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>> Asyncget_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>>(Asyncget_strategyRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>> PrepareAsyncget_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>>(PrepareAsyncget_strategyRaw(context, request, cq));
+    }
+    ::grpc::Status center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asynccenter_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asynccenter_fitRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsynccenter_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsynccenter_fitRaw(context, request, cq));
+    }
+    ::grpc::Status center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::ModelReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> Asynccenter_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(Asynccenter_evaluateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>> PrepareAsynccenter_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>>(PrepareAsynccenter_evaluateRaw(context, request, cq));
+    }
+    ::grpc::Status end(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::flexe::GenericReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>> Asyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>>(AsyncendRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>> PrepareAsyncend(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>>(PrepareAsyncendRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
@@ -286,47 +461,53 @@ class Flexe final {
       #else
       void fit(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)>) override;
+      void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)>) override;
+      void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void update_model(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)>) override;
+      void get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void get_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      void set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void aggregate_fit(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void set_information(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      void aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void aggregate_client(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, std::function<void(::grpc::Status)>) override;
+      void fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void server_evaluate(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void fit_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)>) override;
+      void evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void store_model(::grpc::ClientContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void evaluate_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void update_all(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       void initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -334,11 +515,53 @@ class Flexe final {
       #else
       void initialize_parameters(::grpc::ClientContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, std::function<void(::grpc::Status)>) override;
+      void aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void aggregate_async_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void aggregate_sync_fit(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void aggregate_evaluate(::grpc::ClientContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void set_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void get_strategy(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void center_fit(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void center_evaluate(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void end(::grpc::ClientContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
      private:
       friend class Stub;
@@ -353,33 +576,57 @@ class Flexe final {
     class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* AsyncfitRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncfitRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* AsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* PrepareAsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Asyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* PrepareAsyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Asyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* PrepareAsyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncaggregate_fitRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncaggregate_fitRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* Asyncserver_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::EvaluateReply>* PrepareAsyncserver_evaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* Asyncstore_modelRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* PrepareAsyncstore_modelRaw(::grpc::ClientContext* context, const ::flexe::ModelRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* AsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncevaluateRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncupdate_modelRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncget_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncget_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncset_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncset_informationRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncaggregate_clientRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncaggregate_clientRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncfit_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncfit_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncevaluate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncevaluate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncupdate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncupdate_allRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncinitialize_parametersRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncinitialize_parametersRaw(::grpc::ClientContext* context, const ::flexe::TTRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* AsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::flexe::GenericResponse>* PrepareAsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncaggregate_async_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncaggregate_async_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncaggregate_sync_fitRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsyncaggregate_evaluateRaw(::grpc::ClientContext* context, const ::flexe::AggregationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Asyncset_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* PrepareAsyncset_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* Asyncget_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* PrepareAsyncget_strategyRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asynccenter_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsynccenter_fitRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* Asynccenter_evaluateRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::ModelReply>* PrepareAsynccenter_evaluateRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* AsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::flexe::GenericReply>* PrepareAsyncendRaw(::grpc::ClientContext* context, const ::flexe::GenericRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_fit_;
     const ::grpc::internal::RpcMethod rpcmethod_evaluate_;
     const ::grpc::internal::RpcMethod rpcmethod_update_model_;
-    const ::grpc::internal::RpcMethod rpcmethod_aggregate_evaluate_;
-    const ::grpc::internal::RpcMethod rpcmethod_aggregate_fit_;
-    const ::grpc::internal::RpcMethod rpcmethod_aggregate_sync_fit_;
-    const ::grpc::internal::RpcMethod rpcmethod_server_evaluate_;
-    const ::grpc::internal::RpcMethod rpcmethod_store_model_;
+    const ::grpc::internal::RpcMethod rpcmethod_get_information_;
+    const ::grpc::internal::RpcMethod rpcmethod_set_information_;
+    const ::grpc::internal::RpcMethod rpcmethod_aggregate_client_;
+    const ::grpc::internal::RpcMethod rpcmethod_fit_all_;
+    const ::grpc::internal::RpcMethod rpcmethod_evaluate_all_;
+    const ::grpc::internal::RpcMethod rpcmethod_update_all_;
     const ::grpc::internal::RpcMethod rpcmethod_initialize_parameters_;
+    const ::grpc::internal::RpcMethod rpcmethod_aggregate_async_fit_;
+    const ::grpc::internal::RpcMethod rpcmethod_aggregate_sync_fit_;
+    const ::grpc::internal::RpcMethod rpcmethod_aggregate_evaluate_;
+    const ::grpc::internal::RpcMethod rpcmethod_set_strategy_;
+    const ::grpc::internal::RpcMethod rpcmethod_get_strategy_;
+    const ::grpc::internal::RpcMethod rpcmethod_center_fit_;
+    const ::grpc::internal::RpcMethod rpcmethod_center_evaluate_;
     const ::grpc::internal::RpcMethod rpcmethod_end_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -390,16 +637,24 @@ class Flexe final {
     virtual ~Service();
     // Client Functions 
     virtual ::grpc::Status fit(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
-    virtual ::grpc::Status evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response);
-    virtual ::grpc::Status update_model(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response);
+    virtual ::grpc::Status evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status update_model(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status get_information(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status set_information(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status aggregate_client(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status fit_all(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status evaluate_all(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status update_all(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
     // Server Functions
-    virtual ::grpc::Status aggregate_evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response);
-    virtual ::grpc::Status aggregate_fit(::grpc::ServerContext* context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response);
-    virtual ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response);
-    virtual ::grpc::Status server_evaluate(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response);
-    virtual ::grpc::Status store_model(::grpc::ServerContext* context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response);
     virtual ::grpc::Status initialize_parameters(::grpc::ServerContext* context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response);
-    virtual ::grpc::Status end(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response);
+    virtual ::grpc::Status aggregate_async_fit(::grpc::ServerContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status aggregate_evaluate(::grpc::ServerContext* context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status set_strategy(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response);
+    virtual ::grpc::Status get_strategy(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response);
+    virtual ::grpc::Status center_fit(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status center_evaluate(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response);
+    virtual ::grpc::Status end(::grpc::ServerContext* context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_fit : public BaseClass {
@@ -433,11 +688,11 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestevaluate(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::EvaluateReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestevaluate(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -453,112 +708,132 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestupdate_model(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::GenericResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestupdate_model(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_aggregate_evaluate : public BaseClass {
+  class WithAsyncMethod_get_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_aggregate_evaluate() {
+    WithAsyncMethod_get_information() {
       ::grpc::Service::MarkMethodAsync(3);
     }
-    ~WithAsyncMethod_aggregate_evaluate() override {
+    ~WithAsyncMethod_get_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status get_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestaggregate_evaluate(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::EvaluateReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestget_information(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_aggregate_fit : public BaseClass {
+  class WithAsyncMethod_set_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_aggregate_fit() {
+    WithAsyncMethod_set_information() {
       ::grpc::Service::MarkMethodAsync(4);
     }
-    ~WithAsyncMethod_aggregate_fit() override {
+    ~WithAsyncMethod_set_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_fit(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status set_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestaggregate_fit(::grpc::ServerContext* context, ::flexe::ModelRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestset_information(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_aggregate_sync_fit : public BaseClass {
+  class WithAsyncMethod_aggregate_client : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_aggregate_sync_fit() {
+    WithAsyncMethod_aggregate_client() {
       ::grpc::Service::MarkMethodAsync(5);
     }
-    ~WithAsyncMethod_aggregate_sync_fit() override {
+    ~WithAsyncMethod_aggregate_client() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status aggregate_client(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestaggregate_sync_fit(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestaggregate_client(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_server_evaluate : public BaseClass {
+  class WithAsyncMethod_fit_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_server_evaluate() {
+    WithAsyncMethod_fit_all() {
       ::grpc::Service::MarkMethodAsync(6);
     }
-    ~WithAsyncMethod_server_evaluate() override {
+    ~WithAsyncMethod_fit_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status server_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status fit_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestserver_evaluate(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::EvaluateReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestfit_all(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_store_model : public BaseClass {
+  class WithAsyncMethod_evaluate_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_store_model() {
+    WithAsyncMethod_evaluate_all() {
       ::grpc::Service::MarkMethodAsync(7);
     }
-    ~WithAsyncMethod_store_model() override {
+    ~WithAsyncMethod_evaluate_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status store_model(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status evaluate_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requeststore_model(::grpc::ServerContext* context, ::flexe::ModelRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::GenericResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestevaluate_all(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_update_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_update_all() {
+      ::grpc::Service::MarkMethodAsync(8);
+    }
+    ~WithAsyncMethod_update_all() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status update_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestupdate_all(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -567,7 +842,7 @@ class Flexe final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_initialize_parameters() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_initialize_parameters() override {
       BaseClassMustBeDerivedFromService(this);
@@ -578,7 +853,147 @@ class Flexe final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void Requestinitialize_parameters(::grpc::ServerContext* context, ::flexe::TTRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_aggregate_async_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_aggregate_async_fit() {
+      ::grpc::Service::MarkMethodAsync(10);
+    }
+    ~WithAsyncMethod_aggregate_async_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_async_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestaggregate_async_fit(::grpc::ServerContext* context, ::flexe::AggregationRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_aggregate_sync_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_aggregate_sync_fit() {
+      ::grpc::Service::MarkMethodAsync(11);
+    }
+    ~WithAsyncMethod_aggregate_sync_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestaggregate_sync_fit(::grpc::ServerContext* context, ::flexe::AggregationRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_aggregate_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_aggregate_evaluate() {
+      ::grpc::Service::MarkMethodAsync(12);
+    }
+    ~WithAsyncMethod_aggregate_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestaggregate_evaluate(::grpc::ServerContext* context, ::flexe::AggregationRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_set_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_set_strategy() {
+      ::grpc::Service::MarkMethodAsync(13);
+    }
+    ~WithAsyncMethod_set_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status set_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestset_strategy(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::GenericReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_get_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_get_strategy() {
+      ::grpc::Service::MarkMethodAsync(14);
+    }
+    ~WithAsyncMethod_get_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status get_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestget_strategy(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::GenericReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_center_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_center_fit() {
+      ::grpc::Service::MarkMethodAsync(15);
+    }
+    ~WithAsyncMethod_center_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestcenter_fit(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_center_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_center_evaluate() {
+      ::grpc::Service::MarkMethodAsync(16);
+    }
+    ~WithAsyncMethod_center_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestcenter_evaluate(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::ModelReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -587,21 +1002,21 @@ class Flexe final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_end() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(17);
     }
     ~WithAsyncMethod_end() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestend(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::GenericResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    void Requestend(::grpc::ServerContext* context, ::flexe::GenericRequest* request, ::grpc::ServerAsyncResponseWriter< ::flexe::GenericReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_fit<WithAsyncMethod_evaluate<WithAsyncMethod_update_model<WithAsyncMethod_aggregate_evaluate<WithAsyncMethod_aggregate_fit<WithAsyncMethod_aggregate_sync_fit<WithAsyncMethod_server_evaluate<WithAsyncMethod_store_model<WithAsyncMethod_initialize_parameters<WithAsyncMethod_end<Service > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_fit<WithAsyncMethod_evaluate<WithAsyncMethod_update_model<WithAsyncMethod_get_information<WithAsyncMethod_set_information<WithAsyncMethod_aggregate_client<WithAsyncMethod_fit_all<WithAsyncMethod_evaluate_all<WithAsyncMethod_update_all<WithAsyncMethod_initialize_parameters<WithAsyncMethod_aggregate_async_fit<WithAsyncMethod_aggregate_sync_fit<WithAsyncMethod_aggregate_evaluate<WithAsyncMethod_set_strategy<WithAsyncMethod_get_strategy<WithAsyncMethod_center_fit<WithAsyncMethod_center_evaluate<WithAsyncMethod_end<Service > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_fit : public BaseClass {
    private:
@@ -661,38 +1076,38 @@ class Flexe final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::EvaluateReply>(
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response) { return this->evaluate(context, request, response); }));}
+                     context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) { return this->evaluate(context, request, response); }));}
     void SetMessageAllocatorFor_evaluate(
-        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::EvaluateReply>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
     #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::EvaluateReply>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_evaluate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* evaluate(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* evaluate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -708,147 +1123,53 @@ class Flexe final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::GenericResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::flexe::TTRequest* request, ::flexe::GenericResponse* response) { return this->update_model(context, request, response); }));}
+                     context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) { return this->update_model(context, request, response); }));}
     void SetMessageAllocatorFor_update_model(
-        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::GenericResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
     #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::GenericResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_update_model() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* update_model(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* update_model(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_aggregate_evaluate : public BaseClass {
+  class ExperimentalWithCallbackMethod_get_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_aggregate_evaluate() {
+    ExperimentalWithCallbackMethod_get_information() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(3,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::EvaluateReply>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response) { return this->aggregate_evaluate(context, request, response); }));}
-    void SetMessageAllocatorFor_aggregate_evaluate(
-        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::EvaluateReply>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
-    #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::EvaluateReply>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_aggregate_evaluate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* aggregate_evaluate(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_evaluate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_aggregate_fit : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_aggregate_fit() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(4,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::ModelRequest, ::flexe::ModelReply>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::flexe::ModelRequest* request, ::flexe::ModelReply* response) { return this->aggregate_fit(context, request, response); }));}
-    void SetMessageAllocatorFor_aggregate_fit(
-        ::grpc::experimental::MessageAllocator< ::flexe::ModelRequest, ::flexe::ModelReply>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
-    #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::ModelRequest, ::flexe::ModelReply>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_aggregate_fit() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status aggregate_fit(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* aggregate_fit(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_fit(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_aggregate_sync_fit : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_aggregate_sync_fit() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -856,125 +1177,266 @@ class Flexe final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) { return this->aggregate_sync_fit(context, request, response); }));}
-    void SetMessageAllocatorFor_aggregate_sync_fit(
+                     context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) { return this->get_information(context, request, response); }));}
+    void SetMessageAllocatorFor_get_information(
         ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::ModelReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(5);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
     #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_aggregate_sync_fit() override {
+    ~ExperimentalWithCallbackMethod_get_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status get_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* aggregate_sync_fit(
+    virtual ::grpc::ServerUnaryReactor* get_information(
       ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_sync_fit(
+    virtual ::grpc::experimental::ServerUnaryReactor* get_information(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_server_evaluate : public BaseClass {
+  class ExperimentalWithCallbackMethod_set_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_server_evaluate() {
+    ExperimentalWithCallbackMethod_set_information() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) { return this->set_information(context, request, response); }));}
+    void SetMessageAllocatorFor_set_information(
+        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_set_information() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status set_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* set_information(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* set_information(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_aggregate_client : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_aggregate_client() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) { return this->aggregate_client(context, request, response); }));}
+    void SetMessageAllocatorFor_aggregate_client(
+        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(5);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_aggregate_client() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_client(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_client(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_client(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_fit_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_fit_all() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(6,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::EvaluateReply>(
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::flexe::TTRequest* request, ::flexe::EvaluateReply* response) { return this->server_evaluate(context, request, response); }));}
-    void SetMessageAllocatorFor_server_evaluate(
-        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::EvaluateReply>* allocator) {
+                     context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) { return this->fit_all(context, request, response); }));}
+    void SetMessageAllocatorFor_fit_all(
+        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(6);
     #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::EvaluateReply>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_server_evaluate() override {
+    ~ExperimentalWithCallbackMethod_fit_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status server_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status fit_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* server_evaluate(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/)
+    virtual ::grpc::ServerUnaryReactor* fit_all(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* server_evaluate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* fit_all(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_store_model : public BaseClass {
+  class ExperimentalWithCallbackMethod_evaluate_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_store_model() {
+    ExperimentalWithCallbackMethod_evaluate_all() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(7,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::ModelRequest, ::flexe::GenericResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::flexe::ModelRequest* request, ::flexe::GenericResponse* response) { return this->store_model(context, request, response); }));}
-    void SetMessageAllocatorFor_store_model(
-        ::grpc::experimental::MessageAllocator< ::flexe::ModelRequest, ::flexe::GenericResponse>* allocator) {
+                     context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) { return this->evaluate_all(context, request, response); }));}
+    void SetMessageAllocatorFor_evaluate_all(
+        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(7);
     #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::ModelRequest, ::flexe::GenericResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_store_model() override {
+    ~ExperimentalWithCallbackMethod_evaluate_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status store_model(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status evaluate_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* store_model(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/)
+    virtual ::grpc::ServerUnaryReactor* evaluate_all(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* store_model(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/)
+    virtual ::grpc::experimental::ServerUnaryReactor* evaluate_all(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_update_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_update_all() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(8,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::TTRequest* request, ::flexe::ModelReply* response) { return this->update_all(context, request, response); }));}
+    void SetMessageAllocatorFor_update_all(
+        ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(8);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_update_all() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status update_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* update_all(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* update_all(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -989,7 +1451,7 @@ class Flexe final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(8,
+        MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -1001,9 +1463,9 @@ class Flexe final {
     void SetMessageAllocatorFor_initialize_parameters(
         ::grpc::experimental::MessageAllocator< ::flexe::TTRequest, ::flexe::ModelReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(9);
     #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::TTRequest, ::flexe::ModelReply>*>(handler)
               ->SetMessageAllocator(allocator);
@@ -1026,6 +1488,335 @@ class Flexe final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_aggregate_async_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_aggregate_async_fit() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(10,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::AggregationRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response) { return this->aggregate_async_fit(context, request, response); }));}
+    void SetMessageAllocatorFor_aggregate_async_fit(
+        ::grpc::experimental::MessageAllocator< ::flexe::AggregationRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(10);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::AggregationRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_aggregate_async_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_async_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_async_fit(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_async_fit(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_aggregate_sync_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_aggregate_sync_fit() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::AggregationRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response) { return this->aggregate_sync_fit(context, request, response); }));}
+    void SetMessageAllocatorFor_aggregate_sync_fit(
+        ::grpc::experimental::MessageAllocator< ::flexe::AggregationRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(11);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::AggregationRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_aggregate_sync_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_sync_fit(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_sync_fit(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_aggregate_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_aggregate_evaluate() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(12,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::AggregationRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::AggregationRequest* request, ::flexe::ModelReply* response) { return this->aggregate_evaluate(context, request, response); }));}
+    void SetMessageAllocatorFor_aggregate_evaluate(
+        ::grpc::experimental::MessageAllocator< ::flexe::AggregationRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(12);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::AggregationRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_aggregate_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_evaluate(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_evaluate(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_set_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_set_strategy() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(13,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response) { return this->set_strategy(context, request, response); }));}
+    void SetMessageAllocatorFor_set_strategy(
+        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::GenericReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(13);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_set_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status set_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* set_strategy(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* set_strategy(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_get_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_get_strategy() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response) { return this->get_strategy(context, request, response); }));}
+    void SetMessageAllocatorFor_get_strategy(
+        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::GenericReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(14);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_get_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status get_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* get_strategy(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* get_strategy(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_center_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_center_fit() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(15,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) { return this->center_fit(context, request, response); }));}
+    void SetMessageAllocatorFor_center_fit(
+        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(15);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_center_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* center_fit(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* center_fit(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_center_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_center_evaluate() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(16,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::flexe::GenericRequest* request, ::flexe::ModelReply* response) { return this->center_evaluate(context, request, response); }));}
+    void SetMessageAllocatorFor_center_evaluate(
+        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::ModelReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(16);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::ModelReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_center_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* center_evaluate(
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* center_evaluate(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_end : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -1036,47 +1827,47 @@ class Flexe final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(9,
-          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericResponse>(
+        MarkMethodCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::flexe::GenericRequest* request, ::flexe::GenericResponse* response) { return this->end(context, request, response); }));}
+                     context, const ::flexe::GenericRequest* request, ::flexe::GenericReply* response) { return this->end(context, request, response); }));}
     void SetMessageAllocatorFor_end(
-        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::GenericResponse>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::flexe::GenericRequest, ::flexe::GenericReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(17);
     #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::flexe::GenericRequest, ::flexe::GenericReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_end() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* end(
-      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* end(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/)
     #endif
       { return nullptr; }
   };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_fit<ExperimentalWithCallbackMethod_evaluate<ExperimentalWithCallbackMethod_update_model<ExperimentalWithCallbackMethod_aggregate_evaluate<ExperimentalWithCallbackMethod_aggregate_fit<ExperimentalWithCallbackMethod_aggregate_sync_fit<ExperimentalWithCallbackMethod_server_evaluate<ExperimentalWithCallbackMethod_store_model<ExperimentalWithCallbackMethod_initialize_parameters<ExperimentalWithCallbackMethod_end<Service > > > > > > > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_fit<ExperimentalWithCallbackMethod_evaluate<ExperimentalWithCallbackMethod_update_model<ExperimentalWithCallbackMethod_get_information<ExperimentalWithCallbackMethod_set_information<ExperimentalWithCallbackMethod_aggregate_client<ExperimentalWithCallbackMethod_fit_all<ExperimentalWithCallbackMethod_evaluate_all<ExperimentalWithCallbackMethod_update_all<ExperimentalWithCallbackMethod_initialize_parameters<ExperimentalWithCallbackMethod_aggregate_async_fit<ExperimentalWithCallbackMethod_aggregate_sync_fit<ExperimentalWithCallbackMethod_aggregate_evaluate<ExperimentalWithCallbackMethod_set_strategy<ExperimentalWithCallbackMethod_get_strategy<ExperimentalWithCallbackMethod_center_fit<ExperimentalWithCallbackMethod_center_evaluate<ExperimentalWithCallbackMethod_end<Service > > > > > > > > > > > > > > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_fit<ExperimentalWithCallbackMethod_evaluate<ExperimentalWithCallbackMethod_update_model<ExperimentalWithCallbackMethod_aggregate_evaluate<ExperimentalWithCallbackMethod_aggregate_fit<ExperimentalWithCallbackMethod_aggregate_sync_fit<ExperimentalWithCallbackMethod_server_evaluate<ExperimentalWithCallbackMethod_store_model<ExperimentalWithCallbackMethod_initialize_parameters<ExperimentalWithCallbackMethod_end<Service > > > > > > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_fit<ExperimentalWithCallbackMethod_evaluate<ExperimentalWithCallbackMethod_update_model<ExperimentalWithCallbackMethod_get_information<ExperimentalWithCallbackMethod_set_information<ExperimentalWithCallbackMethod_aggregate_client<ExperimentalWithCallbackMethod_fit_all<ExperimentalWithCallbackMethod_evaluate_all<ExperimentalWithCallbackMethod_update_all<ExperimentalWithCallbackMethod_initialize_parameters<ExperimentalWithCallbackMethod_aggregate_async_fit<ExperimentalWithCallbackMethod_aggregate_sync_fit<ExperimentalWithCallbackMethod_aggregate_evaluate<ExperimentalWithCallbackMethod_set_strategy<ExperimentalWithCallbackMethod_get_strategy<ExperimentalWithCallbackMethod_center_fit<ExperimentalWithCallbackMethod_center_evaluate<ExperimentalWithCallbackMethod_end<Service > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_fit : public BaseClass {
    private:
@@ -1106,7 +1897,7 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1123,92 +1914,109 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_aggregate_evaluate : public BaseClass {
+  class WithGenericMethod_get_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_aggregate_evaluate() {
+    WithGenericMethod_get_information() {
       ::grpc::Service::MarkMethodGeneric(3);
     }
-    ~WithGenericMethod_aggregate_evaluate() override {
+    ~WithGenericMethod_get_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status get_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_aggregate_fit : public BaseClass {
+  class WithGenericMethod_set_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_aggregate_fit() {
+    WithGenericMethod_set_information() {
       ::grpc::Service::MarkMethodGeneric(4);
     }
-    ~WithGenericMethod_aggregate_fit() override {
+    ~WithGenericMethod_set_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_fit(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status set_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_aggregate_sync_fit : public BaseClass {
+  class WithGenericMethod_aggregate_client : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_aggregate_sync_fit() {
+    WithGenericMethod_aggregate_client() {
       ::grpc::Service::MarkMethodGeneric(5);
     }
-    ~WithGenericMethod_aggregate_sync_fit() override {
+    ~WithGenericMethod_aggregate_client() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status aggregate_client(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_server_evaluate : public BaseClass {
+  class WithGenericMethod_fit_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_server_evaluate() {
+    WithGenericMethod_fit_all() {
       ::grpc::Service::MarkMethodGeneric(6);
     }
-    ~WithGenericMethod_server_evaluate() override {
+    ~WithGenericMethod_fit_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status server_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status fit_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_store_model : public BaseClass {
+  class WithGenericMethod_evaluate_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_store_model() {
+    WithGenericMethod_evaluate_all() {
       ::grpc::Service::MarkMethodGeneric(7);
     }
-    ~WithGenericMethod_store_model() override {
+    ~WithGenericMethod_evaluate_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status store_model(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status evaluate_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_update_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_update_all() {
+      ::grpc::Service::MarkMethodGeneric(8);
+    }
+    ~WithGenericMethod_update_all() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status update_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1219,7 +2027,7 @@ class Flexe final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_initialize_parameters() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_initialize_parameters() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1231,18 +2039,137 @@ class Flexe final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_aggregate_async_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_aggregate_async_fit() {
+      ::grpc::Service::MarkMethodGeneric(10);
+    }
+    ~WithGenericMethod_aggregate_async_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_async_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_aggregate_sync_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_aggregate_sync_fit() {
+      ::grpc::Service::MarkMethodGeneric(11);
+    }
+    ~WithGenericMethod_aggregate_sync_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_aggregate_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_aggregate_evaluate() {
+      ::grpc::Service::MarkMethodGeneric(12);
+    }
+    ~WithGenericMethod_aggregate_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_set_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_set_strategy() {
+      ::grpc::Service::MarkMethodGeneric(13);
+    }
+    ~WithGenericMethod_set_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status set_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_get_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_get_strategy() {
+      ::grpc::Service::MarkMethodGeneric(14);
+    }
+    ~WithGenericMethod_get_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status get_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_center_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_center_fit() {
+      ::grpc::Service::MarkMethodGeneric(15);
+    }
+    ~WithGenericMethod_center_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_center_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_center_evaluate() {
+      ::grpc::Service::MarkMethodGeneric(16);
+    }
+    ~WithGenericMethod_center_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_end : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_end() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(17);
     }
     ~WithGenericMethod_end() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1279,7 +2206,7 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1299,7 +2226,7 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1308,103 +2235,123 @@ class Flexe final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_aggregate_evaluate : public BaseClass {
+  class WithRawMethod_get_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_aggregate_evaluate() {
+    WithRawMethod_get_information() {
       ::grpc::Service::MarkMethodRaw(3);
     }
-    ~WithRawMethod_aggregate_evaluate() override {
+    ~WithRawMethod_get_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status get_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestaggregate_evaluate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestget_information(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_aggregate_fit : public BaseClass {
+  class WithRawMethod_set_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_aggregate_fit() {
+    WithRawMethod_set_information() {
       ::grpc::Service::MarkMethodRaw(4);
     }
-    ~WithRawMethod_aggregate_fit() override {
+    ~WithRawMethod_set_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_fit(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status set_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestaggregate_fit(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestset_information(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_aggregate_sync_fit : public BaseClass {
+  class WithRawMethod_aggregate_client : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_aggregate_sync_fit() {
+    WithRawMethod_aggregate_client() {
       ::grpc::Service::MarkMethodRaw(5);
     }
-    ~WithRawMethod_aggregate_sync_fit() override {
+    ~WithRawMethod_aggregate_client() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status aggregate_client(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestaggregate_sync_fit(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestaggregate_client(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_server_evaluate : public BaseClass {
+  class WithRawMethod_fit_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_server_evaluate() {
+    WithRawMethod_fit_all() {
       ::grpc::Service::MarkMethodRaw(6);
     }
-    ~WithRawMethod_server_evaluate() override {
+    ~WithRawMethod_fit_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status server_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status fit_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestserver_evaluate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestfit_all(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_store_model : public BaseClass {
+  class WithRawMethod_evaluate_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_store_model() {
+    WithRawMethod_evaluate_all() {
       ::grpc::Service::MarkMethodRaw(7);
     }
-    ~WithRawMethod_store_model() override {
+    ~WithRawMethod_evaluate_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status store_model(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status evaluate_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requeststore_model(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestevaluate_all(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_update_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_update_all() {
+      ::grpc::Service::MarkMethodRaw(8);
+    }
+    ~WithRawMethod_update_all() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status update_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestupdate_all(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1413,7 +2360,7 @@ class Flexe final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_initialize_parameters() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_initialize_parameters() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1424,7 +2371,147 @@ class Flexe final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void Requestinitialize_parameters(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_aggregate_async_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_aggregate_async_fit() {
+      ::grpc::Service::MarkMethodRaw(10);
+    }
+    ~WithRawMethod_aggregate_async_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_async_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestaggregate_async_fit(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_aggregate_sync_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_aggregate_sync_fit() {
+      ::grpc::Service::MarkMethodRaw(11);
+    }
+    ~WithRawMethod_aggregate_sync_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestaggregate_sync_fit(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_aggregate_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_aggregate_evaluate() {
+      ::grpc::Service::MarkMethodRaw(12);
+    }
+    ~WithRawMethod_aggregate_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestaggregate_evaluate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_set_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_set_strategy() {
+      ::grpc::Service::MarkMethodRaw(13);
+    }
+    ~WithRawMethod_set_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status set_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestset_strategy(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_get_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_get_strategy() {
+      ::grpc::Service::MarkMethodRaw(14);
+    }
+    ~WithRawMethod_get_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status get_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestget_strategy(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_center_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_center_fit() {
+      ::grpc::Service::MarkMethodRaw(15);
+    }
+    ~WithRawMethod_center_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestcenter_fit(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_center_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_center_evaluate() {
+      ::grpc::Service::MarkMethodRaw(16);
+    }
+    ~WithRawMethod_center_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestcenter_evaluate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1433,18 +2520,18 @@ class Flexe final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_end() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(17);
     }
     ~WithRawMethod_end() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void Requestend(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1510,7 +2597,7 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1548,7 +2635,7 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1562,11 +2649,11 @@ class Flexe final {
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_aggregate_evaluate : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_get_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_aggregate_evaluate() {
+    ExperimentalWithRawCallbackMethod_get_information() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
@@ -1580,31 +2667,31 @@ class Flexe final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_evaluate(context, request, response); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->get_information(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_aggregate_evaluate() override {
+    ~ExperimentalWithRawCallbackMethod_get_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status get_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* aggregate_evaluate(
+    virtual ::grpc::ServerUnaryReactor* get_information(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_evaluate(
+    virtual ::grpc::experimental::ServerUnaryReactor* get_information(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_aggregate_fit : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_set_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_aggregate_fit() {
+    ExperimentalWithRawCallbackMethod_set_information() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
@@ -1618,31 +2705,31 @@ class Flexe final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_fit(context, request, response); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->set_information(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_aggregate_fit() override {
+    ~ExperimentalWithRawCallbackMethod_set_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_fit(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status set_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* aggregate_fit(
+    virtual ::grpc::ServerUnaryReactor* set_information(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_fit(
+    virtual ::grpc::experimental::ServerUnaryReactor* set_information(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_aggregate_sync_fit : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_aggregate_client : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_aggregate_sync_fit() {
+    ExperimentalWithRawCallbackMethod_aggregate_client() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
@@ -1656,31 +2743,31 @@ class Flexe final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_sync_fit(context, request, response); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_client(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_aggregate_sync_fit() override {
+    ~ExperimentalWithRawCallbackMethod_aggregate_client() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status aggregate_client(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* aggregate_sync_fit(
+    virtual ::grpc::ServerUnaryReactor* aggregate_client(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_sync_fit(
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_client(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_server_evaluate : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_fit_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_server_evaluate() {
+    ExperimentalWithRawCallbackMethod_fit_all() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
@@ -1694,31 +2781,31 @@ class Flexe final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->server_evaluate(context, request, response); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->fit_all(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_server_evaluate() override {
+    ~ExperimentalWithRawCallbackMethod_fit_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status server_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status fit_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* server_evaluate(
+    virtual ::grpc::ServerUnaryReactor* fit_all(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* server_evaluate(
+    virtual ::grpc::experimental::ServerUnaryReactor* fit_all(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_store_model : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_evaluate_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_store_model() {
+    ExperimentalWithRawCallbackMethod_evaluate_all() {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::Service::
     #else
@@ -1732,21 +2819,59 @@ class Flexe final {
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->store_model(context, request, response); }));
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->evaluate_all(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_store_model() override {
+    ~ExperimentalWithRawCallbackMethod_evaluate_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status store_model(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status evaluate_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* store_model(
+    virtual ::grpc::ServerUnaryReactor* evaluate_all(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #else
-    virtual ::grpc::experimental::ServerUnaryReactor* store_model(
+    virtual ::grpc::experimental::ServerUnaryReactor* evaluate_all(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_update_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_update_all() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(8,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->update_all(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_update_all() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status update_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* update_all(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* update_all(
       ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
     #endif
       { return nullptr; }
@@ -1762,7 +2887,7 @@ class Flexe final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(8,
+        MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -1790,6 +2915,272 @@ class Flexe final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_aggregate_async_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_aggregate_async_fit() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(10,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_async_fit(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_aggregate_async_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_async_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_async_fit(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_async_fit(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_aggregate_sync_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_aggregate_sync_fit() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_sync_fit(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_aggregate_sync_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_sync_fit(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_sync_fit(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_aggregate_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_aggregate_evaluate() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(12,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->aggregate_evaluate(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_aggregate_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* aggregate_evaluate(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* aggregate_evaluate(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_set_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_set_strategy() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(13,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->set_strategy(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_set_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status set_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* set_strategy(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* set_strategy(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_get_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_get_strategy() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->get_strategy(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_get_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status get_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* get_strategy(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* get_strategy(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_center_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_center_fit() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(15,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->center_fit(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_center_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* center_fit(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* center_fit(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_center_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_center_evaluate() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(16,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->center_evaluate(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_center_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status center_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* center_evaluate(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* center_evaluate(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_end : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -1800,7 +3191,7 @@ class Flexe final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(9,
+        MarkMethodRawCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -1814,7 +3205,7 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1862,10 +3253,10 @@ class Flexe final {
     WithStreamedUnaryMethod_evaluate() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::TTRequest, ::flexe::EvaluateReply>(
+          ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::flexe::TTRequest, ::flexe::EvaluateReply>* streamer) {
+                     ::flexe::TTRequest, ::flexe::ModelReply>* streamer) {
                        return this->Streamedevaluate(context,
                          streamer);
                   }));
@@ -1874,12 +3265,12 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedevaluate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::EvaluateReply>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedevaluate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_update_model : public BaseClass {
@@ -1889,10 +3280,10 @@ class Flexe final {
     WithStreamedUnaryMethod_update_model() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::TTRequest, ::flexe::GenericResponse>(
+          ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::flexe::TTRequest, ::flexe::GenericResponse>* streamer) {
+                     ::flexe::TTRequest, ::flexe::ModelReply>* streamer) {
                        return this->Streamedupdate_model(context,
                          streamer);
                   }));
@@ -1901,147 +3292,174 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status update_model(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedupdate_model(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::GenericResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedupdate_model(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_aggregate_evaluate : public BaseClass {
+  class WithStreamedUnaryMethod_get_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_aggregate_evaluate() {
+    WithStreamedUnaryMethod_get_information() {
       ::grpc::Service::MarkMethodStreamed(3,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::TTRequest, ::flexe::EvaluateReply>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::flexe::TTRequest, ::flexe::EvaluateReply>* streamer) {
-                       return this->Streamedaggregate_evaluate(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_aggregate_evaluate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedaggregate_evaluate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::EvaluateReply>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_aggregate_fit : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_aggregate_fit() {
-      ::grpc::Service::MarkMethodStreamed(4,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::ModelRequest, ::flexe::ModelReply>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::flexe::ModelRequest, ::flexe::ModelReply>* streamer) {
-                       return this->Streamedaggregate_fit(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_aggregate_fit() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status aggregate_fit(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedaggregate_fit(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::ModelRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_aggregate_sync_fit : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_aggregate_sync_fit() {
-      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler<
           ::flexe::GenericRequest, ::flexe::ModelReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::flexe::GenericRequest, ::flexe::ModelReply>* streamer) {
-                       return this->Streamedaggregate_sync_fit(context,
+                       return this->Streamedget_information(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_aggregate_sync_fit() override {
+    ~WithStreamedUnaryMethod_get_information() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+    ::grpc::Status get_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedaggregate_sync_fit(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedget_information(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_server_evaluate : public BaseClass {
+  class WithStreamedUnaryMethod_set_information : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_server_evaluate() {
+    WithStreamedUnaryMethod_set_information() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::GenericRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::GenericRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedset_information(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_set_information() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status set_information(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedset_information(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_aggregate_client : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_aggregate_client() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::TTRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::TTRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedaggregate_client(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_aggregate_client() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status aggregate_client(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedaggregate_client(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_fit_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_fit_all() {
       ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::TTRequest, ::flexe::EvaluateReply>(
+          ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::flexe::TTRequest, ::flexe::EvaluateReply>* streamer) {
-                       return this->Streamedserver_evaluate(context,
+                     ::flexe::TTRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedfit_all(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_server_evaluate() override {
+    ~WithStreamedUnaryMethod_fit_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status server_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::EvaluateReply* /*response*/) override {
+    ::grpc::Status fit_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedserver_evaluate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::EvaluateReply>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedfit_all(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_store_model : public BaseClass {
+  class WithStreamedUnaryMethod_evaluate_all : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_store_model() {
+    WithStreamedUnaryMethod_evaluate_all() {
       ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::ModelRequest, ::flexe::GenericResponse>(
+          ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::flexe::ModelRequest, ::flexe::GenericResponse>* streamer) {
-                       return this->Streamedstore_model(context,
+                     ::flexe::TTRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedevaluate_all(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_store_model() override {
+    ~WithStreamedUnaryMethod_evaluate_all() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status store_model(::grpc::ServerContext* /*context*/, const ::flexe::ModelRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status evaluate_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedstore_model(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::ModelRequest,::flexe::GenericResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedevaluate_all(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_update_all : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_update_all() {
+      ::grpc::Service::MarkMethodStreamed(8,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::TTRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::TTRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedupdate_all(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_update_all() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status update_all(::grpc::ServerContext* /*context*/, const ::flexe::TTRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedupdate_all(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_initialize_parameters : public BaseClass {
@@ -2049,7 +3467,7 @@ class Flexe final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_initialize_parameters() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler<
           ::flexe::TTRequest, ::flexe::ModelReply>(
             [this](::grpc::ServerContext* context,
@@ -2071,17 +3489,206 @@ class Flexe final {
     virtual ::grpc::Status Streamedinitialize_parameters(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::TTRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_aggregate_async_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_aggregate_async_fit() {
+      ::grpc::Service::MarkMethodStreamed(10,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::AggregationRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::AggregationRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedaggregate_async_fit(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_aggregate_async_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status aggregate_async_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedaggregate_async_fit(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::AggregationRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_aggregate_sync_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_aggregate_sync_fit() {
+      ::grpc::Service::MarkMethodStreamed(11,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::AggregationRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::AggregationRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedaggregate_sync_fit(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_aggregate_sync_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status aggregate_sync_fit(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedaggregate_sync_fit(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::AggregationRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_aggregate_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_aggregate_evaluate() {
+      ::grpc::Service::MarkMethodStreamed(12,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::AggregationRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::AggregationRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedaggregate_evaluate(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_aggregate_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status aggregate_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::AggregationRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedaggregate_evaluate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::AggregationRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_set_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_set_strategy() {
+      ::grpc::Service::MarkMethodStreamed(13,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::GenericRequest, ::flexe::GenericReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::GenericRequest, ::flexe::GenericReply>* streamer) {
+                       return this->Streamedset_strategy(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_set_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status set_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedset_strategy(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::GenericReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_get_strategy : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_get_strategy() {
+      ::grpc::Service::MarkMethodStreamed(14,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::GenericRequest, ::flexe::GenericReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::GenericRequest, ::flexe::GenericReply>* streamer) {
+                       return this->Streamedget_strategy(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_get_strategy() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status get_strategy(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedget_strategy(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::GenericReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_center_fit : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_center_fit() {
+      ::grpc::Service::MarkMethodStreamed(15,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::GenericRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::GenericRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedcenter_fit(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_center_fit() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status center_fit(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedcenter_fit(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_center_evaluate : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_center_evaluate() {
+      ::grpc::Service::MarkMethodStreamed(16,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::flexe::GenericRequest, ::flexe::ModelReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::flexe::GenericRequest, ::flexe::ModelReply>* streamer) {
+                       return this->Streamedcenter_evaluate(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_center_evaluate() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status center_evaluate(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::ModelReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedcenter_evaluate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::ModelReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_end : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_end() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(17,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::flexe::GenericRequest, ::flexe::GenericResponse>(
+          ::flexe::GenericRequest, ::flexe::GenericReply>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::flexe::GenericRequest, ::flexe::GenericResponse>* streamer) {
+                     ::flexe::GenericRequest, ::flexe::GenericReply>* streamer) {
                        return this->Streamedend(context,
                          streamer);
                   }));
@@ -2090,16 +3697,16 @@ class Flexe final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericResponse* /*response*/) override {
+    ::grpc::Status end(::grpc::ServerContext* /*context*/, const ::flexe::GenericRequest* /*request*/, ::flexe::GenericReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedend(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::GenericResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedend(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::flexe::GenericRequest,::flexe::GenericReply>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_fit<WithStreamedUnaryMethod_evaluate<WithStreamedUnaryMethod_update_model<WithStreamedUnaryMethod_aggregate_evaluate<WithStreamedUnaryMethod_aggregate_fit<WithStreamedUnaryMethod_aggregate_sync_fit<WithStreamedUnaryMethod_server_evaluate<WithStreamedUnaryMethod_store_model<WithStreamedUnaryMethod_initialize_parameters<WithStreamedUnaryMethod_end<Service > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_fit<WithStreamedUnaryMethod_evaluate<WithStreamedUnaryMethod_update_model<WithStreamedUnaryMethod_get_information<WithStreamedUnaryMethod_set_information<WithStreamedUnaryMethod_aggregate_client<WithStreamedUnaryMethod_fit_all<WithStreamedUnaryMethod_evaluate_all<WithStreamedUnaryMethod_update_all<WithStreamedUnaryMethod_initialize_parameters<WithStreamedUnaryMethod_aggregate_async_fit<WithStreamedUnaryMethod_aggregate_sync_fit<WithStreamedUnaryMethod_aggregate_evaluate<WithStreamedUnaryMethod_set_strategy<WithStreamedUnaryMethod_get_strategy<WithStreamedUnaryMethod_center_fit<WithStreamedUnaryMethod_center_evaluate<WithStreamedUnaryMethod_end<Service > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_fit<WithStreamedUnaryMethod_evaluate<WithStreamedUnaryMethod_update_model<WithStreamedUnaryMethod_aggregate_evaluate<WithStreamedUnaryMethod_aggregate_fit<WithStreamedUnaryMethod_aggregate_sync_fit<WithStreamedUnaryMethod_server_evaluate<WithStreamedUnaryMethod_store_model<WithStreamedUnaryMethod_initialize_parameters<WithStreamedUnaryMethod_end<Service > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_fit<WithStreamedUnaryMethod_evaluate<WithStreamedUnaryMethod_update_model<WithStreamedUnaryMethod_get_information<WithStreamedUnaryMethod_set_information<WithStreamedUnaryMethod_aggregate_client<WithStreamedUnaryMethod_fit_all<WithStreamedUnaryMethod_evaluate_all<WithStreamedUnaryMethod_update_all<WithStreamedUnaryMethod_initialize_parameters<WithStreamedUnaryMethod_aggregate_async_fit<WithStreamedUnaryMethod_aggregate_sync_fit<WithStreamedUnaryMethod_aggregate_evaluate<WithStreamedUnaryMethod_set_strategy<WithStreamedUnaryMethod_get_strategy<WithStreamedUnaryMethod_center_fit<WithStreamedUnaryMethod_center_evaluate<WithStreamedUnaryMethod_end<Service > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace flexe

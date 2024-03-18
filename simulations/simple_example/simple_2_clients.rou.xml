@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nonamespaceschemalocation="http://sumo.sf.net/xsd/routes_file.xsd">
+	<vehicle depart="0.00" id="t0">
+		<route edges="6/4to5/4 5/4to4/4 4/4to3/4 3/4to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to6/4 6/4to5/4 5/4to4/4 4/4to3/4 3/4to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to6/4 6/4to5/4 5/4to4/4 4/4to3/4 3/4to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to6/4">
+		</route>
+	</vehicle>
+	<vehicle depart="0.00" id="t1">
+		<route edges="5/4to4/4 4/4to3/4 3/4to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to6/4 6/4to5/4 5/4to4/4 4/4to3/4 3/4to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to6/4 6/4to5/4 5/4to4/4 4/4to3/4 3/4to3/5 3/5to4/5 4/5to5/5 5/5to6/5 6/5to6/4">
+		</route>
+	</vehicle>
+</routes>

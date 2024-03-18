@@ -2,53 +2,96 @@ syntax = "proto3";
 
 package flexe;
 
-// Defines the service
 service Flexe {
     //Client Functions 
     rpc fit (TTRequest) returns (ModelReply) {}
-    rpc evaluate (TTRequest) returns (EvaluateReply) {}
-    rpc update_model (TTRequest) returns (GenericResponse) {}
+    rpc evaluate (TTRequest) returns (ModelReply) {} 
+    rpc update_model (TTRequest) returns (ModelReply) {} 
+    rpc get_information (GenericRequest) returns (ModelReply) {} 
+    rpc set_information (GenericRequest) returns (ModelReply) {} 
+    rpc aggregate_client (TTRequest) returns (ModelReply) {} 
+    rpc fit_all (TTRequest) returns (ModelReply) {} 
+    rpc evaluate_all (TTRequest) returns (ModelReply) {} 
+    rpc update_all (TTRequest) returns (ModelReply) {} 
     
     //Server Functions
-    rpc aggregate_evaluate (TTRequest) returns (EvaluateReply) {}
-    rpc aggregate_fit (ModelRequest) returns (ModelReply) {}
-    rpc aggregate_sync_fit (GenericRequest) returns (ModelReply) {}
-    rpc server_evaluate (TTRequest) returns (EvaluateReply) {}   
-    rpc store_model (ModelRequest) returns (GenericResponse) {} 
-    rpc initialize_parameters (TTRequest) returns (ModelReply) {}
-    rpc end (GenericRequest) returns (GenericResponse) {}
-}
-
-message GenericRequest{
-    string msg = 1;
-}
-
-message GenericResponse{
-    int32 reply = 1;
+    rpc initialize_parameters (TTRequest) returns (ModelReply) {} 
+    rpc aggregate_async_fit (AggregationRequest) returns (ModelReply) {} 
+    rpc aggregate_sync_fit (AggregationRequest) returns (ModelReply) {}    
+    rpc aggregate_evaluate (AggregationRequest) returns (ModelReply) {} 
+    rpc set_strategy (GenericRequest) returns (GenericReply) {}
+    rpc get_strategy (GenericRequest) returns (GenericReply) {}
+    rpc center_fit (GenericRequest) returns (ModelReply) {}
+    rpc center_evaluate (GenericRequest) returns (ModelReply) {}
+    rpc end (GenericRequest) returns (GenericReply) {} 
 }
 
 message TTRequest {
-    int32 idVehicle = 1;
-    bool trainFlag = 2;
-    string modelName = 3;
-    int32 epochs = 4;
-    int32 batch_size = 5;
+    int32 idEntity          = 1;
+    string model            = 2;
+    string dataset          = 3;
+    string scenario         = 4;
+    int32 seed              = 5;
+    bool nonIID             = 6;
+    int32 idModel           = 7;
+    bool trainFlag          = 8;
+    int32 epochs            = 9;
+    int32 batch             = 10;
+    int32 numClients        = 11;
+    double percentDataset   = 12;
+    string models           = 13;
+    string msg              = 14;
 }
 
-message EvaluateReply {
-    double loss = 1;
-    double accuracy = 2;
+message AggregationRequest {
+    int32 idEntity          = 1;
+    string model            = 2;
+    string dataset          = 3;
+    string scenario         = 4;
+    int32 seed              = 5;
+    bool nonIID             = 6;
+    int32 idModel           = 7;
+    int32 numClients        = 8;
+    string numExamples      = 9;
+    string models           = 10;
+    string strategy         = 11;
+    string msg              = 12;
 }
 
-message ModelReply{
-    int32 idVehicle = 1;
-    repeated bytes tensors = 2;
-    int32 num_examples = 3;  
+message GenericRequest {
+    int32 idEntity          = 1;
+    string model            = 2;
+    string dataset          = 3;
+    string scenario         = 4;
+    int32 seed              = 5;
+    bool nonIID             = 6;
+    int32 idModel           = 7;
+    string msg              = 8;
 }
 
-message ModelRequest{
-    int32 idVehicle = 1;
-    repeated bytes tensors = 2;
-    int32 number_of_vehicles = 3;
-    int32 num_examples = 4;
+message GenericReply {
+    int32 idEntity          = 1;
+    string model            = 2;
+    string dataset          = 3;
+    string scenario         = 4;
+    int32 seed              = 5;
+    bool nonIID             = 6;
+    int32 idModel           = 7;
+    int32 reply             = 8;
+    string msg              = 9;
+}
+
+message ModelReply {
+    int32 idEntity          = 1;
+    string model            = 2;
+    string dataset          = 3;
+    string scenario         = 4;
+    int32 seed              = 5;
+    bool nonIID             = 6;
+    int32 idModel           = 7;
+    int32 numExamples       = 8; 
+    double entropy          = 9; 
+    double loss             = 10;
+    double accuracy         = 11;
+    string msg              = 12;
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<copy file="simple_network.net.xml"/>
+	<copy file="simple_100_clients.rou.xml"/>
+	<copy file="simple_100_clients.sumo.cfg" type="config"/>
+</launch>

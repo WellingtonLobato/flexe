@@ -9,89 +9,7 @@
 
 #include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
 #include "../messages/FlexeMessage_m.h"
-
-#include <grpcpp/grpcpp.h>
-#include <google/protobuf/empty.pb.h>
-
-#include "../proto/flexe.grpc.pb.h"
-
-using grpc::Channel;
-using grpc::ClientContext;
-using grpc::Status;
-
-using flexe::Flexe;
-using flexe::TTRequest;
-using flexe::EvaluateReply;
-using flexe::ModelReply;
-using flexe::GenericResponse;
-
-class FlexeClient {
-    public:
-    FlexeClient(std::shared_ptr<Channel> channel)
-    : stub_(Flexe::NewStub(channel)) {}
-
-    double evaluate(int idVehicle, bool trainFlag, const std::string& modelName, int batchSize){
-        TTRequest evaluateRequest;
-        evaluateRequest.set_idvehicle(idVehicle+1);
-        evaluateRequest.set_trainflag(false);
-        evaluateRequest.set_modelname(modelName);
-        evaluateRequest.set_batch_size(batchSize);
-
-        ClientContext context;
-        EvaluateReply reply;
-
-        Status status = stub_->evaluate(&context, evaluateRequest, &reply);
-        if(status.ok()){
-            //std::cout << "Evaluation requested successfully!" << endl;
-            return reply.loss();
-        } else {
-            std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-            return -1;
-        }
-    }
-
-    ModelReply fit(int idVehicle, bool trainFlag, const std::string& modelName, int epochs, int batchSize){
-        TTRequest fitRequest;
-        fitRequest.set_idvehicle(idVehicle+1);
-        fitRequest.set_trainflag(trainFlag);
-        fitRequest.set_modelname(modelName);
-        fitRequest.set_epochs(epochs);
-        fitRequest.set_batch_size(batchSize);
-        ClientContext context;
-        ModelReply reply;
-
-        Status status = stub_->fit(&context, fitRequest, &reply);
-        if(status.ok()){
-            //std::cout << "Training requested successfully!" << endl;
-        } else {
-            std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-        }
-        return reply;
-    }
-
-    int update_model(int idVehicle, bool trainFlag, const std::string& modelName, int epochs, int batchSize){
-        TTRequest fitRequest;
-        fitRequest.set_idvehicle(idVehicle+1);
-        fitRequest.set_trainflag(false);
-        fitRequest.set_modelname(modelName);
-        fitRequest.set_epochs(epochs);
-        fitRequest.set_batch_size(batchSize);
-        GenericResponse reply;
-        ClientContext context;
-
-        Status status = stub_->update_model(&context, fitRequest, &reply);
-        if(status.ok()){
-            //std::cout << "Update the model requested successfully!" << endl;
-            return 1;
-        }else {
-            std::cout << status.error_code() << ": " << status.error_message() << std::endl;
-            return -1;
-        }
-    }
-
-    private:
-        std::unique_ptr<Flexe::Stub> stub_;
-};
+#include "../application/FlexeClient.h"
 
 using namespace omnetpp;
 using namespace veins;
@@ -114,38 +32,60 @@ protected:
 
     //MSG TYPE
     enum selfMessageKinds {
-        TRAIN_MODEL_EVT = 7,
-        SEND_MODEL_EVT,
-        SEND_CLOUD_EVT = 10,
-        SEND_FED_MODEL_EVT = 17,
+        TRAIN_LOCAL_MODEL_EVT = 16,
+        CLIENT_SELECTION_EVT = 17,
+        SEND_GLOBAL_MODEL_EVT = 18,
+        SEND_LOCAL_MODEL_EVT = 19,
+        RESOURCE_REQUEST_EVT = 20,
     };
 
     //VAR
     int self;
+    std::string model;
+    std::string dataset;
+    std::string scenario;
+    int seed;
+    bool nonIID;
+    int idModel;
+    bool trainFlag;
     int epochs;
-    int batchSize;
-    int counter;
+    int batch;
+    int numClients;
+    double percentDataset;
+    double computationCapability;
     int modelVersion;
 
-    bool trainFlag;
+    bool speedZero;
+    bool resourceFlag;
 
-    double sendTrainInterval;
-    double loss;
+    int counter;
+    double computationRequirement;
+    double lossModel;
+    double accuracyModel;
+    int numExamples;
+    double entropy;
+    std::string outputMSG;
+    double trainingLatency;
 
-    std::string modelName;
-    std::string strWeights;
-
-    ModelReply modelResponse;
-
-    std::vector<int> tensorSizeVector;
+    ModelReply modelOutput;
+    GenericReply genericOutput;
 
     std::string address;
     grpc::ChannelArguments chArgs;
     FlexeClient* client = NULL;
 
     //MSG
-    cMessage* trainModelEvt = new cMessage("Train Model Event", TRAIN_MODEL_EVT);
-    cMessage* sendModelEvt = new cMessage("Send Model to RSU Event", SEND_MODEL_EVT);
+    cMessage* trainLocalModelEvt = new cMessage("Train the local model on the client event", TRAIN_LOCAL_MODEL_EVT);
+    cMessage* sendResourceRequestEvt = new cMessage("Send Resource Request Event", RESOURCE_REQUEST_EVT);
 
+    //METRICS
+    simsignal_t trainLatencyMetric;
+    simsignal_t compCapabilityMetric;
+    simsignal_t lossTrainMetric;
+    simsignal_t accuracyTrainMetric;
+    simsignal_t lossEvaluateMetric;
+    simsignal_t accuracyEvaluateMetric;
+    simsignal_t lossUpdateMetric;
+    simsignal_t accuracyUpdateMetric;
 };
 }
