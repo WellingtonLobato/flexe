@@ -90,7 +90,7 @@ PyFlexe and Flexe can reproduce results in the following papers:
 }
 ```
 # Updates
-Flexe Version 3.0.0 in the development phase.
+Flexe Version 3.0.0 is released. Now with new messages and functions. Support asynchronous and multi-model federated learning.
 
 ## License
 
