@@ -1,23 +1,37 @@
-# FLEXE: Federated Learning Extension for Veins
+<p align="center">
+  <img src=img/Flexe_logo.png>
+</p>
 
-FLEXE is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. FLEXE is free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics.
+# Flexe
+Flexe is a new framework for simulation of Federated Learning (FL) in Connected and Autonomous Vehicle (CAVs). Its adaptable design allows for the implementation of a variety of FL schemes, including horizontal, vertical, and Federated Transfer Learning. PyFlexe is free to download and use, built for customization, and allows for the realistic simulation of wireless networking and vehicle dynamics. The project was partitioned into two, one of which is responsible for vehicle-to-vehicle communication (Flexe) and the other for the construction and training of models (PyFlexe).
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
+PyFlexe requires the following software to be installed 
 
-OMNeT++:
--6.0
-SUMO:
--
-Veins:
--5.2
+- OMNeT++
+- conan
+- grpc
+- TensorFlow
+- PyTorch
 
-```
-Give examples
-```
+### OMNeT++ (6 >=) installation
+Please do follow the instructions from the official [OMNeT documentation](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf)
+
+### Conan installation
+Please do follow the instructions from the official [conan documentation](https://docs.conan.io/en/latest/installation.html)
+
+### GRPC installation
+Please do follow the instructions from the official [GRPC documentation](https://grpc.io/docs/languages/python/quickstart/)
+
+### TensorFlow installation (2.11.0 >=)
+Please do follow the instructions from the official [TensorFlow documentation](https://www.tensorflow.org/install)
+
+### PyTorch installation (1.13.1 >=)
+Please do follow the instructions from the official [PyTorch documentation](https://pytorch.org/tutorials/beginner/basics/intro.html)
 
 ### Installing
 
@@ -57,15 +71,31 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+## Project structure - main components 
 
-Add additional notes about how to deploy this on a live system
+Each strategy is evaluated through `simulation.py` which creates the set of clients and the server of the selected strategy under the given setting.
+Additionally, FedLTA can generate various visualizations to help researchers to analyze the results (see folder `analysis`).
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+    ├── analysis 			# Tables and plots creation - Folder
+    ├── client 			# Client-side code - Folder
+    │   ├── client_tf		# Client-side code for TensorFlow - Folder
+    │   ├── client_torch		# Client-side code for Pytorch - Folder
+    ├── data			# Datasets - Folder
+    ├── dataset_utils_torch.py	# Dataset utilities for Pytorch
+    ├── exc_all.sh			# Executes all the experiments
+    ├── exc_joint_plot.sh		# Generates joint plots 
+    ├── exec_simulation.py		# Executes the selected experiment
+    ├── execution_log		# Contains the terminal logs of each executed experiment - Folder
+    ├── log_exc_all.txt
+    ├── logs			# Contains the results of each executed experiment - Folder
+    ├── model_definition_tf.py	# Deep learning models in TensorFlow
+    ├── model_definition_torch.py	# Deep learning models in Pytorch
+    ├── push_logs.sh		# Pushes the generated logs to GitHub 
+    ├── server			# Server-side code
+    │   ├── common_base_server	# Common base server code (i.e., it is independent of Tensorflow and Pytorch) - Folder
+    │   ├── server_tf		# TensorFlow-specific implementations of servers - Folder
+    │   └── server_torch		# Pytorch-specific implementations of servers - Folder
+    ├── simulation.py		# Main file. Executes the selected strategy in the Federated |Learning under the specified setting
 
 ## Contributing
 
@@ -73,34 +103,32 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. 
 
 ## Authors
 
-* **Wellington Lobato** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Joahannes B. D. da Costa** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Allan M. de Souza** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Denis Rosario** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Christoph Sommer** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Leandro A. Villas** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Wellington Lobato** - [WellingtonLobato](https://github.com/WellingtonLobato)
+* **Joahannes B. D. da Costa** - [joahannes](https://github.com/joahannes)
+* **Allan M. de Souza** - [AllanMSouza](https://github.com/AllanMSouza)
+* **Denis Rosario**
+* **Christoph Sommer** - [sommer](https://github.com/sommer)
+* **Leandro A. Villas**
 
+# Citation
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+PyFlexe and Flexe can reproduce results in the following papers:
+
+```tex
+@INPROCEEDINGS{Lobato2022,
+  author={Lobato, Wellington and Costa, Joahannes B. D. Da and Souza, Allan M. de and Rosário, Denis and Sommer, Christoph and Villas, Leandro A.},
+  booktitle={2022 IEEE 96th Vehicular Technology Conference (VTC2022-Fall)}, 
+  title={FLEXE: Investigating Federated Learning in Connected Autonomous Vehicle Simulations}, 
+  year={2022},
+  pages={1-5},
+  doi={10.1109/VTC2022-Fall57202.2022.10012905}
+}
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
-
-conan install . --build missing -s compiler.version=10 -s compiler.libcxx=libstdc++11
-
-PROTO_IN_PATH=/home/jordan/git/Flexe2.0.0/
-PROTO_FILE=/home/jordan/git/Flexe2.0.0/flexe.proto
-PROTO_OUT_PATH=/home/jordan/git/Flexe2.0.0/src/flexe/proto/
-
+This project is licensed under the GPL-2.0 license - see the [COPYING.md](COPYING.md) file for details
