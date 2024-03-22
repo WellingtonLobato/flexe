@@ -47,9 +47,8 @@ Flexe is an extension to the well known and widely used Veins simulation framewo
 
 
     ├── simulations
-    │   ├── grid
-    │   ├── small_lust
-    │   └── veins
+    │   ├── multi_model
+    │   └── simple_example
     └── src
         ├── flexe
         │   ├── application
