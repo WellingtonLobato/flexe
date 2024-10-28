@@ -68,7 +68,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Instant Flexe
 You may use Instant Flexe, a virtual machine, to run Flexe to rapidly test.
-[Flexe]([http://semver.org/](https://drive.google.com/file/d/1yyFuo72ncbeaA-aP82BeGSSuN7Sqy-Iq/view?usp=sharing))
+[Flexe](https://drive.google.com/file/d/1yyFuo72ncbeaA-aP82BeGSSuN7Sqy-Iq/view?usp=sharing)
 
 ## Authors
 
