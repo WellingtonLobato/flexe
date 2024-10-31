@@ -74,7 +74,6 @@ You may use Instant Flexe, a virtual machine, to run Flexe to rapidly test. Pass
 
 * **Wellington Lobato** - [WellingtonLobato](https://github.com/WellingtonLobato)
 * **Joahannes B. D. da Costa** - [joahannes](https://github.com/joahannes)
-* **Allan M. de Souza** - [AllanMSouza](https://github.com/AllanMSouza)
 * **Denis Rosario**
 * **Christoph Sommer** - [sommer](https://github.com/sommer)
 * **Leandro A. Villas**
